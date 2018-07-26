@@ -18,14 +18,16 @@ as for embedding into mass-deployed software.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/mysql-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/mysql-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/mysql-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/mysql-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/mysql-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/mysql-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/mysql-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/mysql-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/mysql/badges/version.svg)](https://anaconda.org/conda-forge/mysql)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/mysql/badges/downloads.svg)](https://anaconda.org/conda-forge/mysql)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-mysql-green.svg)](https://anaconda.org/conda-forge/mysql) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mysql.svg)](https://anaconda.org/conda-forge/mysql) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mysql.svg)](https://anaconda.org/conda-forge/mysql) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mysql.svg)](https://anaconda.org/conda-forge/mysql) |
 
 Installing mysql
 ================
