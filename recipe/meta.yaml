@@ -9,7 +9,7 @@ package:
 
 source:
   fn: mysql-boost-{{ major_minor_version }}.{{ micro_version }}.tar.gz
-  url: https://cdn.mysql.com/Downloads/MySQL-{{ major_minor_version }}/mysql-boost-{{ major_minor_version }}.{{ micro_version }}.tar.gz
+  url: https://downloads.mysql.com/archives/get/file/mysql-boost-{{ major_minor_version }}.{{ micro_version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
