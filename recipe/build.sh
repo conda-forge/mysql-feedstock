@@ -36,7 +36,8 @@ cmake \
     -DWITH_SSL=system \
     -DWITH_EDITLINE=system \
     -DWITH_BOOST=system \
-    .. &> cmake.log
+    ..
+    # &> cmake.log
 
 make
 make install &> install.log
