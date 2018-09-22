@@ -18,8 +18,7 @@ as for embedding into mass-deployed software.
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/mysql-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/mysql-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/mysql-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/mysql-feedstock)
+[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/mysql-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/mysql-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
