@@ -20,10 +20,8 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
     - cmake
     - boost =1.67.0
-    - gcc >=4.8.3  # [not osx]
     - clangdev  # [osx]
     - perl
   host:
