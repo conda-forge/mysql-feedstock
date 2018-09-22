@@ -35,9 +35,9 @@ cmake \
     -DCOMPILATION_COMMENT=conda-forge \
     -DWITH_SSL=system \
     -DWITH_EDITLINE=system \
-    -DWITH_BOOST=system \
-    ..
-    # &> cmake.log
+    -DWITH_BOOST=bundled \
+    -DDOWNLOAD_BOOST=1 \
+    .. &> cmake.log
 
 make
 make install &> install.log
