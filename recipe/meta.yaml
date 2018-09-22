@@ -12,9 +12,6 @@ source:
   url: https://downloads.mysql.com/archives/get/file/mysql-boost-{{ major_minor_version }}.{{ micro_version }}.tar.gz
   sha256: {{ sha256 }}
 
-provider:
-  osx: circle
-
 build:
   number: 1
   skip: True  # [win]
