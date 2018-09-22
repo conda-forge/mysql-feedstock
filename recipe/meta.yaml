@@ -19,6 +19,7 @@ build:
 requirements:
   build:
     - toolchain
+    - gcc >=4.8.3  # [linux]
     - cmake
     - boost =1.67.0
     - perl
