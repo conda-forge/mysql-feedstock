@@ -20,11 +20,13 @@ requirements:
   build:
     - toolchain
     - cmake
-    - perl
-    - libedit 3.1.20170329
-    - openssl 1.0.*
     - boost =1.67.0
     - gcc >=4.8.3  # [not osx]
+    - clangdev  # [osx]
+    - perl
+  host:
+    - libedit 3.1.20170329
+    - openssl 1.0.*
 
   run:
     - libedit >=3.1.20170329
