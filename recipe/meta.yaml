@@ -18,9 +18,11 @@ build:
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
     - perl
+  host:
     - libedit 3.1.20170329
     - openssl 1.0.*
 
