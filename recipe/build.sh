@@ -12,6 +12,8 @@ unset LC_ALL
 mkdir -p build
 cd build
 
+export CXXFLAGS="-fpermissive "${CXXFLAGS}
+
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
 mkdir -p ${PREFIX}/mysql
 cmake \
