@@ -4,7 +4,7 @@
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
 
 # make sure we can find cpp on the linux CI service
-CPP_ROOT=`dirname $(which cpp)`
+CPP_ROOT=`dirname ${CPP}`
 export LC_ALL=C  # on osx sed chokes on non UTF-8
 find . -type f -print0 | xargs -0 sed -i"" -e "s|COMMAND rpcgen  -C|COMMAND rpcgen  -Y ${CPP_ROOT} -C|g"
 unset LC_ALL
