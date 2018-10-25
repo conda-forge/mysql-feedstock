@@ -4,7 +4,7 @@
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
 
 # make sure we can find cpp on the linux CI service
-if [ `uname` -ne "Darwin" ]
+if [[ `uname` != "Darwin" ]]
 then
     CPP_ROOT=`dirname ${CPP}`
     export LC_ALL=C  # on osx sed chokes on non UTF-8
@@ -13,6 +13,8 @@ then
 
     # make sure the cmake build can find everything
     ln -s ${CPP} `dirname ${CPP}`/cpp
+else
+    export CPPFLAGS=${CPPFLAGS%" -mmacosx-version-min=10.9"}
 fi
 
 mkdir -p build
