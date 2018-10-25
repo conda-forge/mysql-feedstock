@@ -19,6 +19,8 @@ export CXXFLAGS="-fpermissive "${CXXFLAGS}
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
 mkdir -p ${PREFIX}/mysql
 cmake \
+    -DCMAKE_C_FLAGS=${CFLAGS}" "${LDFLAGS} \
+    -DCMAKE_CXX_FLAGS=${CXXFLAGS}" "${LDFLAGS} \
     -DCMAKE_PREFIX_PATH=${PREFIX} \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DINSTALL_INCLUDEDIR=include/mysql \
