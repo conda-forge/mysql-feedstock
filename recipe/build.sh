@@ -6,10 +6,10 @@
 # make sure we can find cpp on the linux CI service
 if [[ `uname` != "Darwin" ]]
 then
-    CPP_ROOT=`dirname ${CPP}`
-    export LC_ALL=C  # on osx sed chokes on non UTF-8
-    find . -type f -print0 | xargs -0 sed -i"" -e "s|COMMAND rpcgen  -C|COMMAND rpcgen  -Y ${CPP_ROOT} -C|g"
-    unset LC_ALL
+    # CPP_ROOT=`dirname ${CPP}`
+    # export LC_ALL=C  # on osx sed chokes on non UTF-8
+    # find . -type f -print0 | xargs -0 sed -i"" -e "s|COMMAND rpcgen  -C|COMMAND rpcgen  -Y ${CPP_ROOT} -C|g"
+    # unset LC_ALL
 
     # make sure the cmake build can find everything
     ln -s ${CPP} `dirname ${CPP}`/cpp
@@ -25,8 +25,6 @@ export CXXFLAGS="-fpermissive "${CXXFLAGS}
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
 mkdir -p ${PREFIX}/mysql
 cmake \
-    -DCMAKE_C_FLAGS=${CFLAGS}" "${LDFLAGS} \
-    -DCMAKE_CXX_FLAGS=${CXXFLAGS}" "${LDFLAGS} \
     -DCMAKE_PREFIX_PATH=${PREFIX} \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DINSTALL_INCLUDEDIR=include/mysql \
@@ -51,7 +49,7 @@ cmake \
     -DDOWNLOAD_BOOST=1 \
     .. &> cmake.log
 
-make VERBOSE=1
+make
 make install &> install.log
 
 # remove this dir so we do not ship it
