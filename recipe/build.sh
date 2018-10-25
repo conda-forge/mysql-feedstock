@@ -45,8 +45,8 @@ cmake \
     -DDEFAULT_CHARSET=utf8 \
     -DDEFAULT_COLLATION=utf8_general_ci \
     -DCOMPILATION_COMMENT=conda-forge \
-    -DWITH_SSL=system \
-    -DWITH_EDITLINE=system \
+    -DWITH_SSL=bundled \
+    -DWITH_EDITLINE=bundled \
     -DWITH_BOOST=bundled \
     -DDOWNLOAD_BOOST=1 \
     .. &> cmake.log
