@@ -23,6 +23,9 @@ cd build
 export CXXFLAGS="-fpermissive "${CXXFLAGS}
 
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
+# I checked and the bundled libs don't cause any issues with stomping
+# on the conda-forge packages. Thus I am going to go with them for now since
+# with the anaconda compilers I cannot convince the build to link properly.
 mkdir -p ${PREFIX}/mysql
 cmake \
     -DCMAKE_PREFIX_PATH=${PREFIX} \
