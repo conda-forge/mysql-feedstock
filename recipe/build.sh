@@ -28,6 +28,8 @@ export CXXFLAGS="-fpermissive "${CXXFLAGS}
 # with the anaconda compilers I cannot convince the build to link properly.
 mkdir -p ${PREFIX}/mysql
 cmake \
+    -DCMAKE_C_FLAGS=${CFLAGS} \
+    -DCMAKE_CXX_FLAGS=${CXXFLAGS} \
     -DCMAKE_PREFIX_PATH=${PREFIX} \
     -DCMAKE_INSTALL_PREFIX=${PREFIX} \
     -DINSTALL_INCLUDEDIR=include/mysql \
