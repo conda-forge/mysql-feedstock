@@ -6,10 +6,10 @@
 # make sure we can find cpp on the linux CI service
 if [[ `uname` != "Darwin" ]]
 then
-    # CPP_ROOT=`dirname ${CPP}`
-    # export LC_ALL=C  # on osx sed chokes on non UTF-8
-    # find . -type f -print0 | xargs -0 sed -i"" -e "s|COMMAND rpcgen  -C|COMMAND rpcgen  -Y ${CPP_ROOT} -C|g"
-    # unset LC_ALL
+    CPP_ROOT=`dirname ${CPP}`
+    export LC_ALL=C  # on osx sed chokes on non UTF-8
+    find . -type f -print0 | xargs -0 sed -i"" -e "s|COMMAND rpcgen  -C|COMMAND rpcgen  -Y ${CPP_ROOT} -C|g"
+    unset LC_ALL
 
     # make sure the cmake build can find everything
     ln -s ${CPP} `dirname ${CPP}`/cpp
