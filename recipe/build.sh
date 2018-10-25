@@ -51,7 +51,7 @@ cmake \
     -DDOWNLOAD_BOOST=1 \
     .. &> cmake.log
 
-make
+make VERBOSE=1
 make install &> install.log
 
 # remove this dir so we do not ship it
