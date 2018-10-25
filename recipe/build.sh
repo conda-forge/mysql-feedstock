@@ -12,6 +12,8 @@ unset LC_ALL
 mkdir -p build
 cd build
 
+# make sure the cmake build can find everything
+alias cpp=`which ${CPP}`
 export CXXFLAGS="-fpermissive "${CXXFLAGS}
 
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
