@@ -4,16 +4,20 @@
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
 
 # make sure we can find cpp on the linux CI service
-CPP_ROOT=`dirname ${CPP}`
-export LC_ALL=C  # on osx sed chokes on non UTF-8
-find . -type f -print0 | xargs -0 sed -i"" -e "s|COMMAND rpcgen  -C|COMMAND rpcgen  -Y ${CPP_ROOT} -C|g"
-unset LC_ALL
+if [ `uname` -ne "Darwin" ]
+then
+    CPP_ROOT=`dirname ${CPP}`
+    export LC_ALL=C  # on osx sed chokes on non UTF-8
+    find . -type f -print0 | xargs -0 sed -i"" -e "s|COMMAND rpcgen  -C|COMMAND rpcgen  -Y ${CPP_ROOT} -C|g"
+    unset LC_ALL
+
+    # make sure the cmake build can find everything
+    ln -s ${CPP} `dirname ${CPP}`/cpp
+fi
 
 mkdir -p build
 cd build
 
-# make sure the cmake build can find everything
-ln -s ${CPP} `dirname ${CPP}`/cpp
 export CXXFLAGS="-fpermissive "${CXXFLAGS}
 
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
