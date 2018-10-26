@@ -15,6 +15,7 @@ source:
 build:
   number: 1001
   skip: True  # [win]
+  merge_build_host: True
 
 requirements:
   build:
