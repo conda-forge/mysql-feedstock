@@ -4,7 +4,7 @@
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
 
 # make sure we can find cpp on the linux CI service
-if [[ `uname` != "Darwin" ]]
+if [[ ${target_platform} != "osx-64" ]]
 then
     CPP_ROOT=`dirname ${CPP}`
     export LC_ALL=C  # on osx sed chokes on non UTF-8
