@@ -1,20 +1,17 @@
 {% set name = "mysql" %}
-{% set major_minor_version = "5.7" %}
-{% set micro_version = "20" %}
-{% set sha256 = "260582844ac18222ce2826f48b6c7ca387990b19ddb88331af26738b394e42a4" %}
+{% set version = "5.7.20" %}
 
 package:
   name: {{ name|lower }}
-  version: {{ major_minor_version }}.{{ micro_version }}
+  version: {{ version }}
 
 source:
-  fn: mysql-boost-{{ major_minor_version }}.{{ micro_version }}.tar.gz
-  url: https://downloads.mysql.com/archives/get/file/mysql-boost-{{ major_minor_version }}.{{ micro_version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://downloads.mysql.com/archives/get/p/23/file/mysql-boost-{{ version }}.tar.gz
+  md5: 9536c324a7dc7ea5f41e351c30a86c4f
 
 build:
-  number: 1001
-  skip: True  # [win]
+  number: 1002
+  skip: true  # [win]
   merge_build_host: True
 
 requirements:
