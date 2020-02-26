@@ -14,7 +14,7 @@ then
     # make sure the cmake build can find everything
     ln -s ${CPP} `dirname ${CPP}`/cpp
 else
-    export CPPFLAGS=${CPPFLAGS%" -mmacosx-version-min=10.9"}
+    export CPPFLAGS=${CPPFLAGS%" -mmacosx-version-min=10.9 -isystem ${PREFIX}/include"}
 fi
 
 mkdir -p build
