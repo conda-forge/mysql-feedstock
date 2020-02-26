@@ -20,13 +20,6 @@ Current build status
 
 
 <table><tr>
-    <td>CircleCI</td>
-    <td>
-      <a href="https://circleci.com/gh/conda-forge/mysql-feedstock">
-        <img alt="OSX" src="https://img.shields.io/circleci/project/github/conda-forge/mysql-feedstock/master.svg?label=OSX">
-      </a>
-    </td>
-  </tr><tr>
     <td>Travis</td>
     <td>
       <a href="https://travis-ci.com/conda-forge/mysql-feedstock">
