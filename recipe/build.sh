@@ -20,7 +20,7 @@ else
 fi
 
 mkdir -p build
-cd build
+pushd build
 
 export CXXFLAGS="-fpermissive "${CXXFLAGS}
 
@@ -54,20 +54,24 @@ cmake \
     -DWITH_EDITLINE=bundled \
     -DWITH_BOOST=bundled \
     -DDOWNLOAD_BOOST=1 \
-    .. &> cmake.log
+    ..
 
 make
-make install &> install.log
+make install
+
+popd
 
 # remove this dir so we do not ship it
-cd ${PREFIX}/mysql-test
+mkdir -p ${PREFIX}/mysql-test
+pushd ${PREFIX}/mysql-test
 mysql_temp_dir=`mktemp -d ${TMPDIR}/tmp/XXXXXXXXXXXX`
 {
     set -e
     # the || here is a rough try...except
     perl mysql-test-run.pl status --vardir=${mysql_temp_dir} || rm -rf ${mysql_temp_dir}
 }
-cd -
+popd
+
 # always delete anything left
 rm -rf ${mysql_temp_dir}
 rm -rf ${PREFIX}/mysql-test
