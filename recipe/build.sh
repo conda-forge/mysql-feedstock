@@ -29,35 +29,42 @@ export CXXFLAGS="-fpermissive "${CXXFLAGS}
 # on the conda-forge packages. Thus I am going to go with them for now since
 # with the anaconda compilers I cannot convince the build to link properly.
 mkdir -p ${PREFIX}/mysql
-cmake \
-    -DCMAKE_C_FLAGS=${CFLAGS}" "${LDFLAGS} \
-    -DCMAKE_CXX_FLAGS=${CXXFLAGS}" "${LDFLAGS} \
-    -DCMAKE_PREFIX_PATH=${PREFIX} \
-    -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-    -DINSTALL_INCLUDEDIR=include/mysql \
-    -DINSTALL_MANDIR=share/man \
-    -DINSTALL_DOCDIR=share/doc/mysql \
-    -DINSTALL_DOCREADMEDIR=mysql \
-    -DINSTALL_INFODIR=share/info \
-    -DINSTALL_MYSQLSHAREDIR=share/mysql \
-    -DINSTALL_SUPPORTFILESDIR=mysql/support-files \
-    -DINSTALL_SCRIPTDIR=mysql/scripts \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_FIND_FRAMEWORK=LAST \
-    -DCMAKE_VERBOSE_MAKEFILE=OFF \
-    -Wno-dev \
-    -DWITH_UNIT_TESTS=OFF \
-    -DDEFAULT_CHARSET=utf8 \
-    -DDEFAULT_COLLATION=utf8_general_ci \
-    -DCOMPILATION_COMMENT=conda-forge \
-    -DWITH_SSL=bundled \
-    -DWITH_EDITLINE=bundled \
-    -DWITH_BOOST=bundled \
-    -DDOWNLOAD_BOOST=1 \
-    ..
-
+{
+    cmake \
+        -DCMAKE_C_FLAGS=${CFLAGS}" "${LDFLAGS} \
+        -DCMAKE_CXX_FLAGS=${CXXFLAGS}" "${LDFLAGS} \
+        -DCMAKE_PREFIX_PATH=${PREFIX} \
+        -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+        -DINSTALL_INCLUDEDIR=include/mysql \
+        -DINSTALL_MANDIR=share/man \
+        -DINSTALL_DOCDIR=share/doc/mysql \
+        -DINSTALL_DOCREADMEDIR=mysql \
+        -DINSTALL_INFODIR=share/info \
+        -DINSTALL_MYSQLSHAREDIR=share/mysql \
+        -DINSTALL_SUPPORTFILESDIR=mysql/support-files \
+        -DINSTALL_SCRIPTDIR=mysql/scripts \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_FIND_FRAMEWORK=LAST \
+        -DCMAKE_VERBOSE_MAKEFILE=OFF \
+        -Wno-dev \
+        -DWITH_UNIT_TESTS=OFF \
+        -DDEFAULT_CHARSET=utf8 \
+        -DDEFAULT_COLLATION=utf8_general_ci \
+        -DCOMPILATION_COMMENT=conda-forge \
+        -DWITH_SSL=bundled \
+        -DWITH_EDITLINE=bundled \
+        -DWITH_BOOST=bundled \
+        -DDOWNLOAD_BOOST=1 \
+        .. &> cmake.log
+} || {
+    tail -n 5000 cmake.log
+}
 make
-make install
+{
+    make install &> install.log
+} || {
+    tail -n 5000 install.log
+}
 
 popd
 
