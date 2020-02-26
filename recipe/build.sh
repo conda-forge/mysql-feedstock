@@ -3,6 +3,8 @@
 # this script is based off the homebrew package:
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
 
+echo "am I here?"
+
 # make sure we can find cpp on the linux CI service
 if [[ ${target_platform} != "osx-64" ]]
 then
