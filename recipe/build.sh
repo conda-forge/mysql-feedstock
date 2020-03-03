@@ -3,8 +3,6 @@
 # this script is based off the homebrew package:
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
 
-echo "am I here?"
-
 # make sure we can find cpp on the linux CI service
 if [[ ${target_platform} != "osx-64" ]]
 then
@@ -18,6 +16,8 @@ then
 else
     export CPPFLAGS=${CPPFLAGS%" -mmacosx-version-min=10.9 -isystem ${PREFIX}/include"}
 fi
+
+mv VERSION VERSION.txt
 
 mkdir -p build
 pushd build
