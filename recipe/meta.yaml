@@ -1,5 +1,5 @@
 {% set name = "mysql" %}
-{% set version = "5.7.20" %}
+{% set version = "5.7.28" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
     - version-file-0000.patch
 
 build:
-  number: 1002
+  number: 0
   skip: true  # [win]
   merge_build_host: True
 
