@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://downloads.mysql.com/archives/get/p/23/file/mysql-boost-{{ version }}.tar.gz
-  md5: 9536c324a7dc7ea5f41e351c30a86c4f
+  md5: 8d271d282fa9033e8bffecced62e653e
   patches:
     - version-file-0000.patch
 
