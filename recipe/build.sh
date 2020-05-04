@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 # this script is based off the homebrew package:
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
@@ -52,10 +53,10 @@ cmake \
     -DWITH_EDITLINE=bundled \
     -DWITH_BOOST=bundled \
     -DDOWNLOAD_BOOST=1 \
-    .. &> cmake.log
+    ..
 
 make
-make install &> install.log
+make install
 
 # remove this dir so we do not ship it
 cd ${PREFIX}/mysql-test
