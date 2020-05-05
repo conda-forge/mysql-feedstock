@@ -22,7 +22,7 @@ mkdir -p build
 cd build
 
 export CXXFLAGS="-fpermissive "${CXXFLAGS}
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${PREFIX}/sysroot/lib/
+CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake")
 
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
 # I checked and the bundled libs don't cause any issues with stomping
@@ -54,9 +54,10 @@ cmake \
     -DWITH_EDITLINE=bundled \
     -DWITH_BOOST=bundled \
     -DDOWNLOAD_BOOST=1 \
+    ${CMAKE_PLATFORM_FLAGS[@]} \
     ..
 
-make -j4
+make
 make install
 
 # remove this dir so we do not ship it
