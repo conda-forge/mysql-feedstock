@@ -25,6 +25,7 @@ requirements:
     - perl
     - make  # [unix]
     - pkg-config  # [not win]
+    - boost
 
 test:
   commands:

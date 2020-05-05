@@ -53,8 +53,7 @@ cmake \
     -DCOMPILATION_COMMENT=conda-forge \
     -DWITH_SSL=${PREFIX} \
     -DWITH_EDITLINE=bundled \
-    -DWITH_BOOST=bundled \
-    -DDOWNLOAD_BOOST=1 \
+    -DWITH_BOOST=${PREFIX} \
     ${CMAKE_PLATFORM_FLAGS[@]} \
     ..
 
