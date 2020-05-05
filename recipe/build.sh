@@ -22,6 +22,7 @@ mkdir -p build
 cd build
 
 export CXXFLAGS="-fpermissive "${CXXFLAGS}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${PREFIX}/sysroot/lib/
 
 # -DINSTALL_* are relatiove to -DCMAKE_INSTALL_PREFIX
 # I checked and the bundled libs don't cause any issues with stomping
