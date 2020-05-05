@@ -4,6 +4,7 @@ set -ex
 # this script is based off the homebrew package:
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/mysql.rb
 
+declare -a CMAKE_PLATFORM_FLAGS
 # make sure we can find cpp on the linux CI service
 if [[ `uname` != "Darwin" ]]
 then
