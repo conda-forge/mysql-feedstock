@@ -23,6 +23,8 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake
     - perl
+    - make  # [unix]
+    - pkg-config  # [not win]
 
 test:
   commands:
