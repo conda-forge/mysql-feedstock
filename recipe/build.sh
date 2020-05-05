@@ -53,7 +53,8 @@ cmake \
     -DCOMPILATION_COMMENT=conda-forge \
     -DWITH_SSL=${PREFIX} \
     -DWITH_EDITLINE=bundled \
-    -DWITH_BOOST=${PREFIX} \
+    -DWITH_BOOST=${HOME}/mysql_boost \
+    -DDOWNLOAD_BOOST=1 \
     ${CMAKE_PLATFORM_FLAGS[@]} \
     ..
 
