@@ -56,7 +56,7 @@ cmake \
     -DDOWNLOAD_BOOST=1 \
     ..
 
-make
+make -j4
 make install
 
 # remove this dir so we do not ship it
