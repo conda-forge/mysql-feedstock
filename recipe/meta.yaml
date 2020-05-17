@@ -23,6 +23,9 @@ requirements:
     - cmake
     - make
     - perl
+    - pkg-config
+  host:
+    - openssl
 
 test:
   commands:

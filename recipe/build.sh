@@ -51,7 +51,7 @@ mkdir -p ${PREFIX}/mysql
         -DDEFAULT_CHARSET=utf8 \
         -DDEFAULT_COLLATION=utf8_general_ci \
         -DCOMPILATION_COMMENT=conda-forge \
-        -DWITH_SSL=bundled \
+        -DWITH_SSL=${PREFIX} \
         -DWITH_EDITLINE=bundled \
         -DWITH_BOOST=bundled \
         -DDOWNLOAD_BOOST=1 \
@@ -59,7 +59,7 @@ mkdir -p ${PREFIX}/mysql
 } || {
     tail -n 5000 cmake.log
 }
-make
+make -j${CPU_COUNT}
 {
     make install &> install.log
 } || {
