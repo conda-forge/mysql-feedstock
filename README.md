@@ -10,7 +10,6 @@ Feedstock license: BSD-3-Clause
 Summary: Common files for server and client libraries
 
 
-
 Current build status
 ====================
 
