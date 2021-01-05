@@ -40,7 +40,6 @@ requirements:
     - zstd
     - boost-cpp               # [linux]
 
-
 outputs:
   - name: mysql-server
     build:
