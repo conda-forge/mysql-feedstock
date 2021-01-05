@@ -55,4 +55,5 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DINSTALL_SUPPORTFILESDIR=mysql/support-files \
   "${_xtra_cmake_args[@]}"
 
-cmake --build build --parallel ${CPU_COUNT}
+# cmake --build build --parallel ${CPU_COUNT}
+cmake --build build
