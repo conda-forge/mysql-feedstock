@@ -53,4 +53,4 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   "${_xtra_cmake_args[@]}"
 
 # PPC64le fails with too many jobs????
-cmake --build build --parallel 2
+cmake --build build --parallel 4
