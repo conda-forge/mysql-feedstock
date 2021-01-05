@@ -22,6 +22,7 @@ if [[ $target_platform == osx-64 ]]; then
     _xtra_cmake_args+=(-DWITH_ROUTER=OFF)
     export CXXFLAGS="${CXXFLAGS:-} -D_LIBCPP_DISABLE_AVAILABILITY=1"
 fi
+export CXXFLAGS="${CXXFLAGS:-} -fno-pie"
 
 cmake ${CMAKE_ARGS} -S$SRC_DIR -Bbuild -GNinja \
   -DCMAKE_CXX_STANDARD=14 \
