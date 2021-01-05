@@ -11,7 +11,7 @@ export CXXFLAGS="${CXXFLAGS:-} -fno-pie"
 cmake -S$SRC_DIR -Bbuild -GNinja \
   -DCMAKE_CXX_STANDARD=14 \
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_PREFIX_PATH="${_rpcgen_hack_dir};$PREFIX" \
+  -DCMAKE_PREFIX_PATH=$PREFIX \
   -DCOMPILATION_COMMENT=conda-forge \
   -DCMAKE_FIND_FRAMEWORK=LAST \
   -DWITH_UNIT_TESTS=OFF \
