@@ -67,7 +67,6 @@ outputs:
         - openssl
         - zlib
         - zstd
-        - boost-cpp               # [linux]
         - {{ pin_subpackage('mysql-common', exact=True) }}
       run:
         - {{ pin_subpackage('mysql-common', exact=True) }}
