@@ -23,7 +23,7 @@ if [[ $target_platform == osx-64 ]]; then
     export CXXFLAGS="${CXXFLAGS:-} -D_LIBCPP_DISABLE_AVAILABILITY=1"
 fi
 
-cmake -S$SRC_DIR -Bbuild -GNinja \
+cmake ${CMAKE_ARGS} -S$SRC_DIR -Bbuild -GNinja \
   -DCMAKE_CXX_STANDARD=14 \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_PREFIX_PATH="${_rpcgen_hack_dir};$PREFIX" \
@@ -51,4 +51,7 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DINSTALL_SUPPORTFILESDIR=mysql/support-files \
   "${_xtra_cmake_args[@]}"
 
-cmake --build build
+# PPC64le fails with too many jobs
+MAX_JOBS=4
+CPU_COUNT=$(( CPU_COUNT < MAX_JOBS ? CPU_COUNT : MAX_JOBS ))
+cmake --build build --parallel ${CPU_COUNT}
