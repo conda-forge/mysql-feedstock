@@ -17,12 +17,15 @@ EOF
     chmod +x ${_rpcgen_hack_dir}/bin/{rpcgen,cpp}
 fi
 
+if [[ "${target_platform}" == "linux-ppc64le" ]]; then
+    export CXXFLAGS="${CXXFLAGS:-} -fno-pie"
+fi
+
 declare -a _xtra_cmake_args
 if [[ $target_platform == osx-64 ]]; then
     _xtra_cmake_args+=(-DWITH_ROUTER=OFF)
     export CXXFLAGS="${CXXFLAGS:-} -D_LIBCPP_DISABLE_AVAILABILITY=1"
 fi
-export CXXFLAGS="${CXXFLAGS:-} -fno-pie"
 
 cmake -S$SRC_DIR -Bbuild -GNinja \
   -DCMAKE_CXX_STANDARD=14 \
@@ -52,5 +55,4 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DINSTALL_SUPPORTFILESDIR=mysql/support-files \
   "${_xtra_cmake_args[@]}"
 
-# PPC64le fails with too many jobs????
-cmake --build build --parallel 4
+cmake --build build --parallel ${CPU_COUNT}
