@@ -1,3 +1,5 @@
+boost_cpp:
+- 1.72.0
 cdt_name:
 - cos7
 channel_sources:
@@ -21,6 +23,8 @@ lz4_c:
 openssl:
 - 1.1.1
 pin_run_as_build:
+  boost-cpp:
+    max_pin: x.x.x
   libevent:
     max_pin: x.x.x
   lz4-c:
