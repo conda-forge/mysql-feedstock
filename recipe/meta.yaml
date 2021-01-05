@@ -39,6 +39,7 @@ requirements:
     - zlib
     - zstd
 
+
 outputs:
   - name: mysql-server
     build:
