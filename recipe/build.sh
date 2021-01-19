@@ -6,6 +6,8 @@ env
 ls $QEMU_LD_PREFIX
 ls /opt/conda/envs/sysroot_linux-ppc64le/
 ls /opt/conda/envs/sysroot_linux-ppc64le/powerpc64le-conda-linux-gnu/sysroot
+echo /opt/conda/envs/sysroot_linux-ppc64le/*/sysroot
+echo $(find /opt/conda/envs/sysroot_linux-ppc64le/ -name sysroot | head -1)
 
 _rpcgen_hack_dir=""
 if [[ "${target_platform}" == *"linux"* ]]; then
