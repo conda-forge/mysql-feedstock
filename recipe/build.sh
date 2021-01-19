@@ -4,6 +4,8 @@ set -x
 env
 
 ls $QEMU_LD_PREFIX
+ls /opt/conda/envs/sysroot_linux-ppc64le/
+ls /opt/conda/envs/sysroot_linux-ppc64le/powerpc64le-conda-linux-gnu/sysroot
 
 _rpcgen_hack_dir=""
 if [[ "${target_platform}" == *"linux"* ]]; then
