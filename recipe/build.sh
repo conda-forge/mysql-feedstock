@@ -1,6 +1,10 @@
 #!/bin/bash
 set -x
 
+env
+
+ls $QEMU_LD_PREFIX
+
 _rpcgen_hack_dir=""
 if [[ "${target_platform}" == *"linux"* ]]; then
     _rpcgen_hack_dir=$SRC_DIR/rpcgen_hack
