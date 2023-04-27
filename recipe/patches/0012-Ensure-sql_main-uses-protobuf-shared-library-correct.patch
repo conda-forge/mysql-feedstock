@@ -1,4 +1,4 @@
-From c471c8b0ec798394139377119c9e821702124acd Mon Sep 17 00:00:00 2001
+From 4f084bdaa6a102b2208a454818b66738caccb7fb Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 12 Oct 2021 07:53:59 -0400
 Subject: [PATCH 12/18] Ensure sql_main uses protobuf shared library correctly
@@ -8,12 +8,12 @@ Subject: [PATCH 12/18] Ensure sql_main uses protobuf shared library correctly
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/sql/CMakeLists.txt b/sql/CMakeLists.txt
-index b0ff4d14cbd..d6d44b48431 100644
+index bc65de85660..597464571b4 100644
 --- a/sql/CMakeLists.txt
 +++ b/sql/CMakeLists.txt
-@@ -935,9 +935,7 @@ TARGET_LINK_LIBRARIES(sql_main ${MYSQLD_STATIC_PLUGIN_LIBS}
-   mysql_server_component_services mysys strings vio
-   binlogevents_static ${LIBWRAP} ${LIBDL} ${SSL_LIBRARIES})
+@@ -945,9 +945,7 @@ TARGET_LINK_LIBRARIES(sql_main ${MYSQLD_STATIC_PLUGIN_LIBS}
+   binlogevents_static ${LIBWRAP} ${LIBDL} ${SSL_LIBRARIES}
+   extra::rapidjson)
  
 -# sql/immutable_string.h uses
 -# google::protobuf::io::CodedOutputStream::WriteVarint64ToArray
@@ -23,5 +23,5 @@ index b0ff4d14cbd..d6d44b48431 100644
  
  ADD_LIBRARY(sql_gis STATIC ${SQL_GIS_SOURCES})
 -- 
-2.33.1
+2.40.0
 

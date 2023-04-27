@@ -1,4 +1,4 @@
-From 643c373501d206fdc206040dbc8e5283177a6c0a Mon Sep 17 00:00:00 2001
+From d454b0bbae2184d79f4bde3b3a8f20cf326f55d8 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 24 Oct 2021 15:21:38 -0400
 Subject: [PATCH 17/18] Add workaround for a bug in GCC v9.4.0 (aarch64)
@@ -10,7 +10,7 @@ xref: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100985
  2 files changed, 12 insertions(+)
 
 diff --git a/include/my_checksum.h b/include/my_checksum.h
-index d128493328e..1d0d21032b7 100644
+index 524c3194c1b..deb0fafcd11 100644
 --- a/include/my_checksum.h
 +++ b/include/my_checksum.h
 @@ -41,6 +41,12 @@
@@ -27,7 +27,7 @@ index d128493328e..1d0d21032b7 100644
  #include <asm/hwcap.h>  // HWCAP_CRC32
  #include <sys/auxv.h>   // getauxval
 diff --git a/storage/innobase/ut/crc32.cc b/storage/innobase/ut/crc32.cc
-index 1a422a80398..b6ce3eab3ee 100644
+index 3e2fb2743fe..c1ed0ae451d 100644
 --- a/storage/innobase/ut/crc32.cc
 +++ b/storage/innobase/ut/crc32.cc
 @@ -107,7 +107,13 @@ external tools. */
@@ -45,5 +45,5 @@ index 1a422a80398..b6ce3eab3ee 100644
  
  #ifdef CRC32_ARM64_DEFAULT
 -- 
-2.33.1
+2.40.0
 

@@ -1,4 +1,4 @@
-From 863ead00f25cf5ab71c77e3c9e839542f0520887 Mon Sep 17 00:00:00 2001
+From a786ef957bfdaec86a14f30a9ed2a9f615a4a9ed Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 21 Jul 2021 09:53:47 +0530
 Subject: [PATCH 14/18] Add bitset typecasts to make MSVC<v19.20 happy
@@ -12,10 +12,10 @@ conversion from '...' to 'unsigned __int64' requires a narrowing conversion
  1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/router/src/http/src/http_server_plugin.cc b/router/src/http/src/http_server_plugin.cc
-index 88ba976b064..89afccae532 100644
+index eb2c556ca12..7a0fb66d5c5 100644
 --- a/router/src/http/src/http_server_plugin.cc
 +++ b/router/src/http/src/http_server_plugin.cc
-@@ -181,7 +181,7 @@ void HttpRequestThread::set_request_router(HttpRequestRouter &router) {
+@@ -182,7 +182,7 @@ void HttpRequestThread::set_request_router(HttpRequestRouter &router) {
  }
  
  void HttpRequestThread::wait_and_dispatch() {
@@ -24,7 +24,7 @@ index 88ba976b064..89afccae532 100644
                     HttpRequestThread::on_event_loop_ready, this, nullptr);
    event_base_.dispatch();
  
-@@ -289,7 +289,8 @@ class HttpsRequestMainThread : public HttpRequestMainThread {
+@@ -290,7 +290,8 @@ class HttpsRequestMainThread : public HttpRequestMainThread {
          [](EventBase *base, void *arg) {
            return EventBuffer(base, -1, static_cast<TlsServerContext *>(arg),
                               EventBuffer::SslState::Accepting,
@@ -34,7 +34,7 @@ index 88ba976b064..89afccae532 100644
          },
          tls_ctx);
    }
-@@ -311,7 +312,8 @@ class HttpsRequestWorkerThread : public HttpRequestWorkerThread {
+@@ -312,7 +313,8 @@ class HttpsRequestWorkerThread : public HttpRequestWorkerThread {
          [](EventBase *base, void *arg) {
            return EventBuffer(base, -1, static_cast<TlsServerContext *>(arg),
                               EventBuffer::SslState::Accepting,
@@ -45,5 +45,5 @@ index 88ba976b064..89afccae532 100644
          tls_ctx);
    }
 -- 
-2.33.1
+2.40.0
 

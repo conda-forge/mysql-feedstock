@@ -1,4 +1,4 @@
-From 0eb6262b42ffd48966c219816535fd4b41fe461d Mon Sep 17 00:00:00 2001
+From 5f3bbbd8cca492c34812910ff6c0c4e54150aa3d Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 19 Oct 2020 23:45:13 -0400
 Subject: [PATCH 08/18] Make LIBEVENT_PTHREADS conditional on
@@ -10,10 +10,10 @@ Requirement on LIBEVENT_PTHREADS was added by 2b84f0e3
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/cmake/libevent.cmake b/cmake/libevent.cmake
-index 364d9ccabf9..f56a83fdff2 100644
+index 6376c452928..3d3f3e40751 100644
 --- a/cmake/libevent.cmake
 +++ b/cmake/libevent.cmake
-@@ -116,8 +116,11 @@ MACRO (FIND_SYSTEM_LIBEVENT)
+@@ -124,8 +124,11 @@ FUNCTION(FIND_SYSTEM_LIBEVENT)
        ${LIBEVENT_CORE}
        ${LIBEVENT_EXTRA}
        ${LIBEVENT_OPENSSL}
@@ -23,9 +23,9 @@ index 364d9ccabf9..f56a83fdff2 100644
 +      LIST(APPEND LIBEVENT_LIBRARIES ${LIBEVENT_PTHREADS})
 +    ENDIF(CMAKE_USE_PTHREADS_INIT)
 +
+     ADD_LIBRARY(libevent_interface INTERFACE)
+     TARGET_LINK_LIBRARIES(libevent_interface INTERFACE ${LIBEVENT_LIBRARIES})
      SET(LIBEVENT_INCLUDE_DIRS ${LIBEVENT_INCLUDE_DIRECTORY})
-     IF(NOT LIBEVENT_INCLUDE_DIRECTORY STREQUAL "/usr/include")
-       # On FreeBSD this may interfere with BOOST_INCLUDE_DIR, so we rely on
 -- 
-2.33.1
+2.40.0
 

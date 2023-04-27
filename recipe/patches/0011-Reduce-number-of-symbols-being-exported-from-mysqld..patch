@@ -1,4 +1,4 @@
-From 4943f6156fa13bf6f7a2bd86d997161e004e5aed Mon Sep 17 00:00:00 2001
+From c368fac229c9fd2a58d5f2eb755a5de37098b8fc Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 9 May 2021 17:29:26 -0400
 Subject: [PATCH 11/18] Reduce number of symbols being exported from mysqld.exe
@@ -18,7 +18,7 @@ which is < 65535.
  1 file changed, 15 insertions(+)
 
 diff --git a/sql/create_def.cc b/sql/create_def.cc
-index 595ce98b5a5..1cb8127eb7f 100644
+index 24813216df9..94fd456f347 100644
 --- a/sql/create_def.cc
 +++ b/sql/create_def.cc
 @@ -330,6 +330,13 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
@@ -51,5 +51,5 @@ index 595ce98b5a5..1cb8127eb7f 100644
    if (symbol_line.find("notype () ") == std::string::npos) {
      symbol.append(" DATA");
 -- 
-2.33.1
+2.40.0
 

@@ -1,4 +1,4 @@
-From e8a733155cece9ea017be2cc4b7332a135d5d438 Mon Sep 17 00:00:00 2001
+From 037e9b9a8d8611d272d1fa1e9c569fe05e176289 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 22 Jun 2020 09:53:55 -0400
 Subject: [PATCH 03/18] Allow flags other than macros in CPPFLAGS
@@ -8,10 +8,10 @@ Subject: [PATCH 03/18] Allow flags other than macros in CPPFLAGS
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 22fa212705a..386c1a0ce34 100644
+index 7387743852f..3120fa37171 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -700,7 +700,9 @@ ENDIF()
+@@ -723,7 +723,9 @@ ENDIF()
  # Following autotools tradition, add preprocessor definitions
  # specified in environment variable CPPFLAGS
  IF(DEFINED ENV{CPPFLAGS})
@@ -23,5 +23,5 @@ index 22fa212705a..386c1a0ce34 100644
  
  INCLUDE(CheckTypeSize)
 -- 
-2.33.1
+2.40.0
 
