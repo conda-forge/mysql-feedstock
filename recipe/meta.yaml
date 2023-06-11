@@ -26,6 +26,7 @@ source:
     - patches/0016-Check-for-ARMv8-crc32-intrinsic-support-on-osx-arm64.patch
     - patches/0017-Add-workaround-for-a-bug-in-GCC-v9.4.0-aarch64.patch
     - patches/0018-Revert-Bug-30981914-COMPILE-WITH-FASTER-TLS-MODEL.patch
+    - patches/0019-Use-config-mode-search-for-protobuf-first.patch
 
 build:
   number: 3
