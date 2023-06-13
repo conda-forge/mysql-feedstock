@@ -1,7 +1,7 @@
-From bdd794dcff17d73b734ef5d16b73cc01349ebcd6 Mon Sep 17 00:00:00 2001
+From 0a9853e3e4401b6f5d6e1f3d4989e4ca5302dbf1 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 11 Jun 2023 23:26:01 +0100
-Subject: [PATCH 19/19] Use config mode search for protobuf first
+Subject: [PATCH 19/20] Use config mode search for protobuf first
 
 The recent versions of `libprotobuf` (>=4.22.0) provide their own CMake
 configs. We should check for the existence of the config and use the
@@ -9,14 +9,14 @@ hand-rolled version as a fallback as it does not capture all deps.
 
 See also: https://gitlab.kitware.com/cmake/cmake/-/issues/24321
 ---
- cmake/protobuf.cmake | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ cmake/protobuf.cmake | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index 93c917d1fb6..3a2e35d757f 100644
+index 93c917d1fb6..f93faa4e074 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
-@@ -121,7 +121,17 @@ MACRO(MYSQL_CHECK_PROTOBUF)
+@@ -121,7 +121,19 @@ MACRO(MYSQL_CHECK_PROTOBUF)
    IF(WITH_PROTOBUF STREQUAL "bundled")
      MYSQL_USE_BUNDLED_PROTOBUF()
    ELSE()
@@ -25,8 +25,10 @@ index 93c917d1fb6..3a2e35d757f 100644
 +      IF(Protobuf_FOUND)
 +          SET(PROTOBUF_LIBRARY protobuf::libprotobuf)
 +          SET(PROTOBUF_PROTOC_LIBRARY protobuf::libprotoc)
-+          SET(PROTOBUF_PROTOC_EXECUTABLE protobuf::protoc)
 +          SET(PROTOBUF_LITE_LIBRARY protobuf::libprotobuf-lite)
++          IF(NOT PROTOBUF_PROTOC_EXECUTABLE)
++              SET(PROTOBUF_PROTOC_EXECUTABLE protobuf::protoc)
++          ENDIF()
 +          GET_TARGET_PROPERTY(PROTOBUF_INCLUDE_DIR protobuf::libprotoc INTERFACE_INCLUDE_DIRECTORIES)
 +          SET(PROTOBUF_FOUND 1)
 +      ELSE()
