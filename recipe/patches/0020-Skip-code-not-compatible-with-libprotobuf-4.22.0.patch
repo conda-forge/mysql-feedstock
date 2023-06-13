@@ -1,4 +1,4 @@
-From bc79ad2dfc721f38d238eb559f0380b2e288540d Mon Sep 17 00:00:00 2001
+From 7e0a6a008cd29897b8c9c20c70a430375aefcab1 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 13 Jun 2023 00:04:32 +0100
 Subject: [PATCH 20/20] Skip code not compatible with libprotobuf >=4.22.0
@@ -8,14 +8,14 @@ Subject: [PATCH 20/20] Skip code not compatible with libprotobuf >=4.22.0
  1 file changed, 4 insertions(+)
 
 diff --git a/plugin/x/tests/driver/connector/connection_manager.cc b/plugin/x/tests/driver/connector/connection_manager.cc
-index 1cdacaae7c5..205c3836d09 100644
+index 1cdacaae7c5..77298eff5e9 100644
 --- a/plugin/x/tests/driver/connector/connection_manager.cc
 +++ b/plugin/x/tests/driver/connector/connection_manager.cc
 @@ -33,7 +33,9 @@
  
  #include "plugin/x/tests/driver/processor/variable_names.h"
  
-+#if PROTOBUF_VERSION < 4022000
++#if GOOGLE_PROTOBUF_VERSION < 4022000
  google::protobuf::LogHandler *g_lh = nullptr;
 +#endif
  
@@ -25,7 +25,7 @@ index 1cdacaae7c5..205c3836d09 100644
        m_variables(variables),
        m_console_with_flow_history(console_with_flow_history),
        m_console(console) {
-+#if PROTOBUF_VERSION < 4022000
++#if GOOGLE_PROTOBUF_VERSION < 4022000
    g_lh = google::protobuf::SetLogHandler([](google::protobuf::LogLevel level,
                                              const char *filename, int line,
                                              const std::string &message) {
@@ -38,5 +38,5 @@ index 1cdacaae7c5..205c3836d09 100644
        k_variable_option_user,
        new Variable_dynamic_string(m_default_connection_options.user));
 -- 
-2.33.1
+2.41.0
 
