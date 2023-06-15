@@ -7,7 +7,7 @@ cxx_compiler:
 icu:
 - '72'
 libevent:
-- 2.1.10
+- 2.1.12
 libprotobuf:
 - '3.21'
 lz4_c:

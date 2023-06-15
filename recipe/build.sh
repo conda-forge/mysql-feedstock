@@ -89,6 +89,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
 
     ## Use the protoc from the build platform as it needs to be exec'd
     _xtra_cmake_args+=(-DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
+    _xtra_cmake_args+=(-DPROTOBUF_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
 fi
 
 cmake -S$SRC_DIR -Bbuild -GNinja \
