@@ -1,7 +1,7 @@
-From 0a9853e3e4401b6f5d6e1f3d4989e4ca5302dbf1 Mon Sep 17 00:00:00 2001
+From 5d0c56c0d23177bd4d4bddf93d928ec0433ea545 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 11 Jun 2023 23:26:01 +0100
-Subject: [PATCH 19/20] Use config mode search for protobuf first
+Subject: [PATCH 19/21] Use config mode search for protobuf first
 
 The recent versions of `libprotobuf` (>=4.22.0) provide their own CMake
 configs. We should check for the existence of the config and use the
@@ -13,7 +13,7 @@ See also: https://gitlab.kitware.com/cmake/cmake/-/issues/24321
  1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index 93c917d1fb6..f93faa4e074 100644
+index 8c6db02097e..a04942a321a 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
 @@ -121,7 +121,19 @@ MACRO(MYSQL_CHECK_PROTOBUF)

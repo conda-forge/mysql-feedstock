@@ -1,7 +1,7 @@
-From 5fe5fa2e62368d68eb01fd5948c6e7066206564f Mon Sep 17 00:00:00 2001
+From acf978b00f7627e5dbdad6c4db959e07fbf54fa0 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Fri, 14 Aug 2020 20:30:20 -0400
-Subject: [PATCH 07/18] Link libgcc & libstdc++ statically for codgen binaries
+Subject: [PATCH 07/21] Link libgcc & libstdc++ statically for codgen binaries
 
 Makes it easier for cross compilation
 ---
@@ -47,5 +47,5 @@ index 872f061e209..bc65de85660 100644
  IF(HAS_MISSING_PROFILE)
    ADD_COMPILE_FLAGS(
 -- 
-2.40.0
+2.41.0
 

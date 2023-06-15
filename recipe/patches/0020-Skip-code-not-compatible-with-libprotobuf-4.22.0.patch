@@ -1,14 +1,14 @@
-From 7e0a6a008cd29897b8c9c20c70a430375aefcab1 Mon Sep 17 00:00:00 2001
+From e5427cdc5ea7b783b82a8d4eea49368cb2685270 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 13 Jun 2023 00:04:32 +0100
-Subject: [PATCH 20/20] Skip code not compatible with libprotobuf >=4.22.0
+Subject: [PATCH 20/21] Skip code not compatible with libprotobuf >=4.22.0
 
 ---
  plugin/x/tests/driver/connector/connection_manager.cc | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/plugin/x/tests/driver/connector/connection_manager.cc b/plugin/x/tests/driver/connector/connection_manager.cc
-index 1cdacaae7c5..77298eff5e9 100644
+index bf411893641..babaf844a98 100644
 --- a/plugin/x/tests/driver/connector/connection_manager.cc
 +++ b/plugin/x/tests/driver/connector/connection_manager.cc
 @@ -33,7 +33,9 @@

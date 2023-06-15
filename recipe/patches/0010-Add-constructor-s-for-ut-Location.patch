@@ -1,7 +1,7 @@
-From a5a898aae58f6e2b3f82b06c1e2b17d227a82de7 Mon Sep 17 00:00:00 2001
+From c4babb88cb02fd2285afa38a59c56eae67b5c628 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 22 Apr 2021 09:32:37 -0400
-Subject: [PATCH 10/18] Add constructor(s) for ut::Location
+Subject: [PATCH 10/21] Add constructor(s) for ut::Location
 
 This patch resolves the following error with the MSVC compiler:
 
@@ -26,5 +26,5 @@ index 409afd9f225..3b7c76a69fa 100644
    size_t line;
    std::ostream &print(std::ostream &out) const {
 -- 
-2.40.0
+2.41.0
 

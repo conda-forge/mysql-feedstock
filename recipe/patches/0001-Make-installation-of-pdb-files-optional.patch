@@ -1,7 +1,7 @@
-From 87f99dce5fd707317049f200c98ee523214fd43b Mon Sep 17 00:00:00 2001
+From 11251f082c11f709e3c69e1ec236cd47383d84e4 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 21 Jun 2020 13:06:08 -0400
-Subject: [PATCH 01/18] Make installation of pdb files optional
+Subject: [PATCH 01/21] Make installation of pdb files optional
 
 ---
  cmake/install_macros.cmake | 2 +-
@@ -36,5 +36,5 @@ index 975ec955aa2..ffb26f2f71e 100644
        INSTALL(TARGETS ${NAME}
          LIBRARY DESTINATION ${_option_DESTINATION}
 -- 
-2.40.0
+2.41.0
 
