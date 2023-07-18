@@ -3,6 +3,7 @@ About mysql-suite-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mysql-feedstock/blob/main/LICENSE.txt)
 
+
 About mysql-suite
 -----------------
 
@@ -17,6 +18,7 @@ and robust SQL (Structured Query Language) database server. MySQL Server
 is intended for mission-critical, heavy-load production systems as well
 as for embedding into mass-deployed software.
 
+
 About mysql-common
 ------------------
 
@@ -25,6 +27,7 @@ About mysql-common
 Package license: 
 
 Summary: Common files for server and client libraries
+
 About mysql-router
 ------------------
 
@@ -33,6 +36,7 @@ About mysql-router
 Package license: 
 
 Summary: MySQL Router binaries
+
 About mysql-client
 ------------------
 
@@ -41,6 +45,7 @@ About mysql-client
 Package license: 
 
 Summary: MySQL client applications and tools
+
 About mysql-libs
 ----------------
 
@@ -49,6 +54,7 @@ About mysql-libs
 Package license: 
 
 Summary: Shared libraries for MySQL database client applications
+
 About mysql-server
 ------------------
 
@@ -57,6 +63,7 @@ About mysql-server
 Package license: 
 
 Summary: Database server and related tools
+
 About mysql-devel
 -----------------
 
@@ -65,6 +72,7 @@ About mysql-devel
 Package license: 
 
 Summary: Development header files and libraries for MySQL database client applications
+
 About mysql
 -----------
 
