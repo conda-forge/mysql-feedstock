@@ -1,27 +1,21 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
-cxx_compiler_version:
-- '15'
+- vs2019
 icu:
-- '72'
+- '73'
 libevent:
 - 2.1.12
 libprotobuf:
 - 4.23.3
 lz4_c:
 - 1.9.3
-macos_machine:
-- x86_64-apple-darwin13.4.0
 openssl:
 - '3'
 target_platform:
-- osx-64
+- win-64
 zlib:
 - '1.2'
 zstd:

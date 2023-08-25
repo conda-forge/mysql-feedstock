@@ -3,6 +3,7 @@ About mysql-suite-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mysql-feedstock/blob/main/LICENSE.txt)
 
+
 About mysql-suite
 -----------------
 
@@ -17,6 +18,7 @@ and robust SQL (Structured Query Language) database server. MySQL Server
 is intended for mission-critical, heavy-load production systems as well
 as for embedding into mass-deployed software.
 
+
 About mysql-common
 ------------------
 
@@ -25,6 +27,7 @@ About mysql-common
 Package license: 
 
 Summary: Common files for server and client libraries
+
 About mysql-router
 ------------------
 
@@ -33,6 +36,7 @@ About mysql-router
 Package license: 
 
 Summary: MySQL Router binaries
+
 About mysql-client
 ------------------
 
@@ -41,6 +45,7 @@ About mysql-client
 Package license: 
 
 Summary: MySQL client applications and tools
+
 About mysql-libs
 ----------------
 
@@ -49,6 +54,7 @@ About mysql-libs
 Package license: 
 
 Summary: Shared libraries for MySQL database client applications
+
 About mysql-server
 ------------------
 
@@ -57,6 +63,7 @@ About mysql-server
 Package license: 
 
 Summary: Database server and related tools
+
 About mysql-devel
 -----------------
 
@@ -65,6 +72,7 @@ About mysql-devel
 Package license: 
 
 Summary: Development header files and libraries for MySQL database client applications
+
 About mysql
 -----------
 
@@ -92,87 +100,45 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_libprotobuf3.21</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libprotobuf3.21" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_libprotobuf4.23.3</td>
+              <td>linux_aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libprotobuf4.23.3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_libprotobuf3.21</td>
+              <td>linux_ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_libprotobuf3.21" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_libprotobuf4.23.3</td>
+              <td>osx_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_libprotobuf4.23.3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_libprotobuf3.21</td>
+              <td>osx_arm64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_libprotobuf3.21" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_libprotobuf4.23.3</td>
+              <td>win_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_libprotobuf4.23.3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_libprotobuf3.21</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libprotobuf3.21" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_libprotobuf4.23.3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libprotobuf4.23.3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_libprotobuf3.21</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libprotobuf3.21" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_libprotobuf4.23.3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libprotobuf4.23.3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_libprotobuf3.21</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=win&configuration=win%20win_64_libprotobuf3.21" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_libprotobuf4.23.3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=659&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=win&configuration=win%20win_64_libprotobuf4.23.3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mysql-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
