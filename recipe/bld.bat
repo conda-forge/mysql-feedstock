@@ -1,3 +1,5 @@
+@echo on
+
 if exist %LIBRARY_LIB%\event_openssl.lib (
   set "libevent_openssl_lib=%LIBRARY_LIB%\event_openssl.lib"
 ) else (
@@ -38,5 +40,7 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
   -DINSTALL_MYSQLSHAREDIR=share/mysql ^
   -DINSTALL_SUPPORTFILESDIR=mysql/support-files
+if %ERRORLEVEL% neq 0 exit 1
 
 cmake --build build --config Release
+if %ERRORLEVEL% neq 0 exit 1
