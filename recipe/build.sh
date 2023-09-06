@@ -46,6 +46,7 @@ fi
 if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
     # Build all intermediate codegen binaries for the build platform
     # xref: https://cmake.org/pipermail/cmake/2013-January/053252.html
+    export OPENSSL_ROOT_DIR=$BUILD_PREFIX
     env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
         -u CXXFLAGS -u CPPFLAGS -u CFLAGS -u LDFLAGS \
         cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
@@ -91,6 +92,8 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     _xtra_cmake_args+=(-DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
     _xtra_cmake_args+=(-DPROTOBUF_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
 fi
+
+export OPENSSL_ROOT_DIR=$PREFIX
 
 cmake -S$SRC_DIR -Bbuild -GNinja \
   -DCMAKE_CXX_STANDARD=17 \

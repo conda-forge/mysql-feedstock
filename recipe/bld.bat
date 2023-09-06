@@ -10,6 +10,8 @@ if exist %LIBRARY_LIB%\liblz4.lib (
   set "lz4_lib=%LIBRARY_LIB%\lz4.lib"
 )
 
+set "OPENSSL_ROOT_DIR=%LIBRARY_PREFIX%"
+
 cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DCMAKE_CXX_STANDARD=17 ^
   -DCMAKE_BUILD_TYPE=Release ^
