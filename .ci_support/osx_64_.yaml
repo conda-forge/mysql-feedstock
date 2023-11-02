@@ -13,7 +13,7 @@ icu:
 libevent:
 - 2.1.12
 libprotobuf:
-- 4.24.3
+- 4.24.4
 lz4_c:
 - 1.9.3
 macos_machine:
