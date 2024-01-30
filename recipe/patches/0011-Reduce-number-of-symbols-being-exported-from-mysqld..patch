@@ -49,6 +49,3 @@ index ee916c20..3468d1d8 100644
    // Check if we have function or data.
    if (symbol_line.find("notype () ") == std::string::npos) {
      symbol.append(" DATA");
--- 
-2.39.3 (Apple Git-145)
-

@@ -26,6 +26,3 @@ index de863fc5..8759672b 100644
      while (is_directory_separator(*path)) path++;
    }
    return path;
--- 
-2.39.3 (Apple Git-145)
-

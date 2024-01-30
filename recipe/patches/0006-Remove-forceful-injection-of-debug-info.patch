@@ -35,6 +35,3 @@ index f0d38f6b..1b2c8ca1 100644
      IF (NOT WIN_DEBUG_NO_INLINE)
        STRING(REPLACE "/Ob0"  "/Ob1" "${flag}" "${${flag}}")
      ENDIF()
--- 
-2.39.3 (Apple Git-145)
-

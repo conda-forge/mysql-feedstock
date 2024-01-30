@@ -25,6 +25,3 @@ index 6d123183..8545f65b 100644
    const char *filename;
    size_t line;
    std::string str() const;
--- 
-2.39.3 (Apple Git-145)
-

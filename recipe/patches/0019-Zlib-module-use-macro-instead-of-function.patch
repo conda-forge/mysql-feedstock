@@ -30,6 +30,3 @@ index 0b98b1f3..68bce997 100644
  
  MACRO (RESET_ZLIB_VARIABLES)
    # Reset whatever FIND_PACKAGE may have left behind.
--- 
-2.39.3 (Apple Git-145)
-

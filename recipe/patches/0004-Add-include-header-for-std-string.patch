@@ -19,6 +19,3 @@ index ea66af17..ee916c20 100644
  
  /** Prints an error message supplied and attaches GetLastError with formatted
   * message. */
--- 
-2.39.3 (Apple Git-145)
-

@@ -22,6 +22,3 @@ index 3540aed5..bf112e76 100644
  TARGET_LINK_LIBRARIES(sql_main ext::libprotobuf-lite)
  
  ADD_LIBRARY(sql_gis STATIC ${SQL_GIS_SOURCES})
--- 
-2.39.3 (Apple Git-145)
-
