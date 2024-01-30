@@ -40,8 +40,9 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
-    - icu                      # [target_platform == 'osx-arm64']
     - ninja
+    - biosn                    # [osx]
+    - icu                      # [target_platform == 'osx-arm64']
     - libprotobuf              # [target_platform == 'osx-arm64']
     - macports-legacy-support  # [target_platform == 'osx-arm64']
     - openssl                  # [target_platform == 'osx-arm64']
