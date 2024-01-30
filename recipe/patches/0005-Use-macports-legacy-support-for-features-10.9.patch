@@ -1,7 +1,7 @@
-From 5d1eb93f1d84e186b475fe3e9473b236cea31571 Mon Sep 17 00:00:00 2001
+From 967809c7f9e396806048ce05f50539df0d3f68f6 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 21 Jul 2020 22:56:50 -0400
-Subject: [PATCH 05/21] Use macports-legacy-support for features >10.9
+Subject: [PATCH 05/23] Use macports-legacy-support for features >10.9
 
 ---
  .../libmysqlgcs/CMakeLists.txt                |     8 +
@@ -19,10 +19,10 @@ Subject: [PATCH 05/21] Use macports-legacy-support for features >10.9
  create mode 100644 storage/innobase/handler/ha_innodb.cc.orig
 
 diff --git a/plugin/group_replication/libmysqlgcs/CMakeLists.txt b/plugin/group_replication/libmysqlgcs/CMakeLists.txt
-index 1adf2a841b0..0662d709258 100644
+index 6c40e4d6..0929731a 100644
 --- a/plugin/group_replication/libmysqlgcs/CMakeLists.txt
 +++ b/plugin/group_replication/libmysqlgcs/CMakeLists.txt
-@@ -257,3 +257,11 @@ ENDIF()
+@@ -266,3 +266,11 @@ ENDIF()
  
  # convenience target
  ADD_CUSTOM_TARGET(libmysqlgcs DEPENDS mysqlgcs)
@@ -36,7 +36,7 @@ index 1adf2a841b0..0662d709258 100644
 +ENDIF()
 diff --git a/plugin/group_replication/libmysqlgcs/CMakeLists.txt.orig b/plugin/group_replication/libmysqlgcs/CMakeLists.txt.orig
 new file mode 100644
-index 00000000000..40c30934bce
+index 00000000..40c30934
 --- /dev/null
 +++ b/plugin/group_replication/libmysqlgcs/CMakeLists.txt.orig
 @@ -0,0 +1,232 @@
@@ -273,7 +273,7 @@ index 00000000000..40c30934bce
 +# convenience target
 +ADD_CUSTOM_TARGET(libmysqlgcs DEPENDS mysqlgcs)
 diff --git a/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/task.cc b/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/task.cc
-index 43271d84fb7..a307f3a5f91 100644
+index f5521bd5..db84300f 100644
 --- a/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/task.cc
 +++ b/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/task.cc
 @@ -70,7 +70,11 @@
@@ -291,7 +291,7 @@ index 43271d84fb7..a307f3a5f91 100644
  
 diff --git a/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/task.cc.orig b/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/task.cc.orig
 new file mode 100644
-index 00000000000..0f0b8d661ff
+index 00000000..0f0b8d66
 --- /dev/null
 +++ b/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/task.cc.orig
 @@ -0,0 +1,1478 @@
@@ -1774,10 +1774,10 @@ index 00000000000..0f0b8d661ff
 +
 +#endif
 diff --git a/storage/innobase/CMakeLists.txt b/storage/innobase/CMakeLists.txt
-index c197143b34d..350a91a961f 100644
+index 41bcb61d..ba4e942b 100644
 --- a/storage/innobase/CMakeLists.txt
 +++ b/storage/innobase/CMakeLists.txt
-@@ -330,7 +330,6 @@ IF(HAS_MISSING_PROFILE)
+@@ -335,7 +335,6 @@ IF(HAS_MISSING_PROFILE)
    TARGET_COMPILE_OPTIONS(innodb_zipdecompress PRIVATE ${HAS_MISSING_PROFILE})
  ENDIF()
  
@@ -1785,7 +1785,7 @@ index c197143b34d..350a91a961f 100644
  UNSET(NUMA_LIBRARY)
  IF(HAVE_LIBNUMA)
    SET(NUMA_LIBRARY "numa")
-@@ -353,6 +352,14 @@ IF(SOLARIS AND MY_COMPILER_IS_GNU)
+@@ -358,6 +357,14 @@ IF(SOLARIS AND MY_COMPILER_IS_GNU)
      )
  ENDIF()
  
@@ -1802,7 +1802,7 @@ index c197143b34d..350a91a961f 100644
  IF(HAS_WARN_FLAG)
 diff --git a/storage/innobase/CMakeLists.txt.orig b/storage/innobase/CMakeLists.txt.orig
 new file mode 100644
-index 00000000000..f1ca0de7ee3
+index 00000000..f1ca0de7
 --- /dev/null
 +++ b/storage/innobase/CMakeLists.txt.orig
 @@ -0,0 +1,302 @@
@@ -2109,10 +2109,10 @@ index 00000000000..f1ca0de7ee3
 +    COMPILE_FLAGS "${HAS_WARN_FLAG}")
 +ENDIF()
 diff --git a/storage/innobase/handler/ha_innodb.cc b/storage/innobase/handler/ha_innodb.cc
-index 8b9786c8b7f..3e00ad10975 100644
+index dd43f141..3b01fd8e 100644
 --- a/storage/innobase/handler/ha_innodb.cc
 +++ b/storage/innobase/handler/ha_innodb.cc
-@@ -206,6 +206,11 @@ this program; if not, write to the Free Software Foundation, Inc.,
+@@ -214,6 +214,11 @@ this program; if not, write to the Free Software Foundation, Inc.,
  
  #ifdef HAVE_UNISTD_H
  #include <unistd.h>
@@ -2126,7 +2126,7 @@ index 8b9786c8b7f..3e00ad10975 100644
  #ifndef UNIV_HOTBACKUP
 diff --git a/storage/innobase/handler/ha_innodb.cc.orig b/storage/innobase/handler/ha_innodb.cc.orig
 new file mode 100644
-index 00000000000..53f9c0d9c9a
+index 00000000..53f9c0d9
 --- /dev/null
 +++ b/storage/innobase/handler/ha_innodb.cc.orig
 @@ -0,0 +1,23876 @@
@@ -26007,5 +26007,5 @@ index 00000000000..53f9c0d9c9a
 +}
 +#endif /* !UNIV_HOTBACKUP */
 -- 
-2.41.0
+2.39.3 (Apple Git-145)
 

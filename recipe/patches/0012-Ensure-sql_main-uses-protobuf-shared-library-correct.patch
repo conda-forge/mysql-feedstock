@@ -1,27 +1,27 @@
-From 5b60476df0ff181617916401a755733da293ac70 Mon Sep 17 00:00:00 2001
+From a9842e671d2c7f9ab9863e7b8307ce4bc62226ab Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 12 Oct 2021 07:53:59 -0400
-Subject: [PATCH 12/21] Ensure sql_main uses protobuf shared library correctly
+Subject: [PATCH 12/23] Ensure sql_main uses protobuf shared library correctly
 
 ---
  sql/CMakeLists.txt | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/sql/CMakeLists.txt b/sql/CMakeLists.txt
-index bc65de85660..597464571b4 100644
+index 3540aed5..bf112e76 100644
 --- a/sql/CMakeLists.txt
 +++ b/sql/CMakeLists.txt
-@@ -945,9 +945,7 @@ TARGET_LINK_LIBRARIES(sql_main ${MYSQLD_STATIC_PLUGIN_LIBS}
-   binlogevents_static ${LIBWRAP} ${LIBDL} ${SSL_LIBRARIES}
+@@ -973,9 +973,7 @@ TARGET_LINK_LIBRARIES(sql_main ${MYSQLD_STATIC_PLUGIN_LIBS}
+   mysql_binlog_event ${LIBWRAP} ${LIBDL} OpenSSL::SSL OpenSSL::Crypto
    extra::rapidjson)
  
 -# sql/immutable_string.h uses
 -# google::protobuf::io::CodedOutputStream::WriteVarint64ToArray
 -# which may or may not be inlined.
 +TARGET_COMPILE_DEFINITIONS(sql_main PRIVATE -DPROTOBUF_USE_DLLS)
- TARGET_LINK_LIBRARIES(sql_main ${PROTOBUF_LITE_LIBRARY})
+ TARGET_LINK_LIBRARIES(sql_main ext::libprotobuf-lite)
  
  ADD_LIBRARY(sql_gis STATIC ${SQL_GIS_SOURCES})
 -- 
-2.41.0
+2.39.3 (Apple Git-145)
 

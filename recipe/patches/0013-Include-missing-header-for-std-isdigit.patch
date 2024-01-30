@@ -1,7 +1,7 @@
-From 46efda28afc400befb4ac98857185c6bb1444b18 Mon Sep 17 00:00:00 2001
+From 64612c8836daf0acbd68ba7db33b60718c44e04c Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 21 Jul 2021 00:55:54 +0530
-Subject: [PATCH 13/21] Include missing header for std::isdigit()
+Subject: [PATCH 13/23] Include missing header for std::isdigit()
 
 This patch resolves the following error with the MSVC compiler:
 
@@ -13,7 +13,7 @@ This patch resolves the following error with the MSVC compiler:
  1 file changed, 2 insertions(+)
 
 diff --git a/sql/server_component/clone_protocol_service.cc b/sql/server_component/clone_protocol_service.cc
-index d4ca4c12a84..371ff876808 100644
+index 0d3926be..959ea73b 100644
 --- a/sql/server_component/clone_protocol_service.cc
 +++ b/sql/server_component/clone_protocol_service.cc
 @@ -41,6 +41,8 @@
@@ -22,9 +22,9 @@ index d4ca4c12a84..371ff876808 100644
  
 +#include <cctype>
 +
+ struct CHARSET_INFO;
+ 
  /** The minimum idle timeout in seconds. It is kept at 8 hours which is also
- the Server default. Currently recipient sends ACK during state transition.
- In future we could have better time controlled ACK. */
 -- 
-2.41.0
+2.39.3 (Apple Git-145)
 

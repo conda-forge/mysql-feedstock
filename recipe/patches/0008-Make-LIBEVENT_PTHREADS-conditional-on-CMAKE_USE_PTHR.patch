@@ -1,7 +1,7 @@
-From b481f57b2386979b49ea5242deae2a643961fbe1 Mon Sep 17 00:00:00 2001
+From 6514e60e456cdce6310febdd4f6083fa31d81b7a Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 19 Oct 2020 23:45:13 -0400
-Subject: [PATCH 08/21] Make LIBEVENT_PTHREADS conditional on
+Subject: [PATCH 08/23] Make LIBEVENT_PTHREADS conditional on
  CMAKE_USE_PTHREADS_INIT
 
 Requirement on LIBEVENT_PTHREADS was added by 2b84f0e3
@@ -10,7 +10,7 @@ Requirement on LIBEVENT_PTHREADS was added by 2b84f0e3
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/cmake/libevent.cmake b/cmake/libevent.cmake
-index 6376c452928..3d3f3e40751 100644
+index 6376c452..3d3f3e40 100644
 --- a/cmake/libevent.cmake
 +++ b/cmake/libevent.cmake
 @@ -124,8 +124,11 @@ FUNCTION(FIND_SYSTEM_LIBEVENT)
@@ -27,5 +27,5 @@ index 6376c452928..3d3f3e40751 100644
      TARGET_LINK_LIBRARIES(libevent_interface INTERFACE ${LIBEVENT_LIBRARIES})
      SET(LIBEVENT_INCLUDE_DIRS ${LIBEVENT_INCLUDE_DIRECTORY})
 -- 
-2.41.0
+2.39.3 (Apple Git-145)
 
