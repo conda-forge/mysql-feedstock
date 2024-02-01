@@ -1,7 +1,7 @@
-From 205863ea535207734364ab0789dba9b683de9b39 Mon Sep 17 00:00:00 2001
+From db50408620bf95ff42c08d7daf8d395cd64e3f53 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 21 Jul 2021 09:53:47 +0530
-Subject: [PATCH 14/23] Add bitset typecasts to make MSVC<v19.20 happy
+Subject: [PATCH 14/24] Add bitset typecasts to make MSVC<v19.20 happy
 
 This patch resolves the following error with the MSVC compiler:
 

@@ -1,7 +1,7 @@
-From 9235ca25f118a88b16de3842dbcbed9bc989a254 Mon Sep 17 00:00:00 2001
+From c4caafb16b5cca087049e919ce369a5dc71e551a Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 27 Apr 2023 11:53:31 +0530
-Subject: [PATCH 19/23] Zlib module: use macro instead of function
+Subject: [PATCH 19/24] Zlib module: use macro instead of function
 
 Variables set by find_package() are not globally scoped
 ---

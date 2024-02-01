@@ -1,7 +1,7 @@
-From 98242690f7b8360b5dfb0799801317e2f3210a3f Mon Sep 17 00:00:00 2001
+From 9c3617995ff261d2af12de67c9106993f7a5abc7 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 21 Jun 2020 16:15:08 -0400
-Subject: [PATCH 02/23] Fix file path for mysqlrouter.conf.sample for
+Subject: [PATCH 02/24] Fix file path for mysqlrouter.conf.sample for
  installation
 
 ---

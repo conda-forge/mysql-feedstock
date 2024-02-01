@@ -1,7 +1,7 @@
-From e0326eab78f0b230f585cfa0c982525643d25a1a Mon Sep 17 00:00:00 2001
+From 8321cb536361b49874fc09066bd35b88455f581f Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 19 Jun 2023 20:25:57 +0100
-Subject: [PATCH 22/23] Make libfido checks conditional
+Subject: [PATCH 22/24] Make libfido checks conditional
 
 ---
  CMakeLists.txt | 6 ++++--

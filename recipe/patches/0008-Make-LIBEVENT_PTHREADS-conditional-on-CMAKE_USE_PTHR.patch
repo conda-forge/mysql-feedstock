@@ -1,7 +1,7 @@
-From 6514e60e456cdce6310febdd4f6083fa31d81b7a Mon Sep 17 00:00:00 2001
+From 216daa0ed638f967b7b7ac731e2085100ab7423e Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 19 Oct 2020 23:45:13 -0400
-Subject: [PATCH 08/23] Make LIBEVENT_PTHREADS conditional on
+Subject: [PATCH 08/24] Make LIBEVENT_PTHREADS conditional on
  CMAKE_USE_PTHREADS_INIT
 
 Requirement on LIBEVENT_PTHREADS was added by 2b84f0e3

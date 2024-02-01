@@ -1,7 +1,7 @@
-From ff74b53e04a5ab94cad947f4b4d63b3cedd81902 Mon Sep 17 00:00:00 2001
+From c2124325c84ef151a85e1bc49520a4df434ed7bc Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 22 Apr 2021 09:32:37 -0400
-Subject: [PATCH 10/23] Add constructor(s) for ut::Location
+Subject: [PATCH 10/24] Add constructor(s) for ut::Location
 
 This patch resolves the following error with the MSVC compiler:
 

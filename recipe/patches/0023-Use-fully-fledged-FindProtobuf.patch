@@ -1,7 +1,7 @@
-From 0177c62acdd0994b4a19a8601b294802f3204b5a Mon Sep 17 00:00:00 2001
+From 1d9531b53657a4f17940f74e1ddeca6faf0df9e3 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Tue, 30 Jan 2024 17:21:06 +0100
-Subject: [PATCH 23/23] Use fully-fledged FindProtobuf
+Subject: [PATCH 23/24] Use fully-fledged FindProtobuf
 
 ---
  cmake/protobuf.cmake | 5 +----

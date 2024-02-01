@@ -1,7 +1,7 @@
-From 65494d58300d706fdf6dcde2aa5ed7475d4bcf48 Mon Sep 17 00:00:00 2001
+From 99d1192e5256c7fa47193682b57112c600a3dfe6 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 30 Jan 2021 19:48:42 -0500
-Subject: [PATCH 09/23] Add dependency on comp_err iff that target exists
+Subject: [PATCH 09/24] Add dependency on comp_err iff that target exists
 
 It's not built if we are cross compiling
 ---

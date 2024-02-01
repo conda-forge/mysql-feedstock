@@ -1,7 +1,7 @@
-From fa2a7fd38e6d9b791d7423d7f145080f8743a135 Mon Sep 17 00:00:00 2001
+From c7fbbda8f730f4c1e3c4d8234f7545e83f2d6332 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 9 May 2021 17:29:26 -0400
-Subject: [PATCH 11/23] Reduce number of symbols being exported from mysqld.exe
+Subject: [PATCH 11/24] Reduce number of symbols being exported from mysqld.exe
 
 Due to the export limit (16-bit ordinal field in PE, max val = 2^16-1),
 if the number of symbols required to be exported end up to be greater
