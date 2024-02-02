@@ -49,7 +49,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     # xref: https://cmake.org/pipermail/cmake/2013-January/053252.html
     export OPENSSL_ROOT_DIR=$BUILD_PREFIX
     env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
-        -u CXXFLAGS -u CPPFLAGS -u CFLAGS -u LDFLAGS \
+        -u CXXFLAGS -u CPPFLAGS -u CFLAGS LDFLAGS="-L$BUILD_PREFIX/lib" \
         cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
             -DWITH_ICU=system \
             -DWITH_ZSTD=system \
