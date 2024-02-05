@@ -48,8 +48,9 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     # Build all intermediate codegen binaries for the build platform
     # xref: https://cmake.org/pipermail/cmake/2013-January/053252.html
     export OPENSSL_ROOT_DIR=$BUILD_PREFIX
+    echo "#### Cross-compiling some binaries for osx-64"
     env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
-        -u CXXFLAGS -u CPPFLAGS -u CFLAGS LDFLAGS="-L$BUILD_PREFIX/lib" \
+        -u CXXFLAGS -u CPPFLAGS -u CFLAGS -u LDFLAGS \
         cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
             -DWITH_ICU=system \
             -DWITH_ZSTD=system \
@@ -59,7 +60,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
             -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
             -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
             -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
-            -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib"
+            -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib -L$BUILD_PREFIX/lib"
     cmake --build build.codegen -- \
         xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
         json_schema_embedder gen_lex_token gen_keyword_list comp_client_err
