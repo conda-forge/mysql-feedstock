@@ -32,7 +32,7 @@ source:
     - patches/0021-Revert-BUG-34849343-Aligned_atomic-not-working-as-in.patch
     - patches/0022-Make-libfido-checks-conditional.patch
     - patches/0023-Use-fully-fledged-FindProtobuf.patch
-    - patches/0024-Link-to-absl_spinlock_wait.patch  # [not win]
+    - patches/0024-Link-to-absl_spinlock_wait.patch
 
 build:
   number: 0
