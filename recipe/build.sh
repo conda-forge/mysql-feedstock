@@ -98,6 +98,10 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     _xtra_cmake_args+=(-DProtobuf_HOME=$PREFIX)
 fi
 
+if [[ "${target_platform}" == "linux-ppc64le" ]]; then
+  export CXXFLAGS="-DNO_WARN_X86_INTRINSICS ${CXXFLAGS}"
+fi
+
 export OPENSSL_ROOT_DIR=$PREFIX
 
 cmake -S$SRC_DIR -Bbuild -GNinja \
