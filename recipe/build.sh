@@ -2,6 +2,12 @@
 
 set -ex
 
+if [[ "$target_platform" == "linux-ppc64le" ]]; then
+  # avoid error 'relocation truncated to fit: R_PPC64_REL24'
+  export CFLAGS="$(echo ${CFLAGS} | sed 's/-fno-plt//g') -fplt"
+  export CXXFLAGS="$(echo ${CXXFLAGS} | sed 's/-fno-plt//g') -fplt"
+fi
+
 # Make rpcgen use C Pre Processor provided by the Conda ecosystem. The
 # rpcgen binary assumes that the corresponding binary is always 'cpp'.
 _rpcgen_hack_dir=$SRC_DIR/rpcgen_hack
