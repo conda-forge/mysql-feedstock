@@ -278,4 +278,5 @@ Feedstock Maintainers
 
 * [@beckermr](https://github.com/beckermr/)
 * [@nehaljwani](https://github.com/nehaljwani/)
+* [@xhochy](https://github.com/xhochy/)
 
