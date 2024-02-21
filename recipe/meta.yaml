@@ -45,6 +45,7 @@ requirements:
     - cmake
     - ninja
     - bison                    # [osx]
+    - pkg-config
     - icu                      # [target_platform == 'osx-arm64']
     - libprotobuf              # [target_platform == 'osx-arm64']
     - macports-legacy-support  # [target_platform == 'osx-arm64']
