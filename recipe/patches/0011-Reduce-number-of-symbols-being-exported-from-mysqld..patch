@@ -1,7 +1,7 @@
-From 24cdd77e84d038b95784b5522c906967303d7c9d Mon Sep 17 00:00:00 2001
+From c7fbbda8f730f4c1e3c4d8234f7545e83f2d6332 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 9 May 2021 17:29:26 -0400
-Subject: [PATCH 11/21] Reduce number of symbols being exported from mysqld.exe
+Subject: [PATCH 11/24] Reduce number of symbols being exported from mysqld.exe
 
 Due to the export limit (16-bit ordinal field in PE, max val = 2^16-1),
 if the number of symbols required to be exported end up to be greater
@@ -14,16 +14,16 @@ from headers only and if the plugins require them, they are likely to include
 them inside the DLL itself. The change brings down the count to approx. 65174,
 which is < 65535.
 ---
- sql/create_def.cc | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ sql/create_def.cc | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/sql/create_def.cc b/sql/create_def.cc
-index 24813216df9..94fd456f347 100644
+index ee916c20..3468d1d8 100644
 --- a/sql/create_def.cc
 +++ b/sql/create_def.cc
-@@ -330,6 +330,13 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
+@@ -331,6 +331,12 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
+       "?_E",         // vector deleting destructor
        "<lambda_",    // anything that is lambda-related
-       "??$forward",  // std::forward template instantiations
    };
 +  // Symbols from 3rd party header only libraries
 +  // Plugins will include them if required
@@ -31,14 +31,13 @@ index 24813216df9..94fd456f347 100644
 +      "@rapidjson@@",
 +      "@boost@@"
 +  };
-+
    if (symbol_line.find("External") == std::string::npos) {
      return;
    }
-@@ -379,6 +386,14 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
-       return;
+@@ -381,6 +387,14 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
      }
    }
+ 
 +  // Extract the actual symbol name we care about and check it's not on list of
 +  // third party header only libraries.
 +  for (auto &third_party_symbol : third_party_symbols) {
@@ -50,6 +49,3 @@ index 24813216df9..94fd456f347 100644
    // Check if we have function or data.
    if (symbol_line.find("notype () ") == std::string::npos) {
      symbol.append(" DATA");
--- 
-2.41.0
-

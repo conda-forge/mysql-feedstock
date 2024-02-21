@@ -1,5 +1,12 @@
 #!/bin/bash
-set -x
+
+set -ex
+
+if [[ "$target_platform" == "linux-ppc64le" ]]; then
+  # avoid error 'relocation truncated to fit: R_PPC64_REL24'
+  export CFLAGS="$(echo ${CFLAGS} | sed 's/-fno-plt//g') -fplt"
+  export CXXFLAGS="$(echo ${CXXFLAGS} | sed 's/-fno-plt//g') -fplt"
+fi
 
 # Make rpcgen use C Pre Processor provided by the Conda ecosystem. The
 # rpcgen binary assumes that the corresponding binary is always 'cpp'.
@@ -47,6 +54,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     # Build all intermediate codegen binaries for the build platform
     # xref: https://cmake.org/pipermail/cmake/2013-January/053252.html
     export OPENSSL_ROOT_DIR=$BUILD_PREFIX
+    echo "#### Cross-compiling some binaries for osx-64"
     env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
         -u CXXFLAGS -u CPPFLAGS -u CFLAGS -u LDFLAGS \
         cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
@@ -58,7 +66,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
             -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
             -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
             -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
-            -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib"
+            -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib -L$BUILD_PREFIX/lib"
     cmake --build build.codegen -- \
         xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
         json_schema_embedder gen_lex_token gen_keyword_list comp_client_err
@@ -91,6 +99,9 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     ## Use the protoc from the build platform as it needs to be exec'd
     _xtra_cmake_args+=(-DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
     _xtra_cmake_args+=(-DPROTOBUF_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
+
+    # Ensure we link the correct protobuf
+    _xtra_cmake_args+=(-DProtobuf_HOME=$PREFIX)
 fi
 
 export OPENSSL_ROOT_DIR=$PREFIX

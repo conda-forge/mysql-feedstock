@@ -1,7 +1,7 @@
-From da25129943146cc5ac4bdf57e18a744d19a7a4f9 Mon Sep 17 00:00:00 2001
+From 47deb073c5c65390e7d18005dfad6274935a8ad7 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 24 Oct 2021 14:20:06 -0400
-Subject: [PATCH 16/21] Check for ARMv8 crc32 intrinsic support on osx-arm64
+Subject: [PATCH 16/24] Check for ARMv8 crc32 intrinsic support on osx-arm64
  too
 
 ---
@@ -10,10 +10,10 @@ Subject: [PATCH 16/21] Check for ARMv8 crc32 intrinsic support on osx-arm64
  2 files changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/configure.cmake b/configure.cmake
-index c4d3dcca1ab..f1e807ce148 100644
+index fa4fd315..fb55c9c6 100644
 --- a/configure.cmake
 +++ b/configure.cmake
-@@ -711,8 +711,8 @@ IF(HAVE_LIBNUMA AND NOT WITH_NUMA)
+@@ -693,8 +693,8 @@ IF(HAVE_LIBNUMA AND NOT WITH_NUMA)
  ENDIF()
  
  # Check for intrinsic crc32 support on arm
@@ -25,7 +25,7 @@ index c4d3dcca1ab..f1e807ce148 100644
  
      IF (HAVE_ACLE_H)
 diff --git a/include/my_checksum.h b/include/my_checksum.h
-index a48f1fb4f46..524c3194c1b 100644
+index a48f1fb4..524c3194 100644
 --- a/include/my_checksum.h
 +++ b/include/my_checksum.h
 @@ -41,31 +41,39 @@
@@ -72,6 +72,3 @@ index a48f1fb4f46..524c3194c1b 100644
  inline std::uint32_t IntegerCrc32(std::uint32_t crc, std::uint64_t d) {
    return __crc32d(crc, d);
  }
--- 
-2.41.0
-

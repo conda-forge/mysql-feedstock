@@ -1,0 +1,26 @@
+From 8321cb536361b49874fc09066bd35b88455f581f Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Mon, 19 Jun 2023 20:25:57 +0100
+Subject: [PATCH 22/24] Make libfido checks conditional
+
+---
+ CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index faab7acf..c458edaa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1988,8 +1988,10 @@ ENDIF()
+ MYSQL_CHECK_RAPIDJSON()
+ 
+ # Look for fido2 library
+-MYSQL_CHECK_FIDO()
+-MYSQL_CHECK_FIDO_DLLS()
++IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
++  MYSQL_CHECK_FIDO()
++  MYSQL_CHECK_FIDO_DLLS()
++ENDIF()
+ 
+ IF(APPLE)
+   GET_FILENAME_COMPONENT(HOMEBREW_BASE ${HOMEBREW_HOME} DIRECTORY)

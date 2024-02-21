@@ -1,14 +1,14 @@
-From 37243ef529c2377463f8539c8327e6b684a37020 Mon Sep 17 00:00:00 2001
+From 91486d5aba3db78b96f39bcffb6aaf088e23bed9 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 23 Jul 2020 12:56:13 -0400
-Subject: [PATCH 06/21] Remove forceful injection of debug info
+Subject: [PATCH 06/24] Remove forceful injection of debug info
 
 ---
  cmake/os/Windows.cmake | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/cmake/os/Windows.cmake b/cmake/os/Windows.cmake
-index f0d38f6b9f3..1b2c8ca1d5b 100644
+index f0d38f6b..1b2c8ca1 100644
 --- a/cmake/os/Windows.cmake
 +++ b/cmake/os/Windows.cmake
 @@ -144,9 +144,9 @@ IF(MSVC)
@@ -35,6 +35,3 @@ index f0d38f6b9f3..1b2c8ca1d5b 100644
      IF (NOT WIN_DEBUG_NO_INLINE)
        STRING(REPLACE "/Ob0"  "/Ob1" "${flag}" "${${flag}}")
      ENDIF()
--- 
-2.41.0
-

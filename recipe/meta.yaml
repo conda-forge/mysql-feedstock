@@ -1,4 +1,4 @@
-{% set version = "8.0.33" %}
+{% set version = "8.2.0" %}
 
 package:
   name: mysql-suite
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-{{ version }}.tar.gz
-  sha256: ae31e6368617776b43c82436c3736900067fada1289032f3ac3392f7380bcb58
+  sha256: 9a6fe88c889dfb54a8ee203a3aaa2af4d21c97fbaf171dadaf5956714552010e
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
@@ -24,25 +24,26 @@ source:
     - patches/0014-Add-bitset-typecasts-to-make-MSVC-v19.20-happy.patch
     - patches/0015-Print-number-of-lines-in-the-file-generated-by-creat.patch
     - patches/0016-Check-for-ARMv8-crc32-intrinsic-support-on-osx-arm64.patch
-    - patches/0017-Add-workaround-for-a-bug-in-GCC-v9.4.0-aarch64.patch
-    - patches/0018-Revert-Bug-30981914-COMPILE-WITH-FASTER-TLS-MODEL.patch
-    - patches/0019-Use-config-mode-search-for-protobuf-first.patch
-    - patches/0020-Skip-code-not-compatible-with-libprotobuf-4.22.0.patch
-    - patches/0021-Zlib-module-use-macro-instead-of-function.patch
-    - patches/0022-Make-get_relative_path-binary-patching-friendly.patch
-    # Avoid crash on ppc64le, aarch64
-    - patches/0023-Revert-BUG-34849343-Aligned_atomic-not-working-as-in.patch
-    - patches/0024-Make-libfido-checks-conditional.patch
+    - patches/0017-Revert-Bug-30981914-COMPILE-WITH-FASTER-TLS-MODEL.patch
+    - patches/0018-Use-config-mode-search-for-protobuf-first.patch
+    - patches/0019-Zlib-module-use-macro-instead-of-function.patch
+    - patches/0020-Make-get_relative_path-binary-patching-friendly.patch
+    ## Avoid crash on ppc64le, aarch64
+    - patches/0021-Revert-BUG-34849343-Aligned_atomic-not-working-as-in.patch
+    - patches/0022-Make-libfido-checks-conditional.patch
+    - patches/0023-Use-fully-fledged-FindProtobuf.patch
+    - patches/0024-Link-to-absl_spinlock_wait.patch
 
 build:
-  number: 6
+  number: 0
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
-    - icu                      # [target_platform == 'osx-arm64']
     - ninja
+    - bison                    # [osx]
+    - icu                      # [target_platform == 'osx-arm64']
     - libprotobuf              # [target_platform == 'osx-arm64']
     - macports-legacy-support  # [target_platform == 'osx-arm64']
     - openssl                  # [target_platform == 'osx-arm64']
@@ -305,3 +306,4 @@ extra:
   recipe-maintainers:
     - beckermr
     - nehaljwani
+    - xhochy

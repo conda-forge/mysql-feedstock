@@ -1,7 +1,7 @@
-From 145ad72a7f98a9203c3c3118559e034bae1623d7 Mon Sep 17 00:00:00 2001
+From db50408620bf95ff42c08d7daf8d395cd64e3f53 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 21 Jul 2021 09:53:47 +0530
-Subject: [PATCH 14/21] Add bitset typecasts to make MSVC<v19.20 happy
+Subject: [PATCH 14/24] Add bitset typecasts to make MSVC<v19.20 happy
 
 This patch resolves the following error with the MSVC compiler:
 
@@ -12,7 +12,7 @@ conversion from '...' to 'unsigned __int64' requires a narrowing conversion
  1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/router/src/http/src/http_server_plugin.cc b/router/src/http/src/http_server_plugin.cc
-index eb2c556ca12..7a0fb66d5c5 100644
+index eb2c556c..7a0fb66d 100644
 --- a/router/src/http/src/http_server_plugin.cc
 +++ b/router/src/http/src/http_server_plugin.cc
 @@ -182,7 +182,7 @@ void HttpRequestThread::set_request_router(HttpRequestRouter &router) {
@@ -44,6 +44,3 @@ index eb2c556ca12..7a0fb66d5c5 100644
          },
          tls_ctx);
    }
--- 
-2.41.0
-

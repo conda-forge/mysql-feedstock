@@ -1,7 +1,7 @@
-From 9165b31b2e6ee8014f3c7dedbe52f331a4c5f1f9 Mon Sep 17 00:00:00 2001
+From 99d1192e5256c7fa47193682b57112c600a3dfe6 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 30 Jan 2021 19:48:42 -0500
-Subject: [PATCH 09/21] Add dependency on comp_err iff that target exists
+Subject: [PATCH 09/24] Add dependency on comp_err iff that target exists
 
 It's not built if we are cross compiling
 ---
@@ -9,7 +9,7 @@ It's not built if we are cross compiling
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/utilities/CMakeLists.txt b/utilities/CMakeLists.txt
-index da34524c8d9..57c147156d0 100644
+index c1367166..33355ace 100644
 --- a/utilities/CMakeLists.txt
 +++ b/utilities/CMakeLists.txt
 @@ -104,7 +104,9 @@ ADD_DEFINITIONS(-DMUTEX_EVENT)
@@ -23,6 +23,3 @@ index da34524c8d9..57c147156d0 100644
  ENDIF()
  
  MYSQL_ADD_EXECUTABLE(static_thread_local_test
--- 
-2.41.0
-
