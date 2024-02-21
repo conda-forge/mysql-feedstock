@@ -1,7 +1,7 @@
 From f7f06a2e90d233438cca967a89fb35acad425faa Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 23 Jul 2020 12:56:13 -0400
-Subject: [PATCH 06/25] Remove forceful injection of debug info
+Subject: [PATCH 06/26] Remove forceful injection of debug info
 
 ---
  cmake/os/Windows.cmake | 17 +++++++----------

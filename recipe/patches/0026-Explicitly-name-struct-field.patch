@@ -1,0 +1,40 @@
+From dbbd2a8c972e5cf2d4978008531b33375b93d7a6 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 21 Feb 2024 21:18:39 +0100
+Subject: [PATCH 26/26] Explicitly name struct field
+
+---
+ storage/innobase/handler/i_s.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/storage/innobase/handler/i_s.cc b/storage/innobase/handler/i_s.cc
+index c7087b66..08224f73 100644
+--- a/storage/innobase/handler/i_s.cc
++++ b/storage/innobase/handler/i_s.cc
+@@ -719,7 +719,7 @@ struct st_mysql_plugin i_s_innodb_trx = {
+ 
+     /* the function to invoke when plugin is un installed */
+     /* int (*)(void*); */
+-    nullptr,
++    STRUCT_FLD(check_uninstall, nullptr),
+ 
+     /* the function to invoke when plugin is unloaded */
+     /* int (*)(void*); */
+@@ -999,7 +999,7 @@ struct st_mysql_plugin i_s_innodb_cmp = {
+ 
+     /* the function to invoke when plugin is un installed */
+     /* int (*)(void*); */
+-    nullptr,
++    STRUCT_FLD(check_uninstall, nullptr),
+ 
+     /* the function to invoke when plugin is unloaded */
+     /* int (*)(void*); */
+@@ -1057,7 +1057,7 @@ struct st_mysql_plugin i_s_innodb_cmp_reset = {
+ 
+     /* the function to invoke when plugin is un installed */
+     /* int (*)(void*); */
+-    nullptr,
++    STRUCT_FLD(check_uninstall, nullptr),
+ 
+     /* the function to invoke when plugin is unloaded */
+     /* int (*)(void*); */

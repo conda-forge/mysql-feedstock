@@ -1,7 +1,7 @@
 From f1d14cdda45c49f2d4b140b43771fa9346c81c6e Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 22 Jun 2020 09:53:55 -0400
-Subject: [PATCH 03/25] Allow flags other than macros in CPPFLAGS
+Subject: [PATCH 03/26] Allow flags other than macros in CPPFLAGS
 
 ---
  CMakeLists.txt | 4 +++-

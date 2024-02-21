@@ -1,7 +1,7 @@
 From 9d84019e596c4f959cdf910be24db319195516d0 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 18 Jun 2023 15:40:42 +0100
-Subject: [PATCH 21/25] Revert "BUG#34849343 Aligned_atomic not working as
+Subject: [PATCH 21/26] Revert "BUG#34849343 Aligned_atomic not working as
  intended - aligned_alloc"
 
 This reverts commit be8348a7c3e8510b998a063065b626a459631b32.

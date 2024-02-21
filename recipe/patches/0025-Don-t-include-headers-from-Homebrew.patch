@@ -1,7 +1,7 @@
 From 1986c4c33230ed3a2d41f462385c607867648c9a Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 21 Feb 2024 16:30:32 +0100
-Subject: [PATCH 25/25] Don't include headers from Homebrew
+Subject: [PATCH 25/26] Don't include headers from Homebrew
 
 ---
  CMakeLists.txt | 7 -------

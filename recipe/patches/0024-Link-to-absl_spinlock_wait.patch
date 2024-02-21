@@ -1,7 +1,7 @@
 From cde1f6d968e3ad9864c0810389040d4cbf885f04 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Fri, 2 Feb 2024 16:56:09 +0100
-Subject: [PATCH 24/25] Link to absl_spinlock_wait
+Subject: [PATCH 24/26] Link to absl_spinlock_wait
 
 ---
  cmake/protobuf.cmake | 32 +++++++++++++-------------------
