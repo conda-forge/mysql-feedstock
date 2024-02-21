@@ -1,4 +1,4 @@
-From c7fbbda8f730f4c1e3c4d8234f7545e83f2d6332 Mon Sep 17 00:00:00 2001
+From dbe4348f68bb0fc161d246128ccf891a34651c2f Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 9 May 2021 17:29:26 -0400
 Subject: [PATCH 11/24] Reduce number of symbols being exported from mysqld.exe
@@ -18,12 +18,12 @@ which is < 65535.
  1 file changed, 14 insertions(+)
 
 diff --git a/sql/create_def.cc b/sql/create_def.cc
-index ee916c20..3468d1d8 100644
+index d291b2a1..621658e3 100644
 --- a/sql/create_def.cc
 +++ b/sql/create_def.cc
-@@ -331,6 +331,12 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
-       "?_E",         // vector deleting destructor
+@@ -332,6 +332,12 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
        "<lambda_",    // anything that is lambda-related
+       "__isa_available_default",  // strange symbol that breaks PGO
    };
 +  // Symbols from 3rd party header only libraries
 +  // Plugins will include them if required
@@ -34,7 +34,7 @@ index ee916c20..3468d1d8 100644
    if (symbol_line.find("External") == std::string::npos) {
      return;
    }
-@@ -381,6 +387,14 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
+@@ -382,6 +388,14 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {
      }
    }
  

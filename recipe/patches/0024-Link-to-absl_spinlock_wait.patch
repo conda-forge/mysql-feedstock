@@ -1,4 +1,4 @@
-From 84b07d8d7efe3d1a124b207d2565700b1b68d7cb Mon Sep 17 00:00:00 2001
+From 193b35fbfd725d77111710c80cbae29f3caef4f8 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Fri, 2 Feb 2024 16:56:09 +0100
 Subject: [PATCH 24/24] Link to absl_spinlock_wait
@@ -8,10 +8,10 @@ Subject: [PATCH 24/24] Link to absl_spinlock_wait
  1 file changed, 13 insertions(+), 19 deletions(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index d50b124f..07a7accd 100644
+index 84039b5a..805aa784 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
-@@ -179,26 +179,20 @@ MACRO(MYSQL_CHECK_PROTOBUF)
+@@ -183,26 +183,20 @@ MACRO(MYSQL_CHECK_PROTOBUF)
  
    FIND_PROTOBUF_VERSION()
  

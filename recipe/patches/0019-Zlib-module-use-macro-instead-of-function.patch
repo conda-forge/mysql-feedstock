@@ -1,4 +1,4 @@
-From c4caafb16b5cca087049e919ce369a5dc71e551a Mon Sep 17 00:00:00 2001
+From defaf80a80e7ce0916069f340a739702629df15a Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 27 Apr 2023 11:53:31 +0530
 Subject: [PATCH 19/24] Zlib module: use macro instead of function
@@ -9,7 +9,7 @@ Variables set by find_package() are not globally scoped
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/zlib.cmake b/cmake/zlib.cmake
-index 0b98b1f3..68bce997 100644
+index 45db8a0f..1490c190 100644
 --- a/cmake/zlib.cmake
 +++ b/cmake/zlib.cmake
 @@ -50,7 +50,7 @@ FUNCTION(FIND_ZLIB_VERSION ZLIB_INCLUDE_DIR)
@@ -18,12 +18,12 @@ index 0b98b1f3..68bce997 100644
  
 -FUNCTION(FIND_SYSTEM_ZLIB)
 +MACRO(FIND_SYSTEM_ZLIB)
+   # Will set ZLIB_INCLUDE_DIRS ZLIB_LIBRARIES ZLIB_FOUND
    FIND_PACKAGE(ZLIB)
    IF(ZLIB_FOUND)
-     SET(ZLIB_FOUND 1 CACHE INTERNAL "")
-@@ -65,7 +65,7 @@ FUNCTION(FIND_SYSTEM_ZLIB)
-     SET(ZLIB_FOUND ${ZLIB_FOUND} PARENT_SCOPE)
-     SET(ZLIB_VERSION ${ZLIB_VERSION} PARENT_SCOPE)
+@@ -68,7 +68,7 @@ FUNCTION(FIND_SYSTEM_ZLIB)
+     # For EXTRACT_LINK_LIBRARIES
+     SET(zlib_SYSTEM_LINK_FLAGS "-lz" CACHE STRING "Link flag for zlib")
    ENDIF()
 -ENDFUNCTION(FIND_SYSTEM_ZLIB)
 +ENDMACRO(FIND_SYSTEM_ZLIB)
