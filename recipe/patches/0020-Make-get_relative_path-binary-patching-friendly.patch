@@ -1,7 +1,7 @@
-From 55f34546583ec830d7aef85dc97f6b6e2f8932be Mon Sep 17 00:00:00 2001
+From c28e9cb0a8b2f58b848ced7cac9541546f82d567 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 18 Jun 2023 23:44:06 +0100
-Subject: [PATCH 20/24] Make get_relative_path() binary patching friendly
+Subject: [PATCH 20/25] Make get_relative_path() binary patching friendly
 
 The call to strlen() can be optimized away by the compiler
 ---

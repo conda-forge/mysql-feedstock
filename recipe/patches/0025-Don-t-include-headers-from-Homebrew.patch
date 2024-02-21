@@ -1,0 +1,27 @@
+From 1986c4c33230ed3a2d41f462385c607867648c9a Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 21 Feb 2024 16:30:32 +0100
+Subject: [PATCH 25/25] Don't include headers from Homebrew
+
+---
+ CMakeLists.txt | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ddfb6337..e8ace40d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1964,13 +1964,6 @@ IF(APPLE)
+       ENDIF()
+     ENDFOREACH()
+   ENDIF()
+-  # Ensure that we look in /usr/local/include or /opt/homebrew/include
+-  FOREACH(SYSTEM_LIB ICU LIBEVENT LZ4 PROTOBUF ZSTD FIDO)
+-    IF(WITH_${SYSTEM_LIB} STREQUAL "system")
+-      INCLUDE_DIRECTORIES(SYSTEM ${HOMEBREW_BASE}/include)
+-      BREAK()
+-    ENDIF()
+-  ENDFOREACH()
+ ENDIF()
+ 
+ IF(WITH_AUTHENTICATION_FIDO OR WITH_AUTHENTICATION_WEBAUTHN OR

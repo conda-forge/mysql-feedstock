@@ -1,7 +1,7 @@
-From 119d741f235a961eed7b30da76f01bfa9a0a0f74 Mon Sep 17 00:00:00 2001
+From 4f2010fac9cbd8c5adc23a2b19746c56ae024319 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 12 Oct 2021 07:53:59 -0400
-Subject: [PATCH 12/24] Ensure sql_main uses protobuf shared library correctly
+Subject: [PATCH 12/25] Ensure sql_main uses protobuf shared library correctly
 
 ---
  sql/CMakeLists.txt | 1 +

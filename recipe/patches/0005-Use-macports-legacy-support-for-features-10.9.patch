@@ -1,7 +1,7 @@
-From b72276dc7573423f96299d070533d0b0612ad2a2 Mon Sep 17 00:00:00 2001
+From c0522bcb8506179dcf07a7bcd23b91e2124e0034 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 21 Jul 2020 22:56:50 -0400
-Subject: [PATCH 05/24] Use macports-legacy-support for features >10.9
+Subject: [PATCH 05/25] Use macports-legacy-support for features >10.9
 
 ---
  .../libmysqlgcs/CMakeLists.txt                |     8 +

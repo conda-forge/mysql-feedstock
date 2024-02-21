@@ -1,7 +1,7 @@
-From 642efeed3b99431d376d3c4ec72c9626b5364505 Mon Sep 17 00:00:00 2001
+From ca5f1518b09024c58d82927edb56efb6383bcaac Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 18 Dec 2021 16:57:08 -0500
-Subject: [PATCH 17/24] Revert "Bug #30981914: COMPILE WITH FASTER TLS MODEL"
+Subject: [PATCH 17/25] Revert "Bug #30981914: COMPILE WITH FASTER TLS MODEL"
 
 xref: https://github.com/conda-forge/mysql-feedstock/issues/60
 xref: https://bugs.launchpad.net/ubuntu/+source/mysql-8.0/+bug/1889851

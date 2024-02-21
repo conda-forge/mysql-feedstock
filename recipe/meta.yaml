@@ -33,8 +33,7 @@ source:
     - patches/0022-Make-libfido-checks-conditional.patch
     - patches/0023-Use-fully-fledged-FindProtobuf.patch
     - patches/0024-Link-to-absl_spinlock_wait.patch
-    - patches/0001-Don-t-include-headers-from-Homebrew.patch
-    - patches/0002-Link-to-absl_hash.patch
+    - patches/0025-Don-t-include-headers-from-Homebrew.patch
 
 build:
   number: 0
