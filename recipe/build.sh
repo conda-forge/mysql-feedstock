@@ -107,7 +107,7 @@ fi
 export OPENSSL_ROOT_DIR=$PREFIX
 
 cmake -S$SRC_DIR -Bbuild -GNinja \
-  -DCMAKE_CXX_STANDARD=20 \
+  -DCMAKE_CXX_STANDARD=17 \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_PREFIX_PATH="${_rpcgen_hack_dir};$PREFIX" \
   -DCOMPILATION_COMMENT=conda-forge \
