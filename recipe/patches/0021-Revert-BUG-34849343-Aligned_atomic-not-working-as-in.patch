@@ -1,18 +1,17 @@
-From 5b5a04439cbd9a0c7fd9acf297a9a6357ba0c21c Mon Sep 17 00:00:00 2001
+From 9d84019e596c4f959cdf910be24db319195516d0 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 18 Jun 2023 15:40:42 +0100
-Subject: [PATCH 21/24] Revert "BUG#34849343 Aligned_atomic not working as
+Subject: [PATCH 21/26] Revert "BUG#34849343 Aligned_atomic not working as
  intended - aligned_alloc"
 
 This reverts commit be8348a7c3e8510b998a063065b626a459631b32.
 ---
- mysys/CMakeLists.txt                      |  1 -
- sql/memory/aligned_atomic.h               | 71 ++++++-----------------
- unittest/gunit/memory/aligned_atomic-t.cc |  2 -
- 3 files changed, 18 insertions(+), 56 deletions(-)
+ mysys/CMakeLists.txt        |  1 -
+ sql/memory/aligned_atomic.h | 71 ++++++++++---------------------------
+ 2 files changed, 18 insertions(+), 54 deletions(-)
 
 diff --git a/mysys/CMakeLists.txt b/mysys/CMakeLists.txt
-index b78b25be..a179d3d3 100644
+index 3504a0ff..57458303 100644
 --- a/mysys/CMakeLists.txt
 +++ b/mysys/CMakeLists.txt
 @@ -55,7 +55,6 @@ SET(MYSYS_SOURCES
@@ -21,10 +20,10 @@ index b78b25be..a179d3d3 100644
    my_access.cc
 -  my_aligned_malloc.cc
    my_alloc.cc
-   my_bit.cc
    my_bitmap.cc
+   my_chmod.cc
 diff --git a/sql/memory/aligned_atomic.h b/sql/memory/aligned_atomic.h
-index 037d3413..eb8661a1 100644
+index 6d8e4e01..adc04a42 100644
 --- a/sql/memory/aligned_atomic.h
 +++ b/sql/memory/aligned_atomic.h
 @@ -38,9 +38,8 @@
@@ -38,7 +37,7 @@ index 037d3413..eb8661a1 100644
  /**
   Calculates and returns the size of the CPU cache line.
  
-@@ -260,28 +259,14 @@ class Aligned_atomic {
+@@ -264,28 +263,14 @@ class Aligned_atomic {
  
      @return The pointer to the underlying `std::atomic<T>` object.
     */
@@ -69,7 +68,7 @@ index 037d3413..eb8661a1 100644
    /*
      The size of `std::atomic<T>`, as returned by `sizeof std::atomic<T>`.
  
-@@ -299,7 +284,7 @@ class Aligned_atomic {
+@@ -306,7 +291,7 @@ class Aligned_atomic {
    /** The size of the byte buffer. */
    size_t m_storage_size{0};
    /** The byte buffer to use as underlying storage. */
@@ -78,7 +77,7 @@ index 037d3413..eb8661a1 100644
    /** The pointer to the underlying `std::atomic<T>` object. */
    std::atomic<T> *m_underlying{nullptr};
  };
-@@ -307,10 +292,9 @@ class Aligned_atomic {
+@@ -314,10 +299,9 @@ class Aligned_atomic {
  
  template <typename T>
  memory::Aligned_atomic<T>::Aligned_atomic()
@@ -92,7 +91,7 @@ index 037d3413..eb8661a1 100644
  
  template <typename T>
  memory::Aligned_atomic<T>::Aligned_atomic(T value)
-@@ -319,16 +303,12 @@ memory::Aligned_atomic<T>::Aligned_atomic(T value)
+@@ -326,16 +310,12 @@ memory::Aligned_atomic<T>::Aligned_atomic(T value)
  }
  
  template <typename T>
@@ -113,7 +112,7 @@ index 037d3413..eb8661a1 100644
    rhs.m_underlying = nullptr;
  }
  
-@@ -336,25 +316,22 @@ template <typename T>
+@@ -343,25 +323,22 @@ template <typename T>
  memory::Aligned_atomic<T>::~Aligned_atomic() {
    if (this->m_underlying != nullptr) {
      this->m_underlying->~atomic();
@@ -144,7 +143,7 @@ index 037d3413..eb8661a1 100644
    rhs.m_underlying = nullptr;
    return (*this);
  }
-@@ -394,25 +371,13 @@ bool memory::Aligned_atomic<T>::operator!=(T rhs) const {
+@@ -401,25 +378,13 @@ bool memory::Aligned_atomic<T>::operator!=(T rhs) const {
  }
  
  template <typename T>
@@ -172,17 +171,3 @@ index 037d3413..eb8661a1 100644
    assert(this->m_underlying != nullptr);
    return *this->m_underlying;
  }
-diff --git a/unittest/gunit/memory/aligned_atomic-t.cc b/unittest/gunit/memory/aligned_atomic-t.cc
-index 39ac0724..b4bc336a 100644
---- a/unittest/gunit/memory/aligned_atomic-t.cc
-+++ b/unittest/gunit/memory/aligned_atomic-t.cc
-@@ -25,9 +25,7 @@
- #include <chrono>
- #include <vector>
- 
--#define private public
- #include "sql/memory/aligned_atomic.h"
--#undef private
- 
- #include <gmock/gmock.h>
- #include <gtest/gtest.h>

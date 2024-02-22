@@ -1,37 +1,44 @@
-From 91486d5aba3db78b96f39bcffb6aaf088e23bed9 Mon Sep 17 00:00:00 2001
+From f7f06a2e90d233438cca967a89fb35acad425faa Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 23 Jul 2020 12:56:13 -0400
-Subject: [PATCH 06/24] Remove forceful injection of debug info
+Subject: [PATCH 06/26] Remove forceful injection of debug info
 
 ---
- cmake/os/Windows.cmake | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ cmake/os/Windows.cmake | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
 
 diff --git a/cmake/os/Windows.cmake b/cmake/os/Windows.cmake
-index f0d38f6b..1b2c8ca1 100644
+index 8ae3d150..28f8d12b 100644
 --- a/cmake/os/Windows.cmake
 +++ b/cmake/os/Windows.cmake
-@@ -144,9 +144,9 @@ IF(MSVC)
+@@ -151,13 +151,13 @@ IF(MSVC)
    #     Allowing inline reduces test time using the debug server by
    #     30% or so. If you do want to keep inlining off, set the
    #     cmake flag WIN_DEBUG_NO_INLINE.
 -  FOREACH(lang C CXX)
--    SET(CMAKE_${lang}_FLAGS_RELEASE "${CMAKE_${lang}_FLAGS_RELEASE} /Z7")
+-    IF(FPROFILE_GENERATE OR FPROFILE_USE)
+-      SET(CMAKE_${lang}_FLAGS_RELEASE "${CMAKE_${lang}_FLAGS_RELEASE} /Zi")
+-    ELSE()
+-      SET(CMAKE_${lang}_FLAGS_RELEASE "${CMAKE_${lang}_FLAGS_RELEASE} /Z7")
+-    ENDIF()
 -  ENDFOREACH()
-+  #  FOREACH(lang C CXX)
++  #FOREACH(lang C CXX)
++  #  IF(FPROFILE_GENERATE OR FPROFILE_USE)
++  #    SET(CMAKE_${lang}_FLAGS_RELEASE "${CMAKE_${lang}_FLAGS_RELEASE} /Zi")
++  #  ELSE()
 +  #    SET(CMAKE_${lang}_FLAGS_RELEASE "${CMAKE_${lang}_FLAGS_RELEASE} /Z7")
-+  #  ENDFOREACH()
++  #  ENDIF()
++  #ENDFOREACH()
  
    FOREACH(flag
        CMAKE_C_FLAGS_MINSIZEREL
-@@ -158,8 +158,8 @@ IF(MSVC)
-     IF(LINK_STATIC_RUNTIME_LIBRARIES)
-       STRING(REPLACE "/MD"  "/MT" "${flag}" "${${flag}}")
+@@ -171,9 +171,6 @@ IF(MSVC)
      ENDIF()
--    STRING(REPLACE "/Zi"  "/Z7" "${flag}" "${${flag}}")
--    STRING(REPLACE "/ZI"  "/Z7" "${flag}" "${${flag}}")
-+    #  STRING(REPLACE "/Zi"  "/Z7" "${flag}" "${${flag}}")
-+    #  STRING(REPLACE "/ZI"  "/Z7" "${flag}" "${${flag}}")
+     IF(FPROFILE_GENERATE OR FPROFILE_USE)
+       STRING(REPLACE "/ZI"  "/Zi" "${flag}" "${${flag}}")
+-    ELSE()
+-      STRING(REPLACE "/Zi"  "/Z7" "${flag}" "${${flag}}")
+-      STRING(REPLACE "/ZI"  "/Z7" "${flag}" "${${flag}}")
+     ENDIF()
      IF (NOT WIN_DEBUG_NO_INLINE)
        STRING(REPLACE "/Ob0"  "/Ob1" "${flag}" "${${flag}}")
-     ENDIF()

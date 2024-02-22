@@ -104,14 +104,15 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     _xtra_cmake_args+=(-DProtobuf_HOME=$PREFIX)
 fi
 
-export OPENSSL_ROOT_DIR=$PREFIX
 
 cmake -S$SRC_DIR -Bbuild -GNinja \
-  -DCMAKE_CXX_STANDARD=17 \
+  -DCMAKE_CXX_STANDARD=20 \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_PREFIX_PATH="${_rpcgen_hack_dir};$PREFIX" \
   -DCOMPILATION_COMMENT=conda-forge \
   -DCMAKE_FIND_FRAMEWORK=LAST \
+  -DOPENSSL_ROOT_DIR=$PREFIX \
+  -DPKG_CONFIG_EXECUTABLE=${BUILD_PREFIX}/bin/pkg-config \
   -DWITH_UNIT_TESTS=OFF \
   -DWITH_SASL=system \
   -DWITH_ZLIB=system \
@@ -134,7 +135,7 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DINSTALL_SUPPORTFILESDIR=mysql/support-files \
   "${_xtra_cmake_args[@]}"
 
-if [[ $target_platform == osx-arm64 ]]; then
+if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
     # Update the /path/to/xprotocol_plugin to the one built for the build platform
     sed -i.bak "s,\(--plugin=protoc-gen-yplg=\)[^ ]*,\1$SRC_DIR/build.codegen/runtime_output_directory/xprotocol_plugin,g" build/build.ninja
 fi

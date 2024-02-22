@@ -1,7 +1,7 @@
-From 6e8c9d66e962384493883828602c87ec93523505 Mon Sep 17 00:00:00 2001
+From c0522bcb8506179dcf07a7bcd23b91e2124e0034 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 21 Jul 2020 22:56:50 -0400
-Subject: [PATCH 05/24] Use macports-legacy-support for features >10.9
+Subject: [PATCH 05/26] Use macports-legacy-support for features >10.9
 
 ---
  .../libmysqlgcs/CMakeLists.txt                |     8 +
@@ -1774,10 +1774,10 @@ index 00000000..0f0b8d66
 +
 +#endif
 diff --git a/storage/innobase/CMakeLists.txt b/storage/innobase/CMakeLists.txt
-index 41bcb61d..ba4e942b 100644
+index 25d686bb..5ee7a1e9 100644
 --- a/storage/innobase/CMakeLists.txt
 +++ b/storage/innobase/CMakeLists.txt
-@@ -335,7 +335,6 @@ IF(HAS_MISSING_PROFILE)
+@@ -339,7 +339,6 @@ IF(HAS_MISSING_PROFILE)
    TARGET_COMPILE_OPTIONS(innodb_zipdecompress PRIVATE ${HAS_MISSING_PROFILE})
  ENDIF()
  
@@ -1785,7 +1785,7 @@ index 41bcb61d..ba4e942b 100644
  UNSET(NUMA_LIBRARY)
  IF(HAVE_LIBNUMA)
    SET(NUMA_LIBRARY "numa")
-@@ -358,6 +357,14 @@ IF(SOLARIS AND MY_COMPILER_IS_GNU)
+@@ -362,6 +361,14 @@ IF(SOLARIS AND MY_COMPILER_IS_GNU)
      )
  ENDIF()
  
@@ -2109,10 +2109,10 @@ index 00000000..f1ca0de7
 +    COMPILE_FLAGS "${HAS_WARN_FLAG}")
 +ENDIF()
 diff --git a/storage/innobase/handler/ha_innodb.cc b/storage/innobase/handler/ha_innodb.cc
-index dd43f141..3b01fd8e 100644
+index 3eb6bcc9..6bd7a372 100644
 --- a/storage/innobase/handler/ha_innodb.cc
 +++ b/storage/innobase/handler/ha_innodb.cc
-@@ -214,6 +214,11 @@ this program; if not, write to the Free Software Foundation, Inc.,
+@@ -215,6 +215,11 @@ this program; if not, write to the Free Software Foundation, Inc.,
  
  #ifdef HAVE_UNISTD_H
  #include <unistd.h>

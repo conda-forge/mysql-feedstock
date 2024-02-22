@@ -1,7 +1,7 @@
-From 99d1192e5256c7fa47193682b57112c600a3dfe6 Mon Sep 17 00:00:00 2001
+From 54a1ccf985a1565ebb8e0e676b180ff0ad06c189 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 30 Jan 2021 19:48:42 -0500
-Subject: [PATCH 09/24] Add dependency on comp_err iff that target exists
+Subject: [PATCH 09/26] Add dependency on comp_err iff that target exists
 
 It's not built if we are cross compiling
 ---
@@ -9,10 +9,10 @@ It's not built if we are cross compiling
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/utilities/CMakeLists.txt b/utilities/CMakeLists.txt
-index c1367166..33355ace 100644
+index 808c2e8a..fcd2e5db 100644
 --- a/utilities/CMakeLists.txt
 +++ b/utilities/CMakeLists.txt
-@@ -104,7 +104,9 @@ ADD_DEFINITIONS(-DMUTEX_EVENT)
+@@ -111,7 +111,9 @@ ADD_DEFINITIONS(-DMUTEX_EVENT)
  IF(TARGET copy_openssl_dlls)
    ADD_DEPENDENCIES(GenError copy_openssl_dlls)
    ADD_DEPENDENCIES(comp_client_err copy_openssl_dlls)

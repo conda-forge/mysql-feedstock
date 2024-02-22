@@ -1,14 +1,14 @@
-From 1d9531b53657a4f17940f74e1ddeca6faf0df9e3 Mon Sep 17 00:00:00 2001
+From 177fbb6685964abdeb721df2ff3df97079f50725 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Tue, 30 Jan 2024 17:21:06 +0100
-Subject: [PATCH 23/24] Use fully-fledged FindProtobuf
+Subject: [PATCH 23/26] Use fully-fledged FindProtobuf
 
 ---
  cmake/protobuf.cmake | 5 +----
  1 file changed, 1 insertion(+), 4 deletions(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index d470de5f..d50b124f 100644
+index e6a07dcd..84039b5a 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
 @@ -119,11 +119,8 @@ MACRO(MYSQL_CHECK_PROTOBUF)

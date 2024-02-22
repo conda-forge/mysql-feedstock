@@ -1,17 +1,17 @@
-From 8321cb536361b49874fc09066bd35b88455f581f Mon Sep 17 00:00:00 2001
+From d0fee850ca8a5c8fcaf335e486a58c6b59f6e910 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 19 Jun 2023 20:25:57 +0100
-Subject: [PATCH 22/24] Make libfido checks conditional
+Subject: [PATCH 22/26] Make libfido checks conditional
 
 ---
  CMakeLists.txt | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index faab7acf..c458edaa 100644
+index 0c214d4f..ddfb6337 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1988,8 +1988,10 @@ ENDIF()
+@@ -1943,8 +1943,10 @@ ENDIF()
  MYSQL_CHECK_RAPIDJSON()
  
  # Look for fido2 library

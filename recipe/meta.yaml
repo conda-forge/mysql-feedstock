@@ -1,4 +1,4 @@
-{% set version = "8.2.0" %}
+{% set version = "8.3.0" %}
 
 package:
   name: mysql-suite
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-{{ version }}.tar.gz
-  sha256: 9a6fe88c889dfb54a8ee203a3aaa2af4d21c97fbaf171dadaf5956714552010e
+  sha256: f0a73556b8a417bc4dc6d2d78909080512beb891930cd93d0740d22207be285b
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
@@ -33,6 +33,8 @@ source:
     - patches/0022-Make-libfido-checks-conditional.patch
     - patches/0023-Use-fully-fledged-FindProtobuf.patch
     - patches/0024-Link-to-absl_spinlock_wait.patch
+    - patches/0025-Don-t-include-headers-from-Homebrew.patch
+    - patches/0026-Explicitly-name-struct-field.patch
 
 build:
   number: 1
@@ -43,6 +45,7 @@ requirements:
     - cmake
     - ninja
     - bison                    # [osx]
+    - pkg-config
     - icu                      # [target_platform == 'osx-arm64']
     - libprotobuf              # [target_platform == 'osx-arm64']
     - macports-legacy-support  # [target_platform == 'osx-arm64']

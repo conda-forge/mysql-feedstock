@@ -1,7 +1,7 @@
-From 9df247637240aa5beec6cc2b9ea0d7ef4409969e Mon Sep 17 00:00:00 2001
+From b45f75b5a5b058bb45bd3abd8445d08058aeefaf Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Fri, 14 Aug 2020 20:30:20 -0400
-Subject: [PATCH 07/24] Link libgcc & libstdc++ statically for codgen binaries
+Subject: [PATCH 07/26] Link libgcc & libstdc++ statically for codgen binaries
 
 Makes it easier for cross compilation
 ---
@@ -9,10 +9,10 @@ Makes it easier for cross compilation
  1 file changed, 13 insertions(+)
 
 diff --git a/sql/CMakeLists.txt b/sql/CMakeLists.txt
-index 10b1dbe8..3540aed5 100644
+index 2b8fc070..8f79314a 100644
 --- a/sql/CMakeLists.txt
 +++ b/sql/CMakeLists.txt
-@@ -69,6 +69,10 @@ MYSQL_ADD_EXECUTABLE(gen_lex_token
+@@ -67,6 +67,10 @@ MYSQL_ADD_EXECUTABLE(gen_lex_token
    DEPENDENCIES GenServerSource
    SKIP_INSTALL
    )
@@ -23,7 +23,7 @@ index 10b1dbe8..3540aed5 100644
  
  MY_CHECK_CXX_COMPILER_WARNING("-Wmissing-profile" HAS_MISSING_PROFILE)
  IF(HAS_MISSING_PROFILE)
-@@ -92,6 +96,11 @@ MYSQL_ADD_EXECUTABLE(gen_keyword_list
+@@ -90,6 +94,11 @@ MYSQL_ADD_EXECUTABLE(gen_keyword_list
    LINK_LIBRARIES ext::icu
    SKIP_INSTALL
    )
@@ -35,7 +35,7 @@ index 10b1dbe8..3540aed5 100644
  
  IF(WITH_LTO OR CMAKE_COMPILER_FLAG_WITH_LTO)
    TARGET_COMPILE_OPTIONS(gen_keyword_list PRIVATE "-fno-lto")
-@@ -1365,6 +1374,10 @@ SET_SOURCE_FILES_PROPERTIES(
+@@ -1372,6 +1381,10 @@ SET_SOURCE_FILES_PROPERTIES(
  
  # Gen_lex_hash
  MYSQL_ADD_EXECUTABLE(gen_lex_hash gen_lex_hash.cc SKIP_INSTALL)
