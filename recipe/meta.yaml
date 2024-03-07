@@ -37,7 +37,7 @@ source:
     - patches/0026-Explicitly-name-struct-field.patch
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
