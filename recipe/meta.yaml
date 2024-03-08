@@ -37,7 +37,7 @@ source:
     - patches/0026-Explicitly-name-struct-field.patch
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -103,6 +103,7 @@ outputs:
         - if not exist %LIBRARY_LIB%\plugin\mysql_no_login.dll exit 1  # [win]
     about:
       license_file: LICENSE
+      license: GPL-2.0-or-later
       summary: Database server and related tools
 
 
@@ -131,6 +132,7 @@ outputs:
         - mysqldump --version
     about:
       license_file: LICENSE
+      license: GPL-2.0-or-later
       summary: MySQL client applications and tools
 
 
@@ -168,6 +170,7 @@ outputs:
         - mysql_config --libs                                       # [unix]
     about:
       license_file: LICENSE
+      license: GPL-2.0-or-later
       summary: Development header files and libraries for MySQL database client applications
 
 
@@ -195,6 +198,7 @@ outputs:
         - if not exist %LIBRARY_BIN%\libmysql.dll exit 1        # [win]
     about:
       license_file: LICENSE
+      license: GPL-2.0-or-later
       summary: Shared libraries for MySQL database client applications
 
 
@@ -220,6 +224,7 @@ outputs:
         - if not exist %LIBRARY_PREFIX%\share\mysql\charsets\ascii.xml exit 1  # [win]
     about:
       license_file: LICENSE
+      license: GPL-2.0-or-later
       summary: Common files for server and client libraries
 
   - name: mysql-router
@@ -249,6 +254,7 @@ outputs:
         - test -f %LIBRARY_PREFIX%\bin\mysqlrouter_http.dll      # [win]
     about:
       license_file: LICENSE
+      license: GPL-2.0-or-later
       summary: MySQL Router binaries
 
 
@@ -288,6 +294,7 @@ outputs:
         - command -v mysql.server                  # [unix]
     about:
       license_file: LICENSE
+      license: GPL-2.0-or-later
       summary: Meta package for backwards compat + bonus content
 
 

@@ -24,7 +24,7 @@ About mysql-common
 
 
 
-Package license: 
+Package license: GPL-2.0-or-later
 
 Summary: Common files for server and client libraries
 
@@ -33,7 +33,7 @@ About mysql-router
 
 
 
-Package license: 
+Package license: GPL-2.0-or-later
 
 Summary: MySQL Router binaries
 
@@ -42,7 +42,7 @@ About mysql-client
 
 
 
-Package license: 
+Package license: GPL-2.0-or-later
 
 Summary: MySQL client applications and tools
 
@@ -51,7 +51,7 @@ About mysql-libs
 
 
 
-Package license: 
+Package license: GPL-2.0-or-later
 
 Summary: Shared libraries for MySQL database client applications
 
@@ -60,7 +60,7 @@ About mysql-server
 
 
 
-Package license: 
+Package license: GPL-2.0-or-later
 
 Summary: Database server and related tools
 
@@ -69,7 +69,7 @@ About mysql-devel
 
 
 
-Package license: 
+Package license: GPL-2.0-or-later
 
 Summary: Development header files and libraries for MySQL database client applications
 
@@ -78,7 +78,7 @@ About mysql
 
 
 
-Package license: 
+Package license: GPL-2.0-or-later
 
 Summary: Meta package for backwards compat + bonus content
 
