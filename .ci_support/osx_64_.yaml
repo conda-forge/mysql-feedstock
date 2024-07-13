@@ -1,5 +1,11 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.13'
+MACOSX_SDK_VERSION:
+- '10.13'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.13'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -9,7 +15,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '16'
 icu:
-- '73'
+- '75'
 libevent:
 - 2.1.12
 libprotobuf:
@@ -23,6 +29,6 @@ openssl:
 target_platform:
 - osx-64
 zlib:
-- '1.2'
+- '1'
 zstd:
 - '1.5'

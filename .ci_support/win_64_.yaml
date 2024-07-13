@@ -1,3 +1,5 @@
+c_stdlib:
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
@@ -5,7 +7,7 @@ channel_targets:
 cxx_compiler:
 - vs2019
 icu:
-- '73'
+- '75'
 libevent:
 - 2.1.12
 libprotobuf:
@@ -17,6 +19,6 @@ openssl:
 target_platform:
 - win-64
 zlib:
-- '1.2'
+- '1'
 zstd:
 - '1.5'
