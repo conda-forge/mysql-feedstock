@@ -20,8 +20,6 @@ docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 icu:
 - '75'
-libevent:
-- 2.1.12
 libprotobuf:
 - 4.25.3
 lz4_c:

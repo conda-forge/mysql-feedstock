@@ -1,0 +1,36 @@
+From 841c349a165691fb6518f0fce0d4b9c97641be04 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sat, 18 Dec 2021 16:57:08 -0500
+Subject: [PATCH 14/21] Revert "Bug #30981914: COMPILE WITH FASTER TLS MODEL"
+
+xref: https://github.com/conda-forge/mysql-feedstock/issues/60
+xref: https://bugs.launchpad.net/ubuntu/+source/mysql-8.0/+bug/1889851
+
+This reverts commit 735bd2a53834266c7256830c8d34672ea55fe17b.
+---
+ cmake/build_configurations/compiler_options.cmake | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/cmake/build_configurations/compiler_options.cmake b/cmake/build_configurations/compiler_options.cmake
+index e191e9f8..0e331ee4 100644
+--- a/cmake/build_configurations/compiler_options.cmake
++++ b/cmake/build_configurations/compiler_options.cmake
+@@ -65,15 +65,6 @@ IF(UNIX)
+     SET(COMMON_CXX_FLAGS             "-std=c++20 -fno-omit-frame-pointer")
+   ENDIF()
+ 
+-  # Faster TLS model
+-  # libprotobuf-lite.so.24.4: cannot allocate memory in static TLS block
+-  IF(MY_COMPILER_IS_GNU_OR_CLANG
+-      AND NOT LINUX_ARM
+-      AND NOT SOLARIS AND NOT LINUX_RHEL6 AND NOT LINUX_ALPINE)
+-    STRING_APPEND(COMMON_C_FLAGS     " -ftls-model=initial-exec")
+-    STRING_APPEND(COMMON_CXX_FLAGS   " -ftls-model=initial-exec")
+-  ENDIF()
+-
+   # Use STRING_PREPEND here, so command-line input can override our defaults.
+   STRING_PREPEND(CMAKE_C_FLAGS                  "${COMMON_C_FLAGS} ")
+   STRING_PREPEND(CMAKE_C_FLAGS_RELWITHDEBINFO   "${SECTIONS_FLAG} ")
+-- 
+2.45.2
+

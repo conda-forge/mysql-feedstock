@@ -29,7 +29,7 @@ if [[ "${target_platform}" == *"linux"* ]]; then
 #!/bin/bash
 ${_target_interpreter} --library-path ${_target_libdir} ${_target_rpcgen_bin} -Y ${_rpcgen_hack_dir}/bin \$@
 EOF
-    ln -s $(readlink -f ${CPP}) ${_rpcgen_hack_dir}/bin/cpp
+    ln -sf $(readlink -f ${CPP}) ${_rpcgen_hack_dir}/bin/cpp
     chmod +x ${_rpcgen_hack_dir}/bin/{rpcgen,cpp}
 
 elif [[ "${target_platform}" == *"osx"* ]]; then
@@ -40,7 +40,7 @@ elif [[ "${target_platform}" == *"osx"* ]]; then
 #!/bin/bash
 rpcgen -Y ${_rpcgen_hack_dir}/bin \$@
 EOF
-    ln -s $BUILD_PREFIX/bin/$(basename ${CC}) ${_rpcgen_hack_dir}/bin/cpp
+    ln -sf $BUILD_PREFIX/bin/$(basename ${CC}) ${_rpcgen_hack_dir}/bin/cpp
     chmod +x ${_rpcgen_hack_dir}/bin/{rpcgen,cpp}
 fi
 
@@ -61,15 +61,16 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
             -DWITH_ICU=system \
             -DWITH_ZSTD=system \
             -DWITH_PROTOBUF=system \
-            -DWITH_BOOST=$SRC_DIR/boost \
             -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
             -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
             -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
             -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
+            -DCMAKE_CXX_FLAGS="-isystem $BUILD_PREFIX/include" \
             -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib -L$BUILD_PREFIX/lib"
     cmake --build build.codegen -- \
         xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
-        json_schema_embedder gen_lex_token gen_keyword_list comp_client_err
+        json_schema_embedder gen_lex_token gen_keyword_list comp_client_err \
+        cno_huffman_generator
 
     # Put the codegen binaries in $PATH
     export PATH=$SRC_DIR/build.codegen/runtime_output_directory:$PATH
@@ -83,25 +84,18 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     # cannot run these executables (which target the host platform) on the
     # build platform, so we tell CMake about their results explicitly:
 
-    ## Tell the build system that stack grows in the opposite direction on osx-arm64
-    _xtra_cmake_args+=(-DSTACK_DIRECTION=-1)
-
-    ## $libevent = libevent version from CBC.yaml
-    _xtra_cmake_args+=(-DTEST_RUN_RESULT=1 -DTEST_RUN_RESULT__TRYRUN_OUTPUT=${libevent})
-
     ## 11.1 SDK does support CLOCK_GETTIME with CLOCK_MONOTONIC and CLOCK_REALTIME as arguments
-    _xtra_cmake_args+=(-DHAVE_CLOCK_GETTIME_EXITCODE=0 -DHAVE_CLOCK_GETTIME_EXITCODE__TRYRUN_OUTPUT="")
-    _xtra_cmake_args+=(-DHAVE_CLOCK_REALTIME_EXITCODE=0 -DHAVE_CLOCK_REALTIME_EXITCODE__TRYRUN_OUTPUT="")
+    _xtra_cmake_args+=(-DHAVE_CLOCK_GETTIME_EXITCODE=0)
+    _xtra_cmake_args+=(-DHAVE_CLOCK_REALTIME_EXITCODE=0)
 
     ## Tell the build system that our cross compiler version is sufficient for the build
-    _xtra_cmake_args+=(-DHAVE_SUPPORTED_CLANG_VERSION_EXITCODE=0 -DHAVE_SUPPORTED_CLANG_VERSION_EXITCODE__TRYRUN_OUTPUT="")
+    _xtra_cmake_args+=(-DHAVE_SUPPORTED_CLANG_VERSION_EXITCODE=0)
 
     ## Use the protoc from the build platform as it needs to be exec'd
-    _xtra_cmake_args+=(-DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
     _xtra_cmake_args+=(-DPROTOBUF_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc)
 
-    # Ensure we link the correct protobuf
-    _xtra_cmake_args+=(-DProtobuf_HOME=$PREFIX)
+    # Copied from the osx-64 build
+    _xtra_cmake_args+=(-DHAVE___BUILTIN_FFS=1)
 fi
 
 
@@ -114,15 +108,12 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DOPENSSL_ROOT_DIR=$PREFIX \
   -DPKG_CONFIG_EXECUTABLE=${BUILD_PREFIX}/bin/pkg-config \
   -DWITH_UNIT_TESTS=OFF \
-  -DWITH_SASL=system \
   -DWITH_ZLIB=system \
   -DWITH_ZSTD=system \
   -DWITH_LZ4=system \
   -DWITH_ICU=system \
   -DWITH_EDITLINE=system \
   -DWITH_PROTOBUF=system \
-  -DWITH_LIBEVENT=system \
-  -DWITH_BOOST=$SRC_DIR/boost \
   -DDEFAULT_CHARSET=utf8 \
   -DDEFAULT_COLLATION=utf8_general_ci \
   -DINSTALL_INCLUDEDIR=include/mysql \

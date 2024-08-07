@@ -16,8 +16,6 @@ cxx_compiler_version:
 - '16'
 icu:
 - '75'
-libevent:
-- 2.1.12
 libprotobuf:
 - 4.25.3
 lz4_c:
