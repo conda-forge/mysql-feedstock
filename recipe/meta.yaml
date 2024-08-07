@@ -1,43 +1,38 @@
-{% set version = "8.3.0" %}
+{% set version = "8.4.0" %}
 
 package:
   name: mysql-suite
   version: {{ version }}
 
 source:
-  url: https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-{{ version }}.tar.gz
-  sha256: f0a73556b8a417bc4dc6d2d78909080512beb891930cd93d0740d22207be285b
+  url: https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-{{ version }}.tar.gz
+  sha256: 47a5433fcdd639db836b99e1b5459c2b813cbdad23ff2b5dd4ad27f792ba918e
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
     - patches/0003-Allow-flags-other-than-macros-in-CPPFLAGS.patch
     - patches/0004-Add-include-header-for-std-string.patch
-    - patches/0005-Use-macports-legacy-support-for-features-10.9.patch
-    - patches/0006-Remove-forceful-injection-of-debug-info.patch
-    - patches/0007-Link-libgcc-libstdc-statically-for-codgen-binaries.patch
-    - patches/0008-Make-LIBEVENT_PTHREADS-conditional-on-CMAKE_USE_PTHR.patch
-    - patches/0009-Add-dependency-on-comp_err-iff-that-target-exists.patch
-    - patches/0010-Add-constructor-s-for-ut-Location.patch
-    - patches/0011-Reduce-number-of-symbols-being-exported-from-mysqld..patch
-    - patches/0012-Ensure-sql_main-uses-protobuf-shared-library-correct.patch
-    - patches/0013-Include-missing-header-for-std-isdigit.patch
-    - patches/0014-Add-bitset-typecasts-to-make-MSVC-v19.20-happy.patch
-    - patches/0015-Print-number-of-lines-in-the-file-generated-by-creat.patch
-    - patches/0016-Check-for-ARMv8-crc32-intrinsic-support-on-osx-arm64.patch
-    - patches/0017-Revert-Bug-30981914-COMPILE-WITH-FASTER-TLS-MODEL.patch
-    - patches/0018-Use-config-mode-search-for-protobuf-first.patch
-    - patches/0019-Zlib-module-use-macro-instead-of-function.patch
-    - patches/0020-Make-get_relative_path-binary-patching-friendly.patch
+    - patches/0005-Remove-forceful-injection-of-debug-info.patch
+    - patches/0006-Link-libgcc-libstdc-statically-for-codgen-binaries.patch
+    - patches/0007-Add-dependency-on-comp_err-iff-that-target-exists.patch
+    - patches/0008-Add-constructor-s-for-ut-Location.patch
+    - patches/0009-Reduce-number-of-symbols-being-exported-from-mysqld..patch
+    - patches/0010-Ensure-sql_main-uses-protobuf-shared-library-correct.patch
+    - patches/0011-Include-missing-header-for-std-isdigit.patch
+    - patches/0012-Print-number-of-lines-in-the-file-generated-by-creat.patch
+    - patches/0013-Check-for-ARMv8-crc32-intrinsic-support-on-osx-arm64.patch
+    - patches/0014-Revert-Bug-30981914-COMPILE-WITH-FASTER-TLS-MODEL.patch
+    - patches/0015-Zlib-module-use-macro-instead-of-function.patch
+    - patches/0016-Make-get_relative_path-binary-patching-friendly.patch
     ## Avoid crash on ppc64le, aarch64
-    - patches/0021-Revert-BUG-34849343-Aligned_atomic-not-working-as-in.patch
-    - patches/0022-Make-libfido-checks-conditional.patch
-    - patches/0023-Use-fully-fledged-FindProtobuf.patch
-    - patches/0024-Link-to-absl_spinlock_wait.patch
-    - patches/0025-Don-t-include-headers-from-Homebrew.patch
-    - patches/0026-Explicitly-name-struct-field.patch
+    - patches/0017-Revert-BUG-34849343-Aligned_atomic-not-working-as-in.patch
+    - patches/0018-Make-libfido-checks-conditional.patch
+    - patches/0019-Don-t-include-headers-from-Homebrew.patch
+    - patches/0020-Use-config-mode-search-for-protobuf-first.patch
+    - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
 
 build:
-  number: 5
+  number: 0
 
 requirements:
   build:
@@ -49,17 +44,13 @@ requirements:
     - pkg-config
     - icu                      # [target_platform == 'osx-arm64']
     - libprotobuf              # [target_platform == 'osx-arm64']
-    - macports-legacy-support  # [target_platform == 'osx-arm64']
     - openssl                  # [target_platform == 'osx-arm64']
     - zstd                     # [target_platform == 'osx-arm64']
   host:
-    - cyrus-sasl               # [unix]
     - icu
     - libedit                  # [unix]
-    - libevent
     - libprotobuf
     - lz4-c
-    - macports-legacy-support  # [osx]
     - openldap                 # [unix]
     - openssl
     - zlib
@@ -85,12 +76,9 @@ outputs:
         - cmake
         - ninja
       host:
-        - cyrus-sasl               # [unix]
         - icu
-        - libevent
         - libprotobuf
         - lz4-c
-        - macports-legacy-support  # [osx]
         - openldap                 # [unix]
         - openssl
         - zlib
@@ -122,7 +110,6 @@ outputs:
         - ninja
       host:
         - libedit  # [unix]
-        - lz4-c
         - openssl
         - zlib
         - zstd
@@ -248,7 +235,6 @@ outputs:
         - cmake
         - ninja
       host:
-        - libevent
         - libprotobuf
         - lz4-c
         - openssl

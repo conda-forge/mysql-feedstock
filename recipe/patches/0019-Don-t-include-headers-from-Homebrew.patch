@@ -1,0 +1,169 @@
+From b5e920c53d2216e4707114b2e4d23937a6b2fbfb Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 21 Feb 2024 16:30:32 +0100
+Subject: [PATCH 19/21] Don't include headers from Homebrew
+
+---
+ CMakeLists.txt    | 34 ----------------------------------
+ cmake/bison.cmake | 22 ----------------------
+ cmake/fido2.cmake |  2 --
+ cmake/icu.cmake   |  6 ------
+ cmake/ssl.cmake   | 17 -----------------
+ 5 files changed, 81 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4f3ff71f..74f091ad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1684,15 +1684,6 @@ SET(SYSTEM_LIBRARIES
+   ZLIB      # Xcode
+   )
+ 
+-IF(APPLE)
+-  # Homebrew default location is
+-  IF(APPLE_ARM)
+-    SET(HOMEBREW_HOME "/opt/homebrew/opt")
+-  ELSE()
+-    SET(HOMEBREW_HOME "/usr/local/opt")
+-  ENDIF()
+-ENDIF()
+-
+ SET(WITH_SYSTEM_LIBS_DEFAULT OFF)
+ OPTION(WITH_SYSTEM_LIBS
+   "Use -DWITH_XXX=system for ${SYSTEM_LIBRARIES}" ${WITH_SYSTEM_LIBS_DEFAULT})
+@@ -1939,31 +1930,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
+   MYSQL_CHECK_FIDO_DLLS()
+ ENDIF()
+ 
+-IF(APPLE)
+-  GET_FILENAME_COMPONENT(HOMEBREW_BASE ${HOMEBREW_HOME} DIRECTORY)
+-  IF(EXISTS ${HOMEBREW_BASE}/include/boost)
+-    FOREACH(SYSTEM_LIB ICU LZ4 PROTOBUF ZSTD FIDO)
+-      IF(WITH_${SYSTEM_LIB} STREQUAL "system")
+-        MESSAGE(FATAL_ERROR
+-          "WITH_${SYSTEM_LIB}=system is not compatible with Homebrew boost\n"
+-          "MySQL depends on ${BOOST_PACKAGE_NAME} with a set of patches.\n"
+-          "Including headers from ${HOMEBREW_BASE}/include "
+-          "will break the build.\n"
+-          "Please use WITH_${SYSTEM_LIB}=bundled\n"
+-          "or do 'brew uninstall boost' or 'brew unlink boost'"
+-          )
+-      ENDIF()
+-    ENDFOREACH()
+-  ENDIF()
+-  # Ensure that we look in /usr/local/include or /opt/homebrew/include
+-  FOREACH(SYSTEM_LIB ICU LZ4 PROTOBUF ZSTD FIDO)
+-    IF(WITH_${SYSTEM_LIB} STREQUAL "system")
+-      INCLUDE_DIRECTORIES(SYSTEM ${HOMEBREW_BASE}/include)
+-      BREAK()
+-    ENDIF()
+-  ENDFOREACH()
+-ENDIF()
+-
+ IF(WITH_AUTHENTICATION_WEBAUTHN OR
+   WITH_AUTHENTICATION_CLIENT_PLUGINS)
+   IF(WITH_FIDO STREQUAL "system" AND
+diff --git a/cmake/bison.cmake b/cmake/bison.cmake
+index 854a98f3..e4c1e3e4 100644
+--- a/cmake/bison.cmake
++++ b/cmake/bison.cmake
+@@ -56,28 +56,6 @@ IF(APPLE AND NOT DEFINED BISON_EXECUTABLE)
+   ENDIF()
+ ENDIF()
+ 
+-# Look for HOMEBREW bison before the standard OS version.
+-# Note that it is *not* symlinked like most other executables.
+-# /usr/local/opt/bison/bin/bison
+-# /usr/local/opt/bison -> ../Cellar/bison/3.8.2
+-# /opt/homebrew/opt/bison
+-IF(APPLE AND NOT DEFINED BISON_EXECUTABLE)
+-  FIND_PROGRAM(BREW_EXECUTABLE brew)
+-  IF(BREW_EXECUTABLE)
+-    EXECUTE_PROCESS(COMMAND ${BREW_EXECUTABLE} --prefix bison
+-      OUTPUT_VARIABLE BREW_BISON_PREFIX_OUTPUT
+-      RESULT_VARIABLE BREW_BISON_PREFIX_RESULT
+-      OUTPUT_STRIP_TRAILING_WHITESPACE
+-      )
+-    IF(BREW_BISON_PREFIX_RESULT EQUAL 0)
+-      SET(BISON_HOMEBREW_PATH "${BREW_BISON_PREFIX_OUTPUT}/bin")
+-    ENDIF()
+-  ENDIF()
+-  FIND_PROGRAM(BISON_EXECUTABLE bison
+-    NO_DEFAULT_PATH
+-    PATHS "${BISON_HOMEBREW_PATH}" "${HOMEBREW_HOME}/bison/bin")
+-ENDIF()
+-
+ # Look for winflexbison3, see e.g.
+ # https://github.com/lexxmark/winflexbison/releases
+ # or
+diff --git a/cmake/fido2.cmake b/cmake/fido2.cmake
+index c96a57a7..4db7338f 100644
+--- a/cmake/fido2.cmake
++++ b/cmake/fido2.cmake
+@@ -122,8 +122,6 @@ ENDFUNCTION(WARN_MISSING_SYSTEM_FIDO)
+ FUNCTION(FIND_SYSTEM_FIDO)
+   IF(APPLE)
+     SET(CMAKE_REQUIRED_INCLUDES
+-      "${HOMEBREW_HOME}/include"
+-      "${HOMEBREW_HOME}/libfido2/include"
+       "${OPENSSL_INCLUDE_DIR}"
+       )
+   ENDIF()
+diff --git a/cmake/icu.cmake b/cmake/icu.cmake
+index 66c4355a..c5cd4df3 100644
+--- a/cmake/icu.cmake
++++ b/cmake/icu.cmake
+@@ -73,12 +73,6 @@ FUNCTION(FIND_ICU install_root)
+   IF("${install_root}" STREQUAL "system")
+     SET(EXTRA_FIND_LIB_ARGS)
+     SET(EXTRA_FIND_INC_ARGS)
+-    IF(APPLE)
+-      SET(EXTRA_FIND_LIB_ARGS HINTS "${HOMEBREW_HOME}/icu4c"
+-        PATH_SUFFIXES "lib")
+-      SET(EXTRA_FIND_INC_ARGS HINTS "${HOMEBREW_HOME}/icu4c"
+-        PATH_SUFFIXES "include")
+-    ENDIF()
+   ELSE()
+     SET(EXTRA_FIND_LIB_ARGS HINTS "${install_root}"
+       PATH_SUFFIXES "lib" "lib64" NO_DEFAULT_PATH)
+diff --git a/cmake/ssl.cmake b/cmake/ssl.cmake
+index 932659d0..dd275008 100644
+--- a/cmake/ssl.cmake
++++ b/cmake/ssl.cmake
+@@ -350,21 +350,9 @@ ENDFUNCTION(FIND_ALTERNATIVE_SYSTEM_SSL)
+ # For all non-windows platforms, use the standard FIND_PACKAGE utility
+ # to locate OpenSSL.
+ FUNCTION(FIND_SYSTEM_OPENSSL)
+-  # For APPLE we set the hint ${HOMEBREW_HOME}/openssl
+-  IF(APPLE AND NOT OPENSSL_ROOT_DIR)
+-    SET(OPENSSL_ROOT_DIR "${HOMEBREW_HOME}/openssl")
+-  ENDIF()
+-
+   # Will set OPENSSL_FOUND, OPENSSL_INCLUDE_DIR and others.
+   FIND_PACKAGE(OpenSSL)
+ 
+-  # Re-try, in case the symlink is not found.
+-  IF(NOT OPENSSL_FOUND AND APPLE AND
+-      OPENSSL_ROOT_DIR STREQUAL "${HOMEBREW_HOME}/openssl")
+-    SET(OPENSSL_ROOT_DIR "${HOMEBREW_HOME}/openssl@1.1")
+-    FIND_PACKAGE(OpenSSL)
+-  ENDIF()
+-
+   IF(NOT OPENSSL_FOUND)
+     RESET_SSL_VARIABLES()
+     FATAL_SSL_NOT_FOUND_ERROR("Could not find system OpenSSL")
+@@ -372,11 +360,6 @@ FUNCTION(FIND_SYSTEM_OPENSSL)
+ 
+   FIND_OPENSSL_VERSION()
+ 
+-  # Homebrew "system" OpenSSL needs:
+-  IF(NOT OPENSSL_INCLUDE_DIR STREQUAL "/usr/include")
+-    INCLUDE_DIRECTORIES(BEFORE SYSTEM ${OPENSSL_INCLUDE_DIR})
+-  ENDIF()
+-
+ ENDFUNCTION(FIND_SYSTEM_OPENSSL)
+ 
+ 
+-- 
+2.45.2
+

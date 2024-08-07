@@ -1,0 +1,31 @@
+From 3cf16291c7ec5cc0d3864e9a9fb200060ebb8431 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sun, 18 Jun 2023 23:44:06 +0100
+Subject: [PATCH 16/21] Make get_relative_path() binary patching friendly
+
+The call to strlen() can be optimized away by the compiler
+---
+ sql/mysqld.cc | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/sql/mysqld.cc b/sql/mysqld.cc
+index 094863f3..9f5bb2c0 100644
+--- a/sql/mysqld.cc
++++ b/sql/mysqld.cc
+@@ -12785,9 +12785,12 @@ static void set_server_version(void) {
+ }
+ 
+ static const char *get_relative_path(const char *path) {
++  const char *dmh = DEFAULT_MYSQL_HOME;
+   if (test_if_hard_path(path) && is_prefix(path, DEFAULT_MYSQL_HOME) &&
+       strcmp(DEFAULT_MYSQL_HOME, FN_ROOTDIR)) {
+-    path += strlen(DEFAULT_MYSQL_HOME);
++    while (*dmh) {
++        if (*path++ == *dmh++) continue;
++    }
+     while (is_directory_separator(*path)) path++;
+   }
+   return path;
+-- 
+2.45.2
+
