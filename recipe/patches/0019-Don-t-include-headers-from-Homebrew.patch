@@ -1,21 +1,21 @@
-From b5e920c53d2216e4707114b2e4d23937a6b2fbfb Mon Sep 17 00:00:00 2001
+From 46eabe57d31b12368198a8b508f05d7f165043cc Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 21 Feb 2024 16:30:32 +0100
 Subject: [PATCH 19/21] Don't include headers from Homebrew
 
 ---
- CMakeLists.txt    | 34 ----------------------------------
+ CMakeLists.txt    | 36 ------------------------------------
  cmake/bison.cmake | 22 ----------------------
  cmake/fido2.cmake |  2 --
  cmake/icu.cmake   |  6 ------
  cmake/ssl.cmake   | 17 -----------------
- 5 files changed, 81 deletions(-)
+ 5 files changed, 83 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4f3ff71f..74f091ad 100644
+index 30a44a102d0..148c8cc00b9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1684,15 +1684,6 @@ SET(SYSTEM_LIBRARIES
+@@ -1691,17 +1691,6 @@ SET(SYSTEM_LIBRARIES
    ZLIB      # Xcode
    )
  
@@ -26,12 +26,14 @@ index 4f3ff71f..74f091ad 100644
 -  ELSE()
 -    SET(HOMEBREW_HOME "/usr/local/opt")
 -  ENDIF()
+-  # The Xcode version is 1.2.12 which is too old
+-  LIST(REMOVE_ITEM SYSTEM_LIBRARIES ZLIB)
 -ENDIF()
 -
  SET(WITH_SYSTEM_LIBS_DEFAULT OFF)
  OPTION(WITH_SYSTEM_LIBS
    "Use -DWITH_XXX=system for ${SYSTEM_LIBRARIES}" ${WITH_SYSTEM_LIBS_DEFAULT})
-@@ -1939,31 +1930,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
+@@ -1948,31 +1937,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
    MYSQL_CHECK_FIDO_DLLS()
  ENDIF()
  
@@ -64,7 +66,7 @@ index 4f3ff71f..74f091ad 100644
    WITH_AUTHENTICATION_CLIENT_PLUGINS)
    IF(WITH_FIDO STREQUAL "system" AND
 diff --git a/cmake/bison.cmake b/cmake/bison.cmake
-index 854a98f3..e4c1e3e4 100644
+index 854a98f36f5..e4c1e3e47a0 100644
 --- a/cmake/bison.cmake
 +++ b/cmake/bison.cmake
 @@ -56,28 +56,6 @@ IF(APPLE AND NOT DEFINED BISON_EXECUTABLE)
@@ -97,7 +99,7 @@ index 854a98f3..e4c1e3e4 100644
  # https://github.com/lexxmark/winflexbison/releases
  # or
 diff --git a/cmake/fido2.cmake b/cmake/fido2.cmake
-index c96a57a7..4db7338f 100644
+index c96a57a76ae..4db7338f523 100644
 --- a/cmake/fido2.cmake
 +++ b/cmake/fido2.cmake
 @@ -122,8 +122,6 @@ ENDFUNCTION(WARN_MISSING_SYSTEM_FIDO)
@@ -110,7 +112,7 @@ index c96a57a7..4db7338f 100644
        )
    ENDIF()
 diff --git a/cmake/icu.cmake b/cmake/icu.cmake
-index 66c4355a..c5cd4df3 100644
+index 66c4355ae93..c5cd4df338e 100644
 --- a/cmake/icu.cmake
 +++ b/cmake/icu.cmake
 @@ -73,12 +73,6 @@ FUNCTION(FIND_ICU install_root)
@@ -127,7 +129,7 @@ index 66c4355a..c5cd4df3 100644
      SET(EXTRA_FIND_LIB_ARGS HINTS "${install_root}"
        PATH_SUFFIXES "lib" "lib64" NO_DEFAULT_PATH)
 diff --git a/cmake/ssl.cmake b/cmake/ssl.cmake
-index 932659d0..dd275008 100644
+index 932659d030f..dd275008581 100644
 --- a/cmake/ssl.cmake
 +++ b/cmake/ssl.cmake
 @@ -350,21 +350,9 @@ ENDFUNCTION(FIND_ALTERNATIVE_SYSTEM_SSL)
