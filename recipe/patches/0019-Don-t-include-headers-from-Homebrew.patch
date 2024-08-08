@@ -1,4 +1,4 @@
-From 46eabe57d31b12368198a8b508f05d7f165043cc Mon Sep 17 00:00:00 2001
+From 96fb470bd56d86b7f70523158d976da9c7b363c5 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 21 Feb 2024 16:30:32 +0100
 Subject: [PATCH 19/21] Don't include headers from Homebrew
@@ -12,7 +12,7 @@ Subject: [PATCH 19/21] Don't include headers from Homebrew
  5 files changed, 83 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 30a44a102d0..148c8cc00b9 100644
+index 5f2d137d7a1..87f4c93af5e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1691,17 +1691,6 @@ SET(SYSTEM_LIBRARIES
@@ -33,7 +33,7 @@ index 30a44a102d0..148c8cc00b9 100644
  SET(WITH_SYSTEM_LIBS_DEFAULT OFF)
  OPTION(WITH_SYSTEM_LIBS
    "Use -DWITH_XXX=system for ${SYSTEM_LIBRARIES}" ${WITH_SYSTEM_LIBS_DEFAULT})
-@@ -1948,31 +1937,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
+@@ -1952,31 +1941,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
    MYSQL_CHECK_FIDO_DLLS()
  ENDIF()
  
