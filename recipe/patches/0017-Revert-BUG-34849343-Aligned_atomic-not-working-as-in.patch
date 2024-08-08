@@ -1,4 +1,4 @@
-From 97cdaa787cf15227551e84919b9b9abca36c0c34 Mon Sep 17 00:00:00 2001
+From 5a68044b3ae48bc01f388204a6b1c1f15b659e48 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 18 Jun 2023 15:40:42 +0100
 Subject: [PATCH 17/21] Revert "BUG#34849343 Aligned_atomic not working as
@@ -11,7 +11,7 @@ This reverts commit be8348a7c3e8510b998a063065b626a459631b32.
  2 files changed, 18 insertions(+), 54 deletions(-)
 
 diff --git a/mysys/CMakeLists.txt b/mysys/CMakeLists.txt
-index 40434ad7..da3ec275 100644
+index abc496095a4..adac1ef9e9f 100644
 --- a/mysys/CMakeLists.txt
 +++ b/mysys/CMakeLists.txt
 @@ -56,7 +56,6 @@ SET(MYSYS_SOURCES
@@ -23,7 +23,7 @@ index 40434ad7..da3ec275 100644
    my_bitmap.cc
    my_chmod.cc
 diff --git a/sql/memory/aligned_atomic.h b/sql/memory/aligned_atomic.h
-index 17372edd..ab1666ca 100644
+index 17372edd969..ab1666cafe6 100644
 --- a/sql/memory/aligned_atomic.h
 +++ b/sql/memory/aligned_atomic.h
 @@ -39,9 +39,8 @@

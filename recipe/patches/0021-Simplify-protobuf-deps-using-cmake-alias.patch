@@ -1,4 +1,4 @@
-From 0501fddd7263842f6c3cacc0637883f5ae9d4b11 Mon Sep 17 00:00:00 2001
+From 5eede58c8dd0a68887b33df27b99050ee1730b5f Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 7 Aug 2024 12:25:14 +0100
 Subject: [PATCH 21/21] Simplify protobuf deps using cmake alias
@@ -8,7 +8,7 @@ Subject: [PATCH 21/21] Simplify protobuf deps using cmake alias
  1 file changed, 3 insertions(+), 46 deletions(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index e4d0bf2a..8d5e85b6 100644
+index e4d0bf2a551..8d5e85b6deb 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
 @@ -163,55 +163,12 @@ MACRO(MYSQL_CHECK_PROTOBUF)

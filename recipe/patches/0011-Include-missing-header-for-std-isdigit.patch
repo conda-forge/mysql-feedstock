@@ -1,4 +1,4 @@
-From a914b15d045ff0ba3703919931aec40f117f8f87 Mon Sep 17 00:00:00 2001
+From feb1209f7e3965475ce8e174dab74a3f3611da3d Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 21 Jul 2021 00:55:54 +0530
 Subject: [PATCH 11/21] Include missing header for std::isdigit()
@@ -13,7 +13,7 @@ This patch resolves the following error with the MSVC compiler:
  1 file changed, 2 insertions(+)
 
 diff --git a/sql/server_component/clone_protocol_service.cc b/sql/server_component/clone_protocol_service.cc
-index f813e842..2e4b32f5 100644
+index f813e84206a..2e4b32f59c3 100644
 --- a/sql/server_component/clone_protocol_service.cc
 +++ b/sql/server_component/clone_protocol_service.cc
 @@ -42,6 +42,8 @@

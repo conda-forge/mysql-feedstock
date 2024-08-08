@@ -1,4 +1,4 @@
-From 841c349a165691fb6518f0fce0d4b9c97641be04 Mon Sep 17 00:00:00 2001
+From 6e83739d350c756bbd16cd033f2c612aab2e9799 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 18 Dec 2021 16:57:08 -0500
 Subject: [PATCH 14/21] Revert "Bug #30981914: COMPILE WITH FASTER TLS MODEL"
@@ -12,7 +12,7 @@ This reverts commit 735bd2a53834266c7256830c8d34672ea55fe17b.
  1 file changed, 9 deletions(-)
 
 diff --git a/cmake/build_configurations/compiler_options.cmake b/cmake/build_configurations/compiler_options.cmake
-index e191e9f8..0e331ee4 100644
+index e191e9f806c..0e331ee46f3 100644
 --- a/cmake/build_configurations/compiler_options.cmake
 +++ b/cmake/build_configurations/compiler_options.cmake
 @@ -65,15 +65,6 @@ IF(UNIX)
