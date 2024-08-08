@@ -1,4 +1,4 @@
-{% set version = "8.4.0" %}
+{% set version = "8.4.2" %}
 
 package:
   name: mysql-suite
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-{{ version }}.tar.gz
-  sha256: 47a5433fcdd639db836b99e1b5459c2b813cbdad23ff2b5dd4ad27f792ba918e
+  sha256: 5657a78dc86bf0bf2227e0b05f8de5a2c447a816a112ffa26fa70083bcbe9814
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
