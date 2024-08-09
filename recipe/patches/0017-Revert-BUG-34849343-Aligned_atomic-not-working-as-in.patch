@@ -1,4 +1,4 @@
-From 5a68044b3ae48bc01f388204a6b1c1f15b659e48 Mon Sep 17 00:00:00 2001
+From d6c23bef7007ed652124668589d260ed1d971fb4 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 18 Jun 2023 15:40:42 +0100
 Subject: [PATCH 17/21] Revert "BUG#34849343 Aligned_atomic not working as
