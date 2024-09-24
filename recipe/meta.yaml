@@ -32,7 +32,7 @@ source:
     - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
