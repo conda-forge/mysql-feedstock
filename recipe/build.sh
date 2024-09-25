@@ -114,6 +114,7 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DWITH_ICU=system \
   -DWITH_EDITLINE=system \
   -DWITH_PROTOBUF=system \
+  -DPROTOBUF_INCLUDE_DIR=${PREFIX}/include \
   -DDEFAULT_CHARSET=utf8 \
   -DDEFAULT_COLLATION=utf8_general_ci \
   -DINSTALL_INCLUDEDIR=include/mysql \

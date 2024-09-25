@@ -30,6 +30,7 @@ source:
     - patches/0019-Don-t-include-headers-from-Homebrew.patch
     - patches/0020-Use-config-mode-search-for-protobuf-first.patch
     - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
+    - patches/0022-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
 
 build:
   number: 1

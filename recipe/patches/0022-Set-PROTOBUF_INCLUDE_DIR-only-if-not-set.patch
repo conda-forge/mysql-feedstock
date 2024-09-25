@@ -1,0 +1,24 @@
+From 6dc747eb63121327a89318d772565a69af03b45f Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 25 Sep 2024 10:29:38 +0200
+Subject: [PATCH] Set PROTOBUF_INCLUDE_DIR only if not set
+
+---
+ cmake/protobuf.cmake | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
+index d450a0c8..a56b2aeb 100644
+--- a/cmake/protobuf.cmake
++++ b/cmake/protobuf.cmake
+@@ -134,7 +134,9 @@ MACRO(MYSQL_CHECK_PROTOBUF)
+         IF(NOT PROTOBUF_PROTOC_EXECUTABLE)
+             SET(PROTOBUF_PROTOC_EXECUTABLE protobuf::protoc)
+         ENDIF()
+-        GET_TARGET_PROPERTY(PROTOBUF_INCLUDE_DIR protobuf::libprotoc INTERFACE_INCLUDE_DIRECTORIES)
++        IF(NOT PROTOBUF_INCLUDE_DIR)
++            GET_TARGET_PROPERTY(PROTOBUF_INCLUDE_DIR protobuf::libprotoc INTERFACE_INCLUDE_DIRECTORIES)
++        ENDIF()
+         SET(PROTOBUF_FOUND 1)
+     ELSE()
+         FIND_PACKAGE(Protobuf)
