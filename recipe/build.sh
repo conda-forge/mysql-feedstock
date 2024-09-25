@@ -64,6 +64,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
             -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
             -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
             -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
+            -DPROTOBUF_INCLUDE_DIR=${BUILD_PREFIX}/include \
             -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
             -DCMAKE_CXX_FLAGS="-isystem $BUILD_PREFIX/include" \
             -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib -L$BUILD_PREFIX/lib"

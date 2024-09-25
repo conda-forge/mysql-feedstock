@@ -28,6 +28,7 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DLIBEVENT_OPENSSL=%libevent_openssl_lib% ^
   -DWITH_ICU=system ^
   -DWITH_PROTOBUF=system ^
+  -DPROTOBUF_INCLUDE_DIR=%LIBRARY_PREFIX%\include ^
   -DDEFAULT_CHARSET=utf8 ^
   -DDEFAULT_COLLATION=utf8_general_ci ^
   -DINSTALL_INCLUDEDIR=include/mysql ^
