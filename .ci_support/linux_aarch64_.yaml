@@ -20,6 +20,8 @@ docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 icu:
 - '75'
+libabseil:
+- '20240722'
 libprotobuf:
 - 5.27.5
 lz4_c:

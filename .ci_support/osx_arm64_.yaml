@@ -16,6 +16,8 @@ cxx_compiler_version:
 - '17'
 icu:
 - '75'
+libabseil:
+- '20240722'
 libprotobuf:
 - 5.27.5
 lz4_c:
