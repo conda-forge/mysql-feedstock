@@ -49,6 +49,7 @@ requirements:
     - zstd                     # [target_platform == 'osx-arm64']
   host:
     - icu
+    - libabseil
     - libedit                  # [unix]
     - libprotobuf
     - lz4-c
@@ -78,6 +79,7 @@ outputs:
         - ninja
       host:
         - icu
+        - libabseil
         - libprotobuf
         - lz4-c
         - openldap                 # [unix]
