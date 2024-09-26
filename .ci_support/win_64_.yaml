@@ -8,8 +8,10 @@ cxx_compiler:
 - vs2019
 icu:
 - '75'
+libabseil:
+- '20240722'
 libprotobuf:
-- 4.25.3
+- 5.27.5
 lz4_c:
 - 1.9.3
 openssl:
