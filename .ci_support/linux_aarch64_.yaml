@@ -23,7 +23,7 @@ icu:
 libabseil:
 - '20240722'
 libprotobuf:
-- 5.27.5
+- 5.28.2
 lz4_c:
 - 1.9.3
 openssl:
