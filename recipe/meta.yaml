@@ -46,6 +46,7 @@ requirements:
     - icu                      # [target_platform == 'osx-arm64']
     - libprotobuf              # [target_platform == 'osx-arm64']
     - openssl                  # [target_platform == 'osx-arm64']
+    - zlib                     # [target_platform == 'osx-arm64']
     - zstd                     # [target_platform == 'osx-arm64']
   host:
     - icu
