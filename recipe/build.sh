@@ -59,6 +59,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
         -u CXXFLAGS -u CPPFLAGS -u CFLAGS -u LDFLAGS \
         cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
             -DWITH_ICU=system \
+            -DWITH_ZLIB=system \
             -DWITH_ZSTD=system \
             -DWITH_PROTOBUF=system \
             -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
