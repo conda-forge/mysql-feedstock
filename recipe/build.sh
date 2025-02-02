@@ -116,6 +116,9 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DWITH_ICU=system \
   -DWITH_EDITLINE=system \
   -DWITH_PROTOBUF=system \
+  -DWITH_KERBEROS=none \
+  -DWITH_FIDO=none \
+  -DWITH_SASL=none \
   -DPROTOBUF_INCLUDE_DIR=${PREFIX}/include \
   -DDEFAULT_CHARSET=utf8 \
   -DDEFAULT_COLLATION=utf8_general_ci \
@@ -127,6 +130,7 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DINSTALL_MYSQLSHAREDIR=share/mysql \
   -DINSTALL_SUPPORTFILESDIR=mysql/support-files \
+  -DWITH_AUTHENTICATION_CLIENT_PLUGINS=ON \
   "${_xtra_cmake_args[@]}"
 
 if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then

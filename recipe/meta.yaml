@@ -31,9 +31,10 @@ source:
     - patches/0020-Use-config-mode-search-for-protobuf-first.patch
     - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
     - patches/0022-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
+    - patches/0023-Allow-setting-WITH_SASL-none.patch
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:
@@ -124,6 +125,8 @@ outputs:
       commands:
         - mysql --version
         - mysqldump --version
+        - test -f ${PREFIX}/lib/plugin/mysql_native_password.so  # [unix]
+        - if not exist %LIBRARY_LIB%\plugin\mysql_native_password.dll exit 1  # [win]
     about:
       license_file: LICENSE
       license: GPL-2.0-or-later

@@ -28,6 +28,9 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DLIBEVENT_OPENSSL=%libevent_openssl_lib% ^
   -DWITH_ICU=system ^
   -DWITH_PROTOBUF=system ^
+  -DWITH_KERBEROS=none ^
+  -DWITH_FIDO=none ^
+  -DWITH_SASL=none ^
   -DPROTOBUF_INCLUDE_DIR=%LIBRARY_PREFIX%\include ^
   -DDEFAULT_CHARSET=utf8 ^
   -DDEFAULT_COLLATION=utf8_general_ci ^
@@ -38,7 +41,8 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DINSTALL_INFODIR=share/info ^
   -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
   -DINSTALL_MYSQLSHAREDIR=share/mysql ^
-  -DINSTALL_SUPPORTFILESDIR=mysql/support-files
+  -DINSTALL_SUPPORTFILESDIR=mysql/support-files ^
+  -DWITH_AUTHENTICATION_CLIENT_PLUGINS=ON
 if %ERRORLEVEL% neq 0 exit 1
 
 cmake --build build --config Release
