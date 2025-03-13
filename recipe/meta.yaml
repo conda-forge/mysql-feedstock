@@ -33,7 +33,7 @@ source:
     - patches/0022-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:
