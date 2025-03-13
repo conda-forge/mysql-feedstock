@@ -17,9 +17,9 @@ docker_image:
 icu:
 - '75'
 libabseil:
-- '20240722'
+- '20250127'
 libprotobuf:
-- 5.28.3
+- 5.29.3
 lz4_c:
 - '1.10'
 openssl:
