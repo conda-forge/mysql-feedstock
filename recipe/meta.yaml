@@ -34,7 +34,7 @@ source:
     - patches/0023-Allow-setting-WITH_SASL-none.patch
 
 build:
-  number: 5
+  number: 6
 
 requirements:
   build:
