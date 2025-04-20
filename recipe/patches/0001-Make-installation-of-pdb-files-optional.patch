@@ -1,4 +1,4 @@
-From 1626cec99f9bf4800e61a96a48d82d4f59347a5d Mon Sep 17 00:00:00 2001
+From cb436cd4cca65395af20f47df5958f875f7714d5 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 21 Jun 2020 13:06:08 -0400
 Subject: [PATCH 01/23] Make installation of pdb files optional
@@ -9,7 +9,7 @@ Subject: [PATCH 01/23] Make installation of pdb files optional
  2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/install_macros.cmake b/cmake/install_macros.cmake
-index b0227c96bb7..ec94242f8cf 100644
+index 7fb74c7406d..b53082377ee 100644
 --- a/cmake/install_macros.cmake
 +++ b/cmake/install_macros.cmake
 @@ -47,7 +47,7 @@ MACRO(INSTALL_DEBUG_SYMBOLS target)
@@ -22,7 +22,7 @@ index b0227c96bb7..ec94242f8cf 100644
    ENDIF()
  ENDMACRO()
 diff --git a/router/cmake/Plugin.cmake b/router/cmake/Plugin.cmake
-index 80776ddcc6d..f0ea1a63e07 100644
+index ac6b6b2a4c2..30bb735426c 100644
 --- a/router/cmake/Plugin.cmake
 +++ b/router/cmake/Plugin.cmake
 @@ -161,7 +161,8 @@ FUNCTION(add_harness_plugin NAME)
@@ -36,5 +36,5 @@ index 80776ddcc6d..f0ea1a63e07 100644
        INSTALL(TARGETS ${NAME}
          LIBRARY DESTINATION ${_option_DESTINATION}
 -- 
-2.48.1
+2.49.0
 
