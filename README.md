@@ -19,23 +19,14 @@ is intended for mission-critical, heavy-load production systems as well
 as for embedding into mass-deployed software.
 
 
-About mysql-common
-------------------
+About mysql
+-----------
 
 
 
 Package license: GPL-2.0-or-later
 
-Summary: Common files for server and client libraries
-
-About mysql-router
-------------------
-
-
-
-Package license: GPL-2.0-or-later
-
-Summary: MySQL Router binaries
+Summary: Meta package for backwards compat + bonus content
 
 About mysql-client
 ------------------
@@ -46,23 +37,14 @@ Package license: GPL-2.0-or-later
 
 Summary: MySQL client applications and tools
 
-About mysql-libs
-----------------
-
-
-
-Package license: GPL-2.0-or-later
-
-Summary: Shared libraries for MySQL database client applications
-
-About mysql-server
+About mysql-common
 ------------------
 
 
 
 Package license: GPL-2.0-or-later
 
-Summary: Database server and related tools
+Summary: Common files for server and client libraries
 
 About mysql-devel
 -----------------
@@ -73,14 +55,32 @@ Package license: GPL-2.0-or-later
 
 Summary: Development header files and libraries for MySQL database client applications
 
-About mysql
------------
+About mysql-libs
+----------------
 
 
 
 Package license: GPL-2.0-or-later
 
-Summary: Meta package for backwards compat + bonus content
+Summary: Shared libraries for MySQL database client applications
+
+About mysql-router
+------------------
+
+
+
+Package license: GPL-2.0-or-later
+
+Summary: MySQL Router binaries
+
+About mysql-server
+------------------
+
+
+
+Package license: GPL-2.0-or-later
+
+Summary: Database server and related tools
 
 Current build status
 ====================
