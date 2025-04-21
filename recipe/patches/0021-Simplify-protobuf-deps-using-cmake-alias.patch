@@ -1,7 +1,7 @@
-From 9ee642c6a798050f37f21b69c1c274c3218e6546 Mon Sep 17 00:00:00 2001
+From 8a9df0024ccafe22fc81c6eeea97ac6ce3d6a16b Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 7 Aug 2024 12:25:14 +0100
-Subject: [PATCH 21/23] Simplify protobuf deps using cmake alias
+Subject: [PATCH 21/24] Simplify protobuf deps using cmake alias
 
 ---
  cmake/protobuf.cmake | 66 ++------------------------------------------
@@ -89,5 +89,5 @@ index c083d71d6a9..c4711862bea 100644
      COULD_NOT_FIND_PROTOBUF()
    ENDIF()
 -- 
-2.49.0
+2.50.0
 

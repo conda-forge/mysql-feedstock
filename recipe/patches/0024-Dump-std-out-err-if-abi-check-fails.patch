@@ -1,4 +1,4 @@
-From c215234da2d0fd5ac34f1da4abb22e4c37e4bb4a Mon Sep 17 00:00:00 2001
+From 71dfcf4a7a128cc58a2c6ecc159c0ee177f6c19f Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 21 Apr 2025 10:31:32 +0100
 Subject: [PATCH 24/24] Dump std{out,err} if abi check fails
@@ -26,5 +26,5 @@ index 753e6e12869..d9510268f42 100644
    ENDIF()
  ENDFOREACH()
 -- 
-2.49.0
+2.50.0
 

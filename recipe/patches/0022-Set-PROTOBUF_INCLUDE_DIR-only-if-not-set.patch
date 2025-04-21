@@ -1,7 +1,7 @@
-From fd6d840881ad0335123554f05057b9b633d3826f Mon Sep 17 00:00:00 2001
+From 535a7f8cd00fc9ca9dc0228a96d4ea5f676943a5 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 25 Sep 2024 10:29:38 +0200
-Subject: [PATCH 22/23] Set PROTOBUF_INCLUDE_DIR only if not set
+Subject: [PATCH 22/24] Set PROTOBUF_INCLUDE_DIR only if not set
 
 ---
  cmake/protobuf.cmake | 4 +++-
@@ -23,5 +23,5 @@ index c4711862bea..83ea0b495a6 100644
      ELSE()
          FIND_PACKAGE(Protobuf)
 -- 
-2.49.0
+2.50.0
 

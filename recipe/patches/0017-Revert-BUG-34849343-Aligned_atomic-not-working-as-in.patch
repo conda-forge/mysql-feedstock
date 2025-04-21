@@ -1,7 +1,7 @@
-From 1488bca00c2c8d3674946f855f4f7e9a6a22c3e7 Mon Sep 17 00:00:00 2001
+From a23c99b5e6b49c13693fd9f5dbe49d566f8f0ba8 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 18 Jun 2023 15:40:42 +0100
-Subject: [PATCH 17/23] Revert "BUG#34849343 Aligned_atomic not working as
+Subject: [PATCH 17/24] Revert "BUG#34849343 Aligned_atomic not working as
  intended - aligned_alloc"
 
 This reverts commit be8348a7c3e8510b998a063065b626a459631b32.
@@ -11,7 +11,7 @@ This reverts commit be8348a7c3e8510b998a063065b626a459631b32.
  2 files changed, 18 insertions(+), 54 deletions(-)
 
 diff --git a/mysys/CMakeLists.txt b/mysys/CMakeLists.txt
-index dd1720e3f80..02d91138716 100644
+index 9059228903a..af3f3989283 100644
 --- a/mysys/CMakeLists.txt
 +++ b/mysys/CMakeLists.txt
 @@ -57,7 +57,6 @@ SET(MYSYS_SOURCES
@@ -172,5 +172,5 @@ index 55770f8158b..84b8af9f019 100644
    return *this->m_underlying;
  }
 -- 
-2.49.0
+2.50.0
 

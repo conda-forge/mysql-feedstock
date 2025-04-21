@@ -1,7 +1,7 @@
-From 308cd83a7ddf00f2d0d20efe0a2a042e36bf3ad1 Mon Sep 17 00:00:00 2001
+From cb69736a0888efc72050b9c3e9cd7eddd359d2b8 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 11 Jun 2023 23:26:01 +0100
-Subject: [PATCH 20/23] Use config mode search for protobuf first
+Subject: [PATCH 20/24] Use config mode search for protobuf first
 
 The recent versions of `libprotobuf` (>=4.22.0) provide their own CMake
 configs. We should check for the existence of the config and use the
@@ -41,5 +41,5 @@ index 52320c6da1b..c083d71d6a9 100644
  
    IF(NOT PROTOBUF_FOUND)
 -- 
-2.49.0
+2.50.0
 

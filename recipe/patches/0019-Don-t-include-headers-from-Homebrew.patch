@@ -1,21 +1,21 @@
-From f8cc64d61f6e35ecd2b23589800325da8737925b Mon Sep 17 00:00:00 2001
+From 4429dbb087ad8688e15f4c35f91c8bf9affb6f1e Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 21 Feb 2024 16:30:32 +0100
-Subject: [PATCH 19/23] Don't include headers from Homebrew
+Subject: [PATCH 19/24] Don't include headers from Homebrew
 
 ---
  CMakeLists.txt    | 55 -----------------------------------------------
  cmake/bison.cmake | 22 -------------------
  cmake/fido2.cmake |  2 --
  cmake/icu.cmake   |  6 ------
- cmake/ssl.cmake   | 17 ---------------
- 5 files changed, 102 deletions(-)
+ cmake/ssl.cmake   | 18 ----------------
+ 5 files changed, 103 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f34aa09e4ed..9e8168f22d8 100644
+index 1f4dd91c7b4..39be4544038 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1738,36 +1738,6 @@ SET(SYSTEM_LIBRARIES
+@@ -1783,36 +1783,6 @@ SET(SYSTEM_LIBRARIES
    ZLIB      # Xcode
    )
  
@@ -52,7 +52,7 @@ index f34aa09e4ed..9e8168f22d8 100644
  SET(WITH_SYSTEM_LIBS_DEFAULT OFF)
  OPTION(WITH_SYSTEM_LIBS
    "Use -DWITH_XXX=system for ${SYSTEM_LIBRARIES}" ${WITH_SYSTEM_LIBS_DEFAULT})
-@@ -2043,31 +2013,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
+@@ -2087,31 +2057,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
    MYSQL_CHECK_FIDO_DLLS()
  ENDIF()
  
@@ -85,7 +85,7 @@ index f34aa09e4ed..9e8168f22d8 100644
    WITH_AUTHENTICATION_CLIENT_PLUGINS)
    IF(WITH_FIDO STREQUAL "system" AND
 diff --git a/cmake/bison.cmake b/cmake/bison.cmake
-index 2613b42f56f..2590aa2e4ad 100644
+index 6ee26a09233..64e283638ec 100644
 --- a/cmake/bison.cmake
 +++ b/cmake/bison.cmake
 @@ -56,28 +56,6 @@ IF(APPLE AND NOT DEFINED BISON_EXECUTABLE)
@@ -131,7 +131,7 @@ index bd56e946b15..70533afb670 100644
        )
    ENDIF()
 diff --git a/cmake/icu.cmake b/cmake/icu.cmake
-index 4bf4bd8f9d1..4b3ff18a0e4 100644
+index 8b5eb0a646e..9dc32f6d2e2 100644
 --- a/cmake/icu.cmake
 +++ b/cmake/icu.cmake
 @@ -73,12 +73,6 @@ FUNCTION(FIND_ICU install_root)
@@ -148,10 +148,10 @@ index 4bf4bd8f9d1..4b3ff18a0e4 100644
      SET(EXTRA_FIND_LIB_ARGS HINTS "${install_root}"
        PATH_SUFFIXES "lib" "lib64" NO_DEFAULT_PATH)
 diff --git a/cmake/ssl.cmake b/cmake/ssl.cmake
-index 5eb410d35c5..8eb30a7ea4b 100644
+index 25e74a9ec85..f11da5fa284 100644
 --- a/cmake/ssl.cmake
 +++ b/cmake/ssl.cmake
-@@ -350,21 +350,9 @@ ENDFUNCTION(FIND_ALTERNATIVE_SYSTEM_SSL)
+@@ -354,11 +354,6 @@ ENDFUNCTION(FIND_ALTERNATIVE_SYSTEM_SSL)
  # For all non-windows platforms, use the standard FIND_PACKAGE utility
  # to locate OpenSSL.
  FUNCTION(FIND_SYSTEM_OPENSSL)
@@ -160,6 +160,10 @@ index 5eb410d35c5..8eb30a7ea4b 100644
 -    SET(OPENSSL_ROOT_DIR "${HOMEBREW_HOME}/openssl")
 -  ENDIF()
 -
+   IF(SOLARIS AND NOT OPENSSL_ROOT_DIR)
+     SET(OPENSSL_ROOT_DIR "/usr/openssl/3")
+     # See FIND_OPENSSL_EXECUTABLE above.
+@@ -375,13 +370,6 @@ FUNCTION(FIND_SYSTEM_OPENSSL)
    # Will set OPENSSL_FOUND, OPENSSL_INCLUDE_DIR and others.
    FIND_PACKAGE(OpenSSL)
  
@@ -173,11 +177,12 @@ index 5eb410d35c5..8eb30a7ea4b 100644
    IF(NOT OPENSSL_FOUND)
      RESET_SSL_VARIABLES()
      FATAL_SSL_NOT_FOUND_ERROR("Could not find system OpenSSL")
-@@ -372,11 +360,6 @@ FUNCTION(FIND_SYSTEM_OPENSSL)
+@@ -389,12 +377,6 @@ FUNCTION(FIND_SYSTEM_OPENSSL)
  
    FIND_OPENSSL_VERSION()
  
 -  # Homebrew "system" OpenSSL needs:
+-  # Also SOLARIS with header files in /usr/openssl/3/include
 -  IF(NOT OPENSSL_INCLUDE_DIR STREQUAL "/usr/include")
 -    INCLUDE_DIRECTORIES(BEFORE SYSTEM ${OPENSSL_INCLUDE_DIR})
 -  ENDIF()
@@ -186,5 +191,5 @@ index 5eb410d35c5..8eb30a7ea4b 100644
  
  
 -- 
-2.49.0
+2.50.0
 
