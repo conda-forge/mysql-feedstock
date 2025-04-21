@@ -33,6 +33,7 @@ source:
     - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
     - patches/0022-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
     - patches/0023-Allow-setting-WITH_SASL-none.patch
+    - patches/0024-Dump-std-out-err-if-abi-check-fails.patch
 
 build:
   number: 0
