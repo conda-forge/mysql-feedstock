@@ -45,6 +45,7 @@ requirements:
     - cmake
     - ninja
     - bison                    # [unix]
+    - diffutils                # [unix]
     - winflexbison             # [win]
     - pkg-config
     - icu                      # [target_platform == 'osx-arm64']
