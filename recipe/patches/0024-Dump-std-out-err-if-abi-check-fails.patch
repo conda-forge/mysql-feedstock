@@ -1,0 +1,30 @@
+From c215234da2d0fd5ac34f1da4abb22e4c37e4bb4a Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Mon, 21 Apr 2025 10:31:32 +0100
+Subject: [PATCH 24/24] Dump std{out,err} if abi check fails
+
+---
+ cmake/do_abi_check.cmake | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/do_abi_check.cmake b/cmake/do_abi_check.cmake
+index 753e6e12869..d9510268f42 100644
+--- a/cmake/do_abi_check.cmake
++++ b/cmake/do_abi_check.cmake
+@@ -117,9 +117,11 @@ FOREACH(file ${ABI_HEADERS})
+ 
+   EXECUTE_PROCESS(
+     COMMAND ${WSL_EXECUTABLE} diff -w ${abi_original}.pp ${abi_current}
+-    RESULT_VARIABLE result)
++    RESULT_VARIABLE result
++    OUTPUT_VARIABLE output_var
++    ERROR_VARIABLE  output_var)
+   IF(NOT ${result} EQUAL 0)
+     MESSAGE(FATAL_ERROR
+-      "ABI check found difference between ${file}.pp and ${abi_check_out}")
++      "ABI check found difference between ${file}.pp and ${abi_check_out}\n${output_var}")
+   ENDIF()
+ ENDFOREACH()
+-- 
+2.49.0
+

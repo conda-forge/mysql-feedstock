@@ -1,4 +1,4 @@
-From d1cc948402b634b9ad856ed3a1b149a4383819b8 Mon Sep 17 00:00:00 2001
+From f8cc64d61f6e35ecd2b23589800325da8737925b Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 21 Feb 2024 16:30:32 +0100
 Subject: [PATCH 19/23] Don't include headers from Homebrew
@@ -12,10 +12,10 @@ Subject: [PATCH 19/23] Don't include headers from Homebrew
  5 files changed, 102 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5592c23c85b..81385c1635d 100644
+index f34aa09e4ed..9e8168f22d8 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1733,36 +1733,6 @@ SET(SYSTEM_LIBRARIES
+@@ -1738,36 +1738,6 @@ SET(SYSTEM_LIBRARIES
    ZLIB      # Xcode
    )
  
@@ -52,7 +52,7 @@ index 5592c23c85b..81385c1635d 100644
  SET(WITH_SYSTEM_LIBS_DEFAULT OFF)
  OPTION(WITH_SYSTEM_LIBS
    "Use -DWITH_XXX=system for ${SYSTEM_LIBRARIES}" ${WITH_SYSTEM_LIBS_DEFAULT})
-@@ -2038,31 +2008,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
+@@ -2043,31 +2013,6 @@ IF(WITH_AUTHENTICATION_CLIENT_PLUGINS)
    MYSQL_CHECK_FIDO_DLLS()
  ENDIF()
  
@@ -85,7 +85,7 @@ index 5592c23c85b..81385c1635d 100644
    WITH_AUTHENTICATION_CLIENT_PLUGINS)
    IF(WITH_FIDO STREQUAL "system" AND
 diff --git a/cmake/bison.cmake b/cmake/bison.cmake
-index 854a98f36f5..e4c1e3e47a0 100644
+index 2613b42f56f..2590aa2e4ad 100644
 --- a/cmake/bison.cmake
 +++ b/cmake/bison.cmake
 @@ -56,28 +56,6 @@ IF(APPLE AND NOT DEFINED BISON_EXECUTABLE)
@@ -118,7 +118,7 @@ index 854a98f36f5..e4c1e3e47a0 100644
  # https://github.com/lexxmark/winflexbison/releases
  # or
 diff --git a/cmake/fido2.cmake b/cmake/fido2.cmake
-index 874279b5d3b..91e149a4dbe 100644
+index bd56e946b15..70533afb670 100644
 --- a/cmake/fido2.cmake
 +++ b/cmake/fido2.cmake
 @@ -120,8 +120,6 @@ ENDFUNCTION(WARN_MISSING_SYSTEM_FIDO)
@@ -131,7 +131,7 @@ index 874279b5d3b..91e149a4dbe 100644
        )
    ENDIF()
 diff --git a/cmake/icu.cmake b/cmake/icu.cmake
-index 66c4355ae93..c5cd4df338e 100644
+index 4bf4bd8f9d1..4b3ff18a0e4 100644
 --- a/cmake/icu.cmake
 +++ b/cmake/icu.cmake
 @@ -73,12 +73,6 @@ FUNCTION(FIND_ICU install_root)
@@ -148,7 +148,7 @@ index 66c4355ae93..c5cd4df338e 100644
      SET(EXTRA_FIND_LIB_ARGS HINTS "${install_root}"
        PATH_SUFFIXES "lib" "lib64" NO_DEFAULT_PATH)
 diff --git a/cmake/ssl.cmake b/cmake/ssl.cmake
-index 932659d030f..dd275008581 100644
+index 5eb410d35c5..8eb30a7ea4b 100644
 --- a/cmake/ssl.cmake
 +++ b/cmake/ssl.cmake
 @@ -350,21 +350,9 @@ ENDFUNCTION(FIND_ALTERNATIVE_SYSTEM_SSL)
@@ -186,5 +186,5 @@ index 932659d030f..dd275008581 100644
  
  
 -- 
-2.48.1
+2.49.0
 

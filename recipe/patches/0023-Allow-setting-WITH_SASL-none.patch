@@ -1,4 +1,4 @@
-From 6e90541ef905516f5a414943c892f0ee3fa577fe Mon Sep 17 00:00:00 2001
+From b1882541779ac486e7bf40a9fc2e1d88fe736465 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 1 Apr 2025 23:14:29 +0100
 Subject: [PATCH 23/23] Allow setting WITH_SASL=none
@@ -8,7 +8,7 @@ Subject: [PATCH 23/23] Allow setting WITH_SASL=none
  1 file changed, 3 insertions(+)
 
 diff --git a/cmake/sasl.cmake b/cmake/sasl.cmake
-index 8c4fa22340e..7b5e6cc7df1 100644
+index dc22517df15..38435486401 100644
 --- a/cmake/sasl.cmake
 +++ b/cmake/sasl.cmake
 @@ -270,6 +270,9 @@ MACRO(MYSQL_CHECK_SASL)
@@ -22,5 +22,5 @@ index 8c4fa22340e..7b5e6cc7df1 100644
      RESET_SASL_VARIABLES()
      IF(NOT WIN32)
 -- 
-2.48.1
+2.49.0
 

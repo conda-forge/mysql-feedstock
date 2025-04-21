@@ -1,4 +1,4 @@
-{% set version = "9.2.0" %}
+{% set version = "9.3.0" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://cdn.mysql.com/Downloads/MySQL-{{ major_minor }}/mysql-{{ version }}.tar.gz
-  sha256: a39d11fdf6cf8d1b03b708d537a9132de4b99a9eb4d610293937f0687cd37a12
+  sha256: 1a3ee236f1daac5ef897c6325c9b0e0aae486389be1b8001deb3ff77ce682d60
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
@@ -33,6 +33,7 @@ source:
     - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
     - patches/0022-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
     - patches/0023-Allow-setting-WITH_SASL-none.patch
+    - patches/0024-Dump-std-out-err-if-abi-check-fails.patch
 
 build:
   number: 0
@@ -44,6 +45,7 @@ requirements:
     - cmake
     - ninja
     - bison                    # [unix]
+    - diffutils                # [unix]
     - winflexbison             # [win]
     - pkg-config
     - icu                      # [target_platform == 'osx-arm64']
