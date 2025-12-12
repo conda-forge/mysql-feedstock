@@ -1,14 +1,14 @@
-From 82002916a23aa1758add1aae1eac2be8a076ebdf Mon Sep 17 00:00:00 2001
+From eda4869a0332eab3b870097bdd13798de8a22344 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 22 Jun 2020 09:53:55 -0400
-Subject: [PATCH 03/24] Allow flags other than macros in CPPFLAGS
+Subject: [PATCH 03/23] Allow flags other than macros in CPPFLAGS
 
 ---
  CMakeLists.txt | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 737a94b58e6..d2b0c86e179 100644
+index 737a94b5..d2b0c86e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -685,7 +685,9 @@ ENDFOREACH()
@@ -22,6 +22,3 @@ index 737a94b58e6..d2b0c86e179 100644
  ENDIF()
  
  # To add c/c++ code specific for MySQL AI release using #ifdef..#endif
--- 
-2.50.0
-

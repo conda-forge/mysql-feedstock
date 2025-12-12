@@ -1,0 +1,42 @@
+From 36728a6a64a12b6af2c9ec537994fddbac73a3c5 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sun, 11 Jun 2023 23:26:01 +0100
+Subject: [PATCH 19/23] Use config mode search for protobuf first
+
+The recent versions of `libprotobuf` (>=4.22.0) provide their own CMake
+configs. We should check for the existence of the config and use the
+hand-rolled version as a fallback as it does not capture all deps.
+
+See also: https://gitlab.kitware.com/cmake/cmake/-/issues/24321
+---
+ cmake/protobuf.cmake | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
+index 52320c6d..c083d71d 100644
+--- a/cmake/protobuf.cmake
++++ b/cmake/protobuf.cmake
+@@ -130,7 +130,22 @@ MACRO(MYSQL_CHECK_PROTOBUF)
+     IF(WITH_INTERNAL)
+       FIND_PACKAGE(gRPC QUIET)
+     ENDIF()
+-    FIND_PACKAGE(Protobuf)
++    # CMake ships with a FindProtobuf.cmake which we don't want to use
++    # Specifying 'CONFIG' makes CMake look for protobuf-config.cmake
++    # which is shipped along with the package
++    FIND_PACKAGE(Protobuf CONFIG)
++    IF(Protobuf_FOUND)
++        SET(PROTOBUF_LIBRARY protobuf::libprotobuf)
++        SET(PROTOBUF_PROTOC_LIBRARY protobuf::libprotoc)
++        SET(PROTOBUF_LITE_LIBRARY protobuf::libprotobuf-lite)
++        IF(NOT PROTOBUF_PROTOC_EXECUTABLE)
++            SET(PROTOBUF_PROTOC_EXECUTABLE protobuf::protoc)
++        ENDIF()
++        GET_TARGET_PROPERTY(PROTOBUF_INCLUDE_DIR protobuf::libprotoc INTERFACE_INCLUDE_DIRECTORIES)
++        SET(PROTOBUF_FOUND 1)
++    ELSE()
++        FIND_PACKAGE(Protobuf)
++    ENDIF()
+   ENDIF()
+ 
+   IF(NOT PROTOBUF_FOUND)

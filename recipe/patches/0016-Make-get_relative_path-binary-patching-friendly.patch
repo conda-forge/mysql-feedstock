@@ -1,7 +1,7 @@
-From f64e6998874d5778bdd99fbcdc9571a689b2f24e Mon Sep 17 00:00:00 2001
+From 8b350cc0f605d03ae6523fcfdb9df908cd5443b7 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 18 Jun 2023 23:44:06 +0100
-Subject: [PATCH 16/24] Make get_relative_path() binary patching friendly
+Subject: [PATCH 16/23] Make get_relative_path() binary patching friendly
 
 The call to strlen() can be optimized away by the compiler
 ---
@@ -9,7 +9,7 @@ The call to strlen() can be optimized away by the compiler
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/sql/mysqld.cc b/sql/mysqld.cc
-index 1b2fabeebbb..4b40d7dff3e 100644
+index 1b2fabee..4b40d7df 100644
 --- a/sql/mysqld.cc
 +++ b/sql/mysqld.cc
 @@ -13449,9 +13449,12 @@ static void set_server_version(void) {
@@ -26,6 +26,3 @@ index 1b2fabeebbb..4b40d7dff3e 100644
      while (is_directory_separator(*path)) path++;
    }
    return path;
--- 
-2.50.0
-

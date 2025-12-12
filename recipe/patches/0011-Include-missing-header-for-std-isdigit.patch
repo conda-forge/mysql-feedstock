@@ -1,7 +1,7 @@
-From 6f62a91e2eae8b84636435bc771b30b44deb8727 Mon Sep 17 00:00:00 2001
+From 195d400f8980f4b61e674b857aee6dc83adda844 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 21 Jul 2021 00:55:54 +0530
-Subject: [PATCH 11/24] Include missing header for std::isdigit()
+Subject: [PATCH 11/23] Include missing header for std::isdigit()
 
 This patch resolves the following error with the MSVC compiler:
 
@@ -13,7 +13,7 @@ This patch resolves the following error with the MSVC compiler:
  1 file changed, 2 insertions(+)
 
 diff --git a/sql/server_component/clone_protocol_service.cc b/sql/server_component/clone_protocol_service.cc
-index fd3dd3e3abc..252c8368a5b 100644
+index fd3dd3e3..252c8368 100644
 --- a/sql/server_component/clone_protocol_service.cc
 +++ b/sql/server_component/clone_protocol_service.cc
 @@ -42,6 +42,8 @@
@@ -25,6 +25,3 @@ index fd3dd3e3abc..252c8368a5b 100644
  struct CHARSET_INFO;
  
  /** The minimum idle timeout in seconds. It is kept at 8 hours which is also
--- 
-2.50.0
-

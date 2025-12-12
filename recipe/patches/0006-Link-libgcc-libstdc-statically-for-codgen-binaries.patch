@@ -1,7 +1,7 @@
-From f2eb79b94143b35a1f4e2c313ec2bf4febc2df83 Mon Sep 17 00:00:00 2001
+From fad464063698f63c2626919f1be241b263e6c8ca Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Fri, 14 Aug 2020 20:30:20 -0400
-Subject: [PATCH 06/24] Link libgcc & libstdc++ statically for codgen binaries
+Subject: [PATCH 06/23] Link libgcc & libstdc++ statically for codgen binaries
 
 Makes it easier for cross compilation
 ---
@@ -9,7 +9,7 @@ Makes it easier for cross compilation
  1 file changed, 13 insertions(+)
 
 diff --git a/sql/CMakeLists.txt b/sql/CMakeLists.txt
-index 1dcbd25df0d..e20d99c1be0 100644
+index 1dcbd25d..e20d99c1 100644
 --- a/sql/CMakeLists.txt
 +++ b/sql/CMakeLists.txt
 @@ -73,6 +73,10 @@ MYSQL_ADD_EXECUTABLE(gen_lex_token
@@ -46,6 +46,3 @@ index 1dcbd25df0d..e20d99c1be0 100644
  
  IF(HAS_MISSING_PROFILE)
    ADD_COMPILE_FLAGS(
--- 
-2.50.0
-

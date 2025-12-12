@@ -25,15 +25,13 @@ source:
     - patches/0014-Revert-Bug-30981914-COMPILE-WITH-FASTER-TLS-MODEL.patch
     - patches/0015-Zlib-module-use-macro-instead-of-function.patch
     - patches/0016-Make-get_relative_path-binary-patching-friendly.patch
-    ## Avoid crash on ppc64le, aarch64
-    - patches/0017-Revert-BUG-34849343-Aligned_atomic-not-working-as-in.patch
-    - patches/0018-Make-libfido-checks-conditional.patch
-    - patches/0019-Don-t-include-headers-from-Homebrew.patch
-    - patches/0020-Use-config-mode-search-for-protobuf-first.patch
-    - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
-    - patches/0022-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
-    - patches/0023-Allow-setting-WITH_SASL-none.patch
-    - patches/0024-Dump-std-out-err-if-abi-check-fails.patch
+    - patches/0017-Make-libfido-checks-conditional.patch
+    - patches/0018-Don-t-include-headers-from-Homebrew.patch
+    - patches/0019-Use-config-mode-search-for-protobuf-first.patch
+    - patches/0020-Simplify-protobuf-deps-using-cmake-alias.patch
+    - patches/0021-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
+    - patches/0022-Allow-setting-WITH_SASL-none.patch
+    - patches/0023-Dump-std-out-err-if-abi-check-fails.patch
 
 build:
   number: 0
