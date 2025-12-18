@@ -16,7 +16,7 @@ if [[ "${target_platform}" == *"linux"* ]]; then
     ## We don't have a conda package for rpcgen, but it is present in the
     ## compiler sysroot on Linux. However, the value of PT_INTERP is not
     ## convenient for executing it. ('lib' instead of 'lib64')
-    _target_sysroot=$(${CXX_FOR_BUILD:-$CC} --print-sysroot)
+    _target_sysroot=$(${CXX:-$CC} --print-sysroot)
     _target_rpcgen_bin=${_target_sysroot}/usr/bin/rpcgen
     _target_interpreter=${_target_sysroot}/$(patchelf --print-interpreter ${_target_rpcgen_bin})
     _target_libdir=$(dirname ${_target_interpreter})
@@ -121,8 +121,8 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DWITH_FIDO=none \
   -DWITH_SASL=none \
   -DPROTOBUF_INCLUDE_DIR=${PREFIX}/include \
-  -DDEFAULT_CHARSET=utf8 \
-  -DDEFAULT_COLLATION=utf8_general_ci \
+  -DDEFAULT_CHARSET=utf8mb4 \
+  -DDEFAULT_COLLATION=utf8mb4_unicode_ci \
   -DINSTALL_INCLUDEDIR=include/mysql \
   -DINSTALL_MANDIR=share/man \
   -DINSTALL_DOCDIR=share/doc/mysql \
