@@ -68,7 +68,7 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
             -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
             -DPROTOBUF_INCLUDE_DIR=${BUILD_PREFIX}/include \
             -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
-            -DCMAKE_CXX_FLAGS="-isystem $BUILD_PREFIX/include" \
+            -DCMAKE_CXX_FLAGS="-isystem $BUILD_PREFIX/include -D_LIBCPP_DISABLE_AVAILABILITY=1" \
             -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib -L$BUILD_PREFIX/lib"
     cmake --build build.codegen -- \
         xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
