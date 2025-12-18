@@ -42,6 +42,7 @@ rpcgen -Y ${_rpcgen_hack_dir}/bin \$@
 EOF
     ln -sf $BUILD_PREFIX/bin/$(basename ${CC}) ${_rpcgen_hack_dir}/bin/cpp
     chmod +x ${_rpcgen_hack_dir}/bin/{rpcgen,cpp}
+    export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 declare -a _xtra_cmake_args
