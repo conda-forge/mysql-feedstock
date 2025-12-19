@@ -1,4 +1,4 @@
-From cff61de1399456f60a950501f30bb5a39894a57e Mon Sep 17 00:00:00 2001
+From 294bb4f3fc6c940ad1c61f2565acdca89e964116 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 18 Dec 2021 16:57:08 -0500
 Subject: [PATCH 14/23] Revert "Bug #30981914: COMPILE WITH FASTER TLS MODEL"
@@ -12,7 +12,7 @@ This reverts commit 735bd2a53834266c7256830c8d34672ea55fe17b.
  1 file changed, 9 deletions(-)
 
 diff --git a/cmake/build_configurations/compiler_options.cmake b/cmake/build_configurations/compiler_options.cmake
-index 203824cdaf0..46612962c0c 100644
+index 203824cd..46612962 100644
 --- a/cmake/build_configurations/compiler_options.cmake
 +++ b/cmake/build_configurations/compiler_options.cmake
 @@ -65,15 +65,6 @@ IF(UNIX)
@@ -31,6 +31,3 @@ index 203824cdaf0..46612962c0c 100644
    # Use STRING_PREPEND here, so command-line input can override our defaults.
    STRING_PREPEND(CMAKE_C_FLAGS                  "${COMMON_C_FLAGS} ")
    STRING_PREPEND(CMAKE_C_FLAGS_RELWITHDEBINFO   "${SECTIONS_FLAG} ")
--- 
-2.49.0
-

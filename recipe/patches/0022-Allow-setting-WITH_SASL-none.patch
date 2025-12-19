@@ -1,0 +1,23 @@
+From 356262c26f2e2836a224effbcaf0161736e8fb14 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Tue, 1 Apr 2025 23:14:29 +0100
+Subject: [PATCH 22/23] Allow setting WITH_SASL=none
+
+---
+ cmake/sasl.cmake | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/cmake/sasl.cmake b/cmake/sasl.cmake
+index f0b7a86a..42ba0757 100644
+--- a/cmake/sasl.cmake
++++ b/cmake/sasl.cmake
+@@ -273,6 +273,9 @@ MACRO(MYSQL_CHECK_SASL)
+     ELSE()
+       MESSAGE(FATAL_ERROR "-DWITH_SASL=<path> not supported on this platform")
+     ENDIF()
++  ELSEIF(WITH_SASL STREQUAL "none")
++    SET(SASL_FOUND FALSE)
++    MESSAGE(STATUS "SASL path is none, disabling sasl support.")
+   ELSE()
+     RESET_SASL_VARIABLES()
+     IF(NOT WIN32)

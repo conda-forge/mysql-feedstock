@@ -32,8 +32,8 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DWITH_FIDO=none ^
   -DWITH_SASL=none ^
   -DPROTOBUF_INCLUDE_DIR=%LIBRARY_PREFIX%\include ^
-  -DDEFAULT_CHARSET=utf8 ^
-  -DDEFAULT_COLLATION=utf8_general_ci ^
+  -DDEFAULT_CHARSET=utf8mb4 ^
+  -DDEFAULT_COLLATION=utf8mb4_unicode_ci ^
   -DINSTALL_INCLUDEDIR=include/mysql ^
   -DINSTALL_MANDIR=share/man ^
   -DINSTALL_DOCDIR=share/doc/mysql ^

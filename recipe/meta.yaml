@@ -1,4 +1,4 @@
-{% set version = "9.3.0" %}
+{% set version = "9.5.0" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://cdn.mysql.com/Downloads/MySQL-{{ major_minor }}/mysql-{{ version }}.tar.gz
-  sha256: 1a3ee236f1daac5ef897c6325c9b0e0aae486389be1b8001deb3ff77ce682d60
+  sha256: ef3343981375865a2519f72b600e55f9c646e60e204a2964d3b7e8e748a110a5
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
@@ -25,15 +25,13 @@ source:
     - patches/0014-Revert-Bug-30981914-COMPILE-WITH-FASTER-TLS-MODEL.patch
     - patches/0015-Zlib-module-use-macro-instead-of-function.patch
     - patches/0016-Make-get_relative_path-binary-patching-friendly.patch
-    ## Avoid crash on ppc64le, aarch64
-    - patches/0017-Revert-BUG-34849343-Aligned_atomic-not-working-as-in.patch
-    - patches/0018-Make-libfido-checks-conditional.patch
-    - patches/0019-Don-t-include-headers-from-Homebrew.patch
-    - patches/0020-Use-config-mode-search-for-protobuf-first.patch
-    - patches/0021-Simplify-protobuf-deps-using-cmake-alias.patch
-    - patches/0022-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
-    - patches/0023-Allow-setting-WITH_SASL-none.patch
-    - patches/0024-Dump-std-out-err-if-abi-check-fails.patch
+    - patches/0017-Make-libfido-checks-conditional.patch
+    - patches/0018-Don-t-include-headers-from-Homebrew.patch
+    - patches/0019-Use-config-mode-search-for-protobuf-first.patch
+    - patches/0020-Simplify-protobuf-deps-using-cmake-alias.patch
+    - patches/0021-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
+    - patches/0022-Allow-setting-WITH_SASL-none.patch
+    - patches/0023-Dump-std-out-err-if-abi-check-fails.patch
 
 build:
   number: 0
@@ -42,17 +40,19 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
+    - cctools_{{ target_platform }} 1024.3 *_1  # [osx]
+    - ld64_{{ target_platform }} 955.13 *_1  # [osx]
     - cmake
     - ninja
     - bison                    # [unix]
     - diffutils                # [unix]
     - winflexbison             # [win]
     - pkg-config
-    - icu                      # [target_platform == 'osx-arm64']
-    - libprotobuf              # [target_platform == 'osx-arm64']
-    - openssl                  # [target_platform == 'osx-arm64']
-    - zlib                     # [target_platform == 'osx-arm64']
-    - zstd                     # [target_platform == 'osx-arm64']
+    - icu                      # [build_platform != target_platform]
+    - libprotobuf              # [build_platform != target_platform]
+    - openssl                  # [build_platform != target_platform]
+    - zlib                     # [build_platform != target_platform]
+    - zstd                     # [build_platform != target_platform]
   host:
     - icu
     - libabseil

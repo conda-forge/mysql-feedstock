@@ -1,4 +1,4 @@
-From 4f3704020acc946be2a2f65dc36c0f48c6b93390 Mon Sep 17 00:00:00 2001
+From a0768afab3ddedc177eed8be4dfeea3e507b3622 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Tue, 12 Oct 2021 07:53:59 -0400
 Subject: [PATCH 10/23] Ensure sql_main uses protobuf shared library correctly
@@ -8,10 +8,10 @@ Subject: [PATCH 10/23] Ensure sql_main uses protobuf shared library correctly
  1 file changed, 1 insertion(+)
 
 diff --git a/sql/CMakeLists.txt b/sql/CMakeLists.txt
-index c05871546bb..de2301d706b 100644
+index e20d99c1..9f767327 100644
 --- a/sql/CMakeLists.txt
 +++ b/sql/CMakeLists.txt
-@@ -965,6 +965,7 @@ TARGET_LINK_LIBRARIES(sql_main ${MYSQLD_STATIC_PLUGIN_LIBS}
+@@ -986,6 +986,7 @@ TARGET_LINK_LIBRARIES(sql_main ${MYSQLD_STATIC_PLUGIN_LIBS}
  # sql/immutable_string.h uses
  # google::protobuf::io::CodedOutputStream::WriteVarint64ToArray
  # which may or may not be inlined.
@@ -19,6 +19,3 @@ index c05871546bb..de2301d706b 100644
  TARGET_LINK_LIBRARIES(sql_main ext::libprotobuf-lite)
  
  ADD_LIBRARY(sql_gis STATIC ${SQL_GIS_SOURCES})
--- 
-2.49.0
-

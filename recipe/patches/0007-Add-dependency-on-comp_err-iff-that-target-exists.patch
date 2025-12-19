@@ -1,4 +1,4 @@
-From 18300c93806489884ef6784cad52bd41da20d914 Mon Sep 17 00:00:00 2001
+From 0abc46a58fae02b57f40a34709ee635223b88c25 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 30 Jan 2021 19:48:42 -0500
 Subject: [PATCH 07/23] Add dependency on comp_err iff that target exists
@@ -9,7 +9,7 @@ It's not built if we are cross compiling
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/utilities/CMakeLists.txt b/utilities/CMakeLists.txt
-index 357db905322..a3faea8dfa5 100644
+index 357db905..a3faea8d 100644
 --- a/utilities/CMakeLists.txt
 +++ b/utilities/CMakeLists.txt
 @@ -111,7 +111,9 @@ ADD_DEFINITIONS(-DMUTEX_EVENT)
@@ -23,6 +23,3 @@ index 357db905322..a3faea8dfa5 100644
  ENDIF()
  
  IF(TARGET copy_asan_lib_target)
--- 
-2.49.0
-

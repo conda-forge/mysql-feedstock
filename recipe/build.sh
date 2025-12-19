@@ -16,7 +16,7 @@ if [[ "${target_platform}" == *"linux"* ]]; then
     ## We don't have a conda package for rpcgen, but it is present in the
     ## compiler sysroot on Linux. However, the value of PT_INTERP is not
     ## convenient for executing it. ('lib' instead of 'lib64')
-    _target_sysroot=$(${CXX_FOR_BUILD:-$CC} --print-sysroot)
+    _target_sysroot=$(${CXX:-$CC} --print-sysroot)
     _target_rpcgen_bin=${_target_sysroot}/usr/bin/rpcgen
     _target_interpreter=${_target_sysroot}/$(patchelf --print-interpreter ${_target_rpcgen_bin})
     _target_libdir=$(dirname ${_target_interpreter})
@@ -42,6 +42,7 @@ rpcgen -Y ${_rpcgen_hack_dir}/bin \$@
 EOF
     ln -sf $BUILD_PREFIX/bin/$(basename ${CC}) ${_rpcgen_hack_dir}/bin/cpp
     chmod +x ${_rpcgen_hack_dir}/bin/{rpcgen,cpp}
+    export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 declare -a _xtra_cmake_args
@@ -55,24 +56,27 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     # xref: https://cmake.org/pipermail/cmake/2013-January/053252.html
     export OPENSSL_ROOT_DIR=$BUILD_PREFIX
     echo "#### Cross-compiling some binaries for osx-64"
-    env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
-        -u CXXFLAGS -u CPPFLAGS -u CFLAGS -u LDFLAGS \
-        cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
-            -DWITH_ICU=system \
-            -DWITH_ZLIB=system \
-            -DWITH_ZSTD=system \
-            -DWITH_PROTOBUF=system \
-            -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
-            -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
-            -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
-            -DPROTOBUF_INCLUDE_DIR=${BUILD_PREFIX}/include \
-            -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
-            -DCMAKE_CXX_FLAGS="-isystem $BUILD_PREFIX/include" \
-            -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib -L$BUILD_PREFIX/lib"
-    cmake --build build.codegen -- \
-        xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
-        json_schema_embedder gen_lex_token gen_keyword_list comp_client_err \
-        cno_huffman_generator
+    (
+        export CPPFLAGS="${CPPFLAGS//$PREFIX/$BUILD_PREFIX}"
+        export CFLAGS="${CFLAGS//$PREFIX/$BUILD_PREFIX}"
+        export CXXFLAGS="${CXXFLAGS//$PREFIX/$BUILD_PREFIX}"
+        export LDFLAGS="${LDFLAGS//$PREFIX/$BUILD_PREFIX}"
+        env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
+            cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
+                -DWITH_ICU=system \
+                -DWITH_ZLIB=system \
+                -DWITH_ZSTD=system \
+                -DWITH_PROTOBUF=system \
+                -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
+                -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
+                -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
+                -DPROTOBUF_INCLUDE_DIR=${BUILD_PREFIX}/include \
+                -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc
+        cmake --build build.codegen -- \
+            xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
+            json_schema_embedder gen_lex_token gen_keyword_list comp_client_err \
+            cno_huffman_generator
+    )
 
     # Put the codegen binaries in $PATH
     export PATH=$SRC_DIR/build.codegen/runtime_output_directory:$PATH
@@ -120,8 +124,8 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DWITH_FIDO=none \
   -DWITH_SASL=none \
   -DPROTOBUF_INCLUDE_DIR=${PREFIX}/include \
-  -DDEFAULT_CHARSET=utf8 \
-  -DDEFAULT_COLLATION=utf8_general_ci \
+  -DDEFAULT_CHARSET=utf8mb4 \
+  -DDEFAULT_COLLATION=utf8mb4_unicode_ci \
   -DINSTALL_INCLUDEDIR=include/mysql \
   -DINSTALL_MANDIR=share/man \
   -DINSTALL_DOCDIR=share/doc/mysql \
