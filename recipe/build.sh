@@ -56,24 +56,27 @@ if [[ $target_platform == osx-arm64 ]] && [[ $CONDA_BUILD_CROSS_COMPILATION == 1
     # xref: https://cmake.org/pipermail/cmake/2013-January/053252.html
     export OPENSSL_ROOT_DIR=$BUILD_PREFIX
     echo "#### Cross-compiling some binaries for osx-64"
-    env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
-        -u CXXFLAGS -u CPPFLAGS -u CFLAGS -u LDFLAGS \
-        cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
-            -DWITH_ICU=system \
-            -DWITH_ZLIB=system \
-            -DWITH_ZSTD=system \
-            -DWITH_PROTOBUF=system \
-            -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
-            -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
-            -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
-            -DPROTOBUF_INCLUDE_DIR=${BUILD_PREFIX}/include \
-            -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
-            -DCMAKE_CXX_FLAGS="-isystem $BUILD_PREFIX/include -D_LIBCPP_DISABLE_AVAILABILITY=1" \
-            -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$BUILD_PREFIX/lib -L$BUILD_PREFIX/lib"
-    cmake --build build.codegen -- \
-        xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
-        json_schema_embedder gen_lex_token gen_keyword_list comp_client_err \
-        cno_huffman_generator
+    (
+        export CPPFLAGS="${CPPFLAGS//$PREFIX/$BUILD_PREFIX}"
+        export CFLAGS="${CFLAGS//$PREFIX/$BUILD_PREFIX}"
+        export CXXFLAGS="${CXXFLAGS//$PREFIX/$BUILD_PREFIX}"
+        export LDFLAGS="${LDFLAGS//$PREFIX/$BUILD_PREFIX}"
+        env -u SDKROOT -u CONDA_BUILD_SYSROOT -u CMAKE_PREFIX_PATH \
+            cmake -S$SRC_DIR -Bbuild.codegen -GNinja \
+                -DWITH_ICU=system \
+                -DWITH_ZLIB=system \
+                -DWITH_ZSTD=system \
+                -DWITH_PROTOBUF=system \
+                -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
+                -DCMAKE_C_COMPILER=$CC_FOR_BUILD \
+                -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD \
+                -DPROTOBUF_INCLUDE_DIR=${BUILD_PREFIX}/include \
+                -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc
+        cmake --build build.codegen -- \
+            xprotocol_plugin comp_err comp_sql gen_lex_hash libmysql_api_test \
+            json_schema_embedder gen_lex_token gen_keyword_list comp_client_err \
+            cno_huffman_generator
+    )
 
     # Put the codegen binaries in $PATH
     export PATH=$SRC_DIR/build.codegen/runtime_output_directory:$PATH
