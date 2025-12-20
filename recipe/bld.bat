@@ -31,6 +31,7 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DWITH_KERBEROS=none ^
   -DWITH_FIDO=none ^
   -DWITH_SASL=none ^
+  -DPROTOBUF_PROTOC_EXECUTABLE=%LIBRARY_PREFIX%\bin\protoc.exe ^
   -DPROTOBUF_INCLUDE_DIR=%LIBRARY_PREFIX%\include ^
   -DDEFAULT_CHARSET=utf8mb4 ^
   -DDEFAULT_COLLATION=utf8mb4_unicode_ci ^
