@@ -45,5 +45,7 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DWITH_AUTHENTICATION_CLIENT_PLUGINS=ON
 if %ERRORLEVEL% neq 0 exit 1
 
+type build\CMakeCache.txt
+
 cmake --build build --config Release
 if %ERRORLEVEL% neq 0 exit 1
