@@ -39,6 +39,7 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - cctools_{{ target_platform }} 1024.3 *_1  # [osx]
