@@ -15,11 +15,11 @@ cxx_compiler:
 cxx_compiler_version:
 - '21'
 icu:
-- '75'
+- '78'
 libabseil:
-- '20250127'
+- '20250512'
 libprotobuf:
-- 5.29.3
+- 6.31.1
 lz4_c:
 - '1.10'
 macos_machine:

@@ -7,11 +7,11 @@ channel_targets:
 cxx_compiler:
 - vs2019
 icu:
-- '75'
+- '78'
 libabseil:
-- '20250127'
+- '20250512'
 libprotobuf:
-- 5.29.3
+- 6.31.1
 lz4_c:
 - '1.10'
 openssl:
