@@ -31,6 +31,7 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DWITH_KERBEROS=none ^
   -DWITH_FIDO=none ^
   -DWITH_SASL=none ^
+  -DPROTOBUF_PROTOC_EXECUTABLE=%LIBRARY_PREFIX%\bin\protoc.exe ^
   -DPROTOBUF_INCLUDE_DIR=%LIBRARY_PREFIX%\include ^
   -DDEFAULT_CHARSET=utf8mb4 ^
   -DDEFAULT_COLLATION=utf8mb4_unicode_ci ^
@@ -44,6 +45,8 @@ cmake -S%SRC_DIR% -Bbuild -GNinja ^
   -DINSTALL_SUPPORTFILESDIR=mysql/support-files ^
   -DWITH_AUTHENTICATION_CLIENT_PLUGINS=ON
 if %ERRORLEVEL% neq 0 exit 1
+
+type build\CMakeCache.txt
 
 cmake --build build --config Release
 if %ERRORLEVEL% neq 0 exit 1

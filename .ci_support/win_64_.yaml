@@ -1,3 +1,5 @@
+c_compiler:
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -5,13 +7,13 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2019
+- vs2022
 icu:
 - '75'
 libabseil:
-- '20250127'
+- '20250512'
 libprotobuf:
-- 5.29.3
+- 6.31.1
 lz4_c:
 - '1.10'
 openssl:
