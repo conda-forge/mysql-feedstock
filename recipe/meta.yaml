@@ -34,7 +34,6 @@ source:
     - patches/0023-Dump-std-out-err-if-abi-check-fails.patch
 
 build:
-  skip: true  # [not win]
   number: 1
 
 requirements:
