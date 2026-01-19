@@ -34,15 +34,13 @@ source:
     - patches/0023-Dump-std-out-err-if-abi-check-fails.patch
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
-    - cctools_{{ target_platform }} 1024.3 *_1  # [osx]
-    - ld64_{{ target_platform }} 955.13 *_1  # [osx]
     - cmake
     - ninja
     - bison                    # [unix]
