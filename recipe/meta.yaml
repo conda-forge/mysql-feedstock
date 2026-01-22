@@ -1,4 +1,4 @@
-{% set version = "9.5.0" %}
+{% set version = "9.6.0" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://cdn.mysql.com/Downloads/MySQL-{{ major_minor }}/mysql-{{ version }}.tar.gz
-  sha256: ef3343981375865a2519f72b600e55f9c646e60e204a2964d3b7e8e748a110a5
+  sha256: 240061d869d5ae188c9a333845928899e9d963ccbd67865a8a2e4b6fcb67178c
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
@@ -34,7 +34,7 @@ source:
     - patches/0023-Dump-std-out-err-if-abi-check-fails.patch
 
 build:
-  number: 3
+  number: 0
 
 requirements:
   build:
