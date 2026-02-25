@@ -1,4 +1,4 @@
-From c37daf623d2f87a208706c30e27b5e6896056752 Mon Sep 17 00:00:00 2001
+From b277cbf8ed054dffd2b4c6fdd7a00a93517cb9dd Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 25 Sep 2024 10:29:38 +0200
 Subject: [PATCH 21/23] Set PROTOBUF_INCLUDE_DIR only if not set

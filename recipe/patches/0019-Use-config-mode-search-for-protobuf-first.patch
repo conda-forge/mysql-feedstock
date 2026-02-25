@@ -1,4 +1,4 @@
-From 36728a6a64a12b6af2c9ec537994fddbac73a3c5 Mon Sep 17 00:00:00 2001
+From 3991d782dc5dec8e0f07c30608b20e39b07444b4 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 11 Jun 2023 23:26:01 +0100
 Subject: [PATCH 19/23] Use config mode search for protobuf first
@@ -13,7 +13,7 @@ See also: https://gitlab.kitware.com/cmake/cmake/-/issues/24321
  1 file changed, 16 insertions(+), 1 deletion(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index 52320c6d..c083d71d 100644
+index 3deb1c18..db92bf3e 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
 @@ -130,7 +130,22 @@ MACRO(MYSQL_CHECK_PROTOBUF)

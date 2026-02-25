@@ -1,4 +1,4 @@
-From fad464063698f63c2626919f1be241b263e6c8ca Mon Sep 17 00:00:00 2001
+From e26f7da198393f538c345149dd8bba3f0333ed52 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Fri, 14 Aug 2020 20:30:20 -0400
 Subject: [PATCH 06/23] Link libgcc & libstdc++ statically for codgen binaries
@@ -9,7 +9,7 @@ Makes it easier for cross compilation
  1 file changed, 13 insertions(+)
 
 diff --git a/sql/CMakeLists.txt b/sql/CMakeLists.txt
-index 1dcbd25d..e20d99c1 100644
+index 694c981d..1a8e7f67 100644
 --- a/sql/CMakeLists.txt
 +++ b/sql/CMakeLists.txt
 @@ -73,6 +73,10 @@ MYSQL_ADD_EXECUTABLE(gen_lex_token
@@ -35,7 +35,7 @@ index 1dcbd25d..e20d99c1 100644
  
  IF(WITH_LTO OR CMAKE_COMPILER_FLAG_WITH_LTO)
    TARGET_COMPILE_OPTIONS(gen_keyword_list PRIVATE "-fno-lto")
-@@ -1396,6 +1405,10 @@ SET_SOURCE_FILES_PROPERTIES(
+@@ -1398,6 +1407,10 @@ SET_SOURCE_FILES_PROPERTIES(
  
  # Gen_lex_hash
  MYSQL_ADD_EXECUTABLE(gen_lex_hash gen_lex_hash.cc SKIP_INSTALL)

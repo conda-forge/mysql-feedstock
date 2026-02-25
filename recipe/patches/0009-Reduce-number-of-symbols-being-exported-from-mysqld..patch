@@ -1,4 +1,4 @@
-From 84322495c4ed99875349afb9123fb91a664286e0 Mon Sep 17 00:00:00 2001
+From 903cae2bdf1fd54940dada019c69ca842e17e15d Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 9 May 2021 17:29:26 -0400
 Subject: [PATCH 09/23] Reduce number of symbols being exported from mysqld.exe
