@@ -1,4 +1,4 @@
-From f9276f0220787db101e88d0447f15b2675c9150d Mon Sep 17 00:00:00 2001
+From 33636585e8eeb398047b201e3aa58ea8a7728619 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Thu, 27 Apr 2023 11:53:31 +0530
 Subject: [PATCH 15/23] Zlib module: use macro instead of function

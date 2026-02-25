@@ -1,17 +1,17 @@
-From 2b0b8b44be7ecf4989be5ec055b28e69989256d6 Mon Sep 17 00:00:00 2001
+From 4cdf134b76b3d9c6dae51857f6b0c6eb213340e3 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Wed, 7 Aug 2024 12:25:14 +0100
 Subject: [PATCH 20/23] Simplify protobuf deps using cmake alias
 
 ---
- cmake/protobuf.cmake | 66 ++------------------------------------------
- 1 file changed, 3 insertions(+), 63 deletions(-)
+ cmake/protobuf.cmake | 72 ++------------------------------------------
+ 1 file changed, 3 insertions(+), 69 deletions(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index c083d71d..c4711862 100644
+index db92bf3e..c4711862 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
-@@ -172,73 +172,13 @@ MACRO(MYSQL_CHECK_PROTOBUF)
+@@ -172,79 +172,13 @@ MACRO(MYSQL_CHECK_PROTOBUF)
      # ADD_LIBRARY(ext::libprotobuf-lite ALIAS libprotobuf-lite)
      # ADD_LIBRARY(ext::libprotoc ALIAS libprotoc)
    ELSE()
@@ -24,7 +24,9 @@ index c083d71d..c4711862 100644
 -    #             )
 -    # INTERFACE_LINK_LIBRARIES will be needed once this is built
 -    # with protobuf 22 and above (lots of abseil libs).
--    ADD_LIBRARY(ext::libprotobuf UNKNOWN IMPORTED)
+-    IF(NOT TARGET ext::libprotobuf)
+-      ADD_LIBRARY(ext::libprotobuf UNKNOWN IMPORTED)
+-    ENDIF()
 -    SET_TARGET_PROPERTIES(ext::libprotobuf PROPERTIES
 -      INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${Protobuf_INCLUDE_DIR}")
 -    SET_TARGET_PROPERTIES(ext::libprotobuf PROPERTIES
@@ -35,7 +37,9 @@ index c083d71d..c4711862 100644
 -        INTERFACE_LINK_LIBRARIES "${protobuf_dependencies}")
 -    ENDIF()
 -
--    ADD_LIBRARY(ext::libprotobuf-lite UNKNOWN IMPORTED)
+-    IF(NOT TARGET ext::libprotobuf-lite)
+-      ADD_LIBRARY(ext::libprotobuf-lite UNKNOWN IMPORTED)
+-    ENDIF()
 -    SET_TARGET_PROPERTIES(ext::libprotobuf-lite PROPERTIES
 -      INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${Protobuf_INCLUDE_DIR}")
 -    SET_TARGET_PROPERTIES(ext::libprotobuf-lite PROPERTIES
@@ -46,7 +50,9 @@ index c083d71d..c4711862 100644
 -        INTERFACE_LINK_LIBRARIES "${lite_dependencies}")
 -    ENDIF()
 -
--    ADD_LIBRARY(ext::libprotoc UNKNOWN IMPORTED)
+-    IF(NOT TARGET ext::libprotoc)
+-      ADD_LIBRARY(ext::libprotoc UNKNOWN IMPORTED)
+-    ENDIF()
 -    SET_TARGET_PROPERTIES(ext::libprotoc PROPERTIES
 -      INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${Protobuf_INCLUDE_DIR}")
 -    SET_TARGET_PROPERTIES(ext::libprotoc PROPERTIES
