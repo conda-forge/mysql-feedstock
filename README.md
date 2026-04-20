@@ -64,15 +64,6 @@ Package license: GPL-2.0-or-later
 
 Summary: Shared libraries for MySQL database client applications
 
-About mysql-router
-------------------
-
-
-
-Package license: GPL-2.0-or-later
-
-Summary: MySQL Router binaries
-
 About mysql-server
 ------------------
 
@@ -81,6 +72,15 @@ About mysql-server
 Package license: GPL-2.0-or-later
 
 Summary: Database server and related tools
+
+About mysql-router
+------------------
+
+
+
+Package license: GPL-2.0-or-later
+
+Summary: MySQL Router binaries
 
 Current build status
 ====================
