@@ -59,6 +59,7 @@ requirements:
     - libabseil
     - libedit                  # [unix]
     - libprotobuf
+    - libcurl
     - lz4-c
     - openldap                 # [unix]
     - openssl
@@ -87,6 +88,7 @@ outputs:
       host:
         - icu
         - libabseil
+        - libcurl
         - libprotobuf
         - lz4-c
         - openldap                 # [unix]
@@ -120,6 +122,8 @@ outputs:
         - ninja
       host:
         - libedit  # [unix]
+        - libprotobuf
+        - libcurl
         - openssl
         - zlib
         - zstd
