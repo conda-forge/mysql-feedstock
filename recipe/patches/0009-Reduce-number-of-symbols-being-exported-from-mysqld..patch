@@ -1,7 +1,7 @@
-From 903cae2bdf1fd54940dada019c69ca842e17e15d Mon Sep 17 00:00:00 2001
+From e7d2cdaeab0f7144285ea1eda023373f18c4c0a2 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 9 May 2021 17:29:26 -0400
-Subject: [PATCH 09/23] Reduce number of symbols being exported from mysqld.exe
+Subject: [PATCH 09/24] Reduce number of symbols being exported from mysqld.exe
 
 Due to the export limit (16-bit ordinal field in PE, max val = 2^16-1),
 if the number of symbols required to be exported end up to be greater
@@ -18,7 +18,7 @@ which is < 65535.
  1 file changed, 14 insertions(+)
 
 diff --git a/sql/create_def.cc b/sql/create_def.cc
-index a8feabef..7d681a81 100644
+index fe3cdacb..1cc6377a 100644
 --- a/sql/create_def.cc
 +++ b/sql/create_def.cc
 @@ -333,6 +333,12 @@ void Unique_symbol_map::insert(const std::string &symbol_line) {

@@ -32,6 +32,7 @@ source:
     - patches/0021-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
     - patches/0022-Allow-setting-WITH_SASL-none.patch
     - patches/0023-Dump-std-out-err-if-abi-check-fails.patch
+    - patches/0024-Add-missing-cstdlib-includes.patch
 
 build:
   number: 0
@@ -46,6 +47,7 @@ requirements:
     - bison                    # [unix]
     - diffutils                # [unix]
     - winflexbison             # [win]
+    - binutils                 # [linux]
     - pkg-config
     - icu                      # [build_platform != target_platform]
     - libprotobuf              # [build_platform != target_platform]
