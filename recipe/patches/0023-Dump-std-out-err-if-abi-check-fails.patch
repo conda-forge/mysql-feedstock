@@ -1,14 +1,14 @@
-From e7e924dab5bf18ea28e81f3d8904b1c69e459fe7 Mon Sep 17 00:00:00 2001
+From 35f8a86645c31d11ab478d9ec5ed0df4d0bb5524 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Mon, 21 Apr 2025 10:31:32 +0100
-Subject: [PATCH 23/23] Dump std{out,err} if abi check fails
+Subject: [PATCH 23/24] Dump std{out,err} if abi check fails
 
 ---
  cmake/do_abi_check.cmake | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/do_abi_check.cmake b/cmake/do_abi_check.cmake
-index 753e6e12..d9510268 100644
+index 3cf8a30f..8104a503 100644
 --- a/cmake/do_abi_check.cmake
 +++ b/cmake/do_abi_check.cmake
 @@ -117,9 +117,11 @@ FOREACH(file ${ABI_HEADERS})

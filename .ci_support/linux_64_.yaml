@@ -20,6 +20,8 @@ icu:
 - '78'
 libabseil:
 - '20260107'
+libcurl:
+- '8'
 libprotobuf:
 - 6.33.5
 lz4_c:

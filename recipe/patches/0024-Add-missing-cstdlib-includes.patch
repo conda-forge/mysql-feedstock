@@ -1,0 +1,62 @@
+From d546c0843b6949e35818a123502e1c4b830aa3c9 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Mon, 8 Jun 2026 13:16:33 +0200
+Subject: [PATCH 24/24] Add missing cstdlib includes
+
+---
+ components/mysqlbackup/backup_page_tracker.cc | 1 +
+ libs/mysql/gtid/tag_plain.h                   | 3 ++-
+ mysys/stacktrace.cc                           | 1 +
+ router/src/harness/src/stdx/filesystem.cc     | 1 +
+ 4 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/components/mysqlbackup/backup_page_tracker.cc b/components/mysqlbackup/backup_page_tracker.cc
+index f85f1899..147cd238 100644
+--- a/components/mysqlbackup/backup_page_tracker.cc
++++ b/components/mysqlbackup/backup_page_tracker.cc
+@@ -28,6 +28,7 @@
+ 
+ #include <algorithm>
+ #include <cerrno>
++#include <cstdlib>
+ #include <string>
+ 
+ #if defined _MSC_VER
+diff --git a/libs/mysql/gtid/tag_plain.h b/libs/mysql/gtid/tag_plain.h
+index 55e82222..ca4861df 100644
+--- a/libs/mysql/gtid/tag_plain.h
++++ b/libs/mysql/gtid/tag_plain.h
+@@ -80,7 +80,8 @@ struct Tag_plain {
+   unsigned char m_data[tag_max_length + 1];
+ };
+ 
+-static_assert(std::is_trivial_v<Tag_plain>);
++static_assert(std::is_trivially_copyable_v<Tag_plain>);
++static_assert(std::is_trivially_default_constructible_v<Tag_plain>);
+ static_assert(std::is_standard_layout_v<Tag_plain>);
+ 
+ }  // namespace mysql::gtid
+diff --git a/mysys/stacktrace.cc b/mysys/stacktrace.cc
+index fbd1180a..e2911017 100644
+--- a/mysys/stacktrace.cc
++++ b/mysys/stacktrace.cc
+@@ -37,6 +37,7 @@
+ #include <cerrno>
+ #include <cstdarg>
+ #include <cstdio>
++#include <cstdlib>
+ #include <cstring>
+ #include <string_view>
+ #if defined(__linux__) || defined(__sun) || defined(__FreeBSD__)
+diff --git a/router/src/harness/src/stdx/filesystem.cc b/router/src/harness/src/stdx/filesystem.cc
+index 03017336..da6e8748 100644
+--- a/router/src/harness/src/stdx/filesystem.cc
++++ b/router/src/harness/src/stdx/filesystem.cc
+@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+ #include <array>
+ #include <climits>
++#include <cstdlib>
+ #include <system_error>
+ 
+ #include "mysql/harness/stdx/expected.h"

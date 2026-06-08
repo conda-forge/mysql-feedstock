@@ -1,14 +1,14 @@
-From b277cbf8ed054dffd2b4c6fdd7a00a93517cb9dd Mon Sep 17 00:00:00 2001
+From b4474e1e3f450419ddf1be94bf9e7c645175f996 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Wed, 25 Sep 2024 10:29:38 +0200
-Subject: [PATCH 21/23] Set PROTOBUF_INCLUDE_DIR only if not set
+Subject: [PATCH 21/24] Set PROTOBUF_INCLUDE_DIR only if not set
 
 ---
  cmake/protobuf.cmake | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/cmake/protobuf.cmake b/cmake/protobuf.cmake
-index c4711862..83ea0b49 100644
+index a4f8eede..6e6734f7 100644
 --- a/cmake/protobuf.cmake
 +++ b/cmake/protobuf.cmake
 @@ -141,7 +141,9 @@ MACRO(MYSQL_CHECK_PROTOBUF)

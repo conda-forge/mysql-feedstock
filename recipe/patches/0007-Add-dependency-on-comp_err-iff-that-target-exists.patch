@@ -1,7 +1,7 @@
-From 304a5df89a5539ad61c04f5e246344926cc159b8 Mon Sep 17 00:00:00 2001
+From 5cdb8dc8b7d047645d3fa34fd5fc645e96d6c4b6 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 30 Jan 2021 19:48:42 -0500
-Subject: [PATCH 07/23] Add dependency on comp_err iff that target exists
+Subject: [PATCH 07/24] Add dependency on comp_err iff that target exists
 
 It's not built if we are cross compiling
 ---
@@ -9,7 +9,7 @@ It's not built if we are cross compiling
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/utilities/CMakeLists.txt b/utilities/CMakeLists.txt
-index 357db905..a3faea8d 100644
+index 3540a0ea..3713300f 100644
 --- a/utilities/CMakeLists.txt
 +++ b/utilities/CMakeLists.txt
 @@ -111,7 +111,9 @@ ADD_DEFINITIONS(-DMUTEX_EVENT)

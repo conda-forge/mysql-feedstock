@@ -1,7 +1,7 @@
-From 917e496934fc480cc28b3636ac9201f83bbd4039 Mon Sep 17 00:00:00 2001
+From 9353f7aae1483eaf7327d9ec2bfd6e71bd7ec555 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 21 Jun 2020 16:15:08 -0400
-Subject: [PATCH 02/23] Fix file path for mysqlrouter.conf.sample for
+Subject: [PATCH 02/24] Fix file path for mysqlrouter.conf.sample for
  installation
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 02/23] Fix file path for mysqlrouter.conf.sample for
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/packaging/WiX/router/CMakeLists.txt b/packaging/WiX/router/CMakeLists.txt
-index a36ebd73..d92150d2 100644
+index c6eb572f..179a0963 100644
 --- a/packaging/WiX/router/CMakeLists.txt
 +++ b/packaging/WiX/router/CMakeLists.txt
 @@ -45,7 +45,7 @@ MY_ADD_CUSTOM_TARGET(

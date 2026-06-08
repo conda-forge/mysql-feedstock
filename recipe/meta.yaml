@@ -1,4 +1,4 @@
-{% set version = "9.6.0" %}
+{% set version = "9.7.0" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://cdn.mysql.com/Downloads/MySQL-{{ major_minor }}/mysql-{{ version }}.tar.gz
-  sha256: 240061d869d5ae188c9a333845928899e9d963ccbd67865a8a2e4b6fcb67178c
+  sha256: 74b574babc56b0ecb632abd359d213c6794ecf442ae44928bfc581fb3d62306d
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
@@ -32,6 +32,7 @@ source:
     - patches/0021-Set-PROTOBUF_INCLUDE_DIR-only-if-not-set.patch
     - patches/0022-Allow-setting-WITH_SASL-none.patch
     - patches/0023-Dump-std-out-err-if-abi-check-fails.patch
+    - patches/0024-Add-missing-cstdlib-includes.patch
 
 build:
   number: 0
@@ -46,6 +47,7 @@ requirements:
     - bison                    # [unix]
     - diffutils                # [unix]
     - winflexbison             # [win]
+    - binutils                 # [linux]
     - pkg-config
     - icu                      # [build_platform != target_platform]
     - libprotobuf              # [build_platform != target_platform]
@@ -57,6 +59,7 @@ requirements:
     - libabseil
     - libedit                  # [unix]
     - libprotobuf
+    - libcurl
     - lz4-c
     - openldap                 # [unix]
     - openssl
@@ -85,6 +88,7 @@ outputs:
       host:
         - icu
         - libabseil
+        - libcurl
         - libprotobuf
         - lz4-c
         - openldap                 # [unix]
@@ -118,6 +122,8 @@ outputs:
         - ninja
       host:
         - libedit  # [unix]
+        - libprotobuf
+        - libcurl
         - openssl
         - zlib
         - zstd
