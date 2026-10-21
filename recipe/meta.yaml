@@ -1,4 +1,4 @@
-{% set version = "9.7.2" %}
+{% set version = "9.7.4" %}
 {% set major_minor = ".".join(version.split(".")[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://cdn.mysql.com/Downloads/MySQL-{{ major_minor }}/mysql-{{ version }}.tar.gz
-  sha256: e5a676c7cb73738dc6ea33db2093806ebd512b629a139b897fcab68fcd81aaa4
+  sha256: 9188eb1abec42b8ab8bb69948492f06258dd27e6aabd13e2d4c6197dbcde75b2
   patches:
     - patches/0001-Make-installation-of-pdb-files-optional.patch
     - patches/0002-Fix-file-path-for-mysqlrouter.conf.sample-for-instal.patch
