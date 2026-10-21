@@ -21,11 +21,13 @@ cxx_compiler_version:
 icu:
 - '78'
 libabseil:
-- '20260107'
+- '20260526'
 libcurl:
 - '8'
+libedit:
+- '3.1'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 lz4_c:
 - '1.10'
 macos_machine:
