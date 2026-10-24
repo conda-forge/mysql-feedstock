@@ -1,86 +1,106 @@
-About mysql-suite-feedstock
-===========================
+About mysql-feedstock
+=====================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mysql-feedstock/blob/main/LICENSE.txt)
 
 
-About mysql-suite
------------------
+About mysql
+-----------
 
 Home: https://www.mysql.com/
 
 Package license: GPL-2.0-or-later
 
-Summary: Open source relational database management system.
+Summary: Meta package for backwards compat + bonus content
 
 The MySQL(TM) software delivers a very fast, multi-threaded, multi-user,
 and robust SQL (Structured Query Language) database server. MySQL Server
 is intended for mission-critical, heavy-load production systems as well
 as for embedding into mass-deployed software.
 
-
-About mysql
------------
-
-
-
-Package license: GPL-2.0-or-later
-
-Summary: Meta package for backwards compat + bonus content
-
 About mysql-client
 ------------------
 
-
+Home: https://www.mysql.com/
 
 Package license: GPL-2.0-or-later
 
 Summary: MySQL client applications and tools
 
+The MySQL(TM) software delivers a very fast, multi-threaded, multi-user,
+and robust SQL (Structured Query Language) database server. MySQL Server
+is intended for mission-critical, heavy-load production systems as well
+as for embedding into mass-deployed software.
+
 About mysql-common
 ------------------
 
-
+Home: https://www.mysql.com/
 
 Package license: GPL-2.0-or-later
 
 Summary: Common files for server and client libraries
 
+The MySQL(TM) software delivers a very fast, multi-threaded, multi-user,
+and robust SQL (Structured Query Language) database server. MySQL Server
+is intended for mission-critical, heavy-load production systems as well
+as for embedding into mass-deployed software.
+
 About mysql-devel
 -----------------
 
-
+Home: https://www.mysql.com/
 
 Package license: GPL-2.0-or-later
 
 Summary: Development header files and libraries for MySQL database client applications
 
+The MySQL(TM) software delivers a very fast, multi-threaded, multi-user,
+and robust SQL (Structured Query Language) database server. MySQL Server
+is intended for mission-critical, heavy-load production systems as well
+as for embedding into mass-deployed software.
+
 About mysql-libs
 ----------------
 
-
+Home: https://www.mysql.com/
 
 Package license: GPL-2.0-or-later
 
 Summary: Shared libraries for MySQL database client applications
 
+The MySQL(TM) software delivers a very fast, multi-threaded, multi-user,
+and robust SQL (Structured Query Language) database server. MySQL Server
+is intended for mission-critical, heavy-load production systems as well
+as for embedding into mass-deployed software.
+
 About mysql-server
 ------------------
 
-
+Home: https://www.mysql.com/
 
 Package license: GPL-2.0-or-later
 
 Summary: Database server and related tools
 
+The MySQL(TM) software delivers a very fast, multi-threaded, multi-user,
+and robust SQL (Structured Query Language) database server. MySQL Server
+is intended for mission-critical, heavy-load production systems as well
+as for embedding into mass-deployed software.
+
 About mysql-router
 ------------------
 
-
+Home: https://www.mysql.com/
 
 Package license: GPL-2.0-or-later
 
 Summary: MySQL Router binaries
+
+The MySQL(TM) software delivers a very fast, multi-threaded, multi-user,
+and robust SQL (Structured Query Language) database server. MySQL Server
+is intended for mission-critical, heavy-load production systems as well
+as for embedding into mass-deployed software.
 
 Current build status
 ====================
@@ -141,10 +161,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mysql--router-green.svg)](https://anaconda.org/conda-forge/mysql-router) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mysql-router.svg)](https://anaconda.org/conda-forge/mysql-router) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mysql-router.svg)](https://anaconda.org/conda-forge/mysql-router) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mysql-router.svg)](https://anaconda.org/conda-forge/mysql-router) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mysql--server-green.svg)](https://anaconda.org/conda-forge/mysql-server) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mysql-server.svg)](https://anaconda.org/conda-forge/mysql-server) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mysql-server.svg)](https://anaconda.org/conda-forge/mysql-server) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mysql-server.svg)](https://anaconda.org/conda-forge/mysql-server) |
 
-Installing mysql-suite
-======================
+Installing mysql
+================
 
-Installing `mysql-suite` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `mysql` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -273,17 +293,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating mysql-suite-feedstock
-==============================
+Updating mysql-feedstock
+========================
 
-If you would like to improve the mysql-suite recipe or build a new
+If you would like to improve the mysql recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/mysql-suite-feedstock are
+Note that all branches in the conda-forge/mysql-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
