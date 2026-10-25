@@ -29,7 +29,7 @@ if [[ "${target_platform}" == *"linux"* ]]; then
 #!/bin/bash
 ${_target_interpreter} --library-path ${_target_libdir} ${_target_rpcgen_bin} -Y ${_rpcgen_hack_dir}/bin \$@
 EOF
-    ln -sf $(readlink -f ${CPP}) ${_rpcgen_hack_dir}/bin/cpp
+    ln -sf $(readlink -f $(command -v ${CPP})) ${_rpcgen_hack_dir}/bin/cpp
     chmod +x ${_rpcgen_hack_dir}/bin/{rpcgen,cpp}
 
 elif [[ "${target_platform}" == *"osx"* ]]; then
@@ -122,6 +122,7 @@ cmake -S$SRC_DIR -Bbuild -GNinja \
   -DWITH_PROTOBUF=system \
   -DWITH_KERBEROS=none \
   -DWITH_FIDO=none \
+  -DWITH_AUTHENTICATION_WEBAUTHN=OFF \
   -DWITH_SASL=none \
   -DPROTOBUF_INCLUDE_DIR=${PREFIX}/include \
   -DDEFAULT_CHARSET=utf8mb4 \
