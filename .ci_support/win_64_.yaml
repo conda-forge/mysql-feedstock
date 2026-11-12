@@ -11,7 +11,7 @@ cxx_compiler:
 icu:
 - '78'
 libabseil:
-- '20260526'
+- '20260817'
 libcurl:
 - '8'
 libprotobuf:
