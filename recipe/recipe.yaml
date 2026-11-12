@@ -58,7 +58,7 @@ outputs:
           then: winflexbison
         - if: linux
           then: binutils
-        - pkg-config
+        - pkgconf
         - if: build_platform != target_platform
           then: icu
         - if: build_platform != target_platform
